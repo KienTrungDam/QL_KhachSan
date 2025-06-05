@@ -1,0 +1,90 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header {
+  height: 50px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: fixed;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.logo {
+  height: 40px;
+  cursor: pointer;
+  padding-right: 100px;
+}
+
+@media (max-width: 640px) {
+  .logo {
+    padding-right: 0;
+  }
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  cursor: pointer;
+}
+
+.footer {
+  height: 50px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.content {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.content {
+
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 100px);
+}
+.white-button {
+  background-color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: black;
+}
+
+.center-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.max-w-screen-md {
+  max-width: 768px;
+}
