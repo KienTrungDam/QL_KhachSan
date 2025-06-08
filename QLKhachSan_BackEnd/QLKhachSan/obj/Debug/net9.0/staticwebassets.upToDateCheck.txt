@@ -1,4 +1,8 @@
+wwwroot\images\new\new-10.jpg
 wwwroot\images\new\new-6.jpg
+wwwroot\images\new\new-7.jpg
+wwwroot\images\new\new-8.jpg
+wwwroot\images\new\new-9.jpg
 wwwroot\images\rooms\room-10\6dda2606-e6e5-445c-b735-363999d70c01.jpg
 wwwroot\images\rooms\room-10\8c2841dc-027b-4e07-843a-98f4097e3231.jpg
 wwwroot\images\rooms\room-10\d1dd57e8-2003-4401-8907-024d2043a208.jpg

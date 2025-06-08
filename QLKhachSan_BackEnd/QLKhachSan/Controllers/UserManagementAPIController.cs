@@ -242,12 +242,12 @@ namespace QLKhachSan.Controllers
             _response.StatusCode = HttpStatusCode.NoContent;
             return Ok(_response);
         }
-        [HttpPut("UpdateUser")]
-        public async Task<ActionResult<APIResponse>> UpdateUser([FromBody] PersonUpdateDTO personUpdateDTO)
+        [HttpPut("UpdateUser/{id}", Name = "UpdateUser")]
+        public async Task<ActionResult<APIResponse>> UpdateUser(string id, [FromBody] PersonUpdateDTO personUpdateDTO)
         {
             try
             {
-                if (personUpdateDTO == null || string.IsNullOrEmpty(personUpdateDTO.Id))
+                if (personUpdateDTO == null || string.IsNullOrEmpty(id))
                 {
                     _response.StatusCode = HttpStatusCode.BadRequest;
                     _response.IsSuccess = false;
@@ -255,16 +255,16 @@ namespace QLKhachSan.Controllers
                     return BadRequest(_response);
                 }
 
-                var user = await _userManager.FindByIdAsync(personUpdateDTO.Id);
+                var user = await _userManager.FindByIdAsync(id);
                 if (user == null)
                 {
                     _response.StatusCode = HttpStatusCode.NotFound;
                     _response.IsSuccess = false;
-                    _response.ErrorMessages.Add("User not found"); 
+                    _response.ErrorMessages.Add("User not found");
                     return NotFound(_response);
                 }
 
-                // Cập nhật từng trường một cách thủ công (tránh EF tracking conflict)
+                // Cập nhật thông tin
                 user.FirstMidName = personUpdateDTO.FirstMidName;
                 user.LastName = personUpdateDTO.LastName;
                 user.Address = personUpdateDTO.Address;
@@ -283,19 +283,17 @@ namespace QLKhachSan.Controllers
                     return BadRequest(_response);
                 }
 
-                // Cập nhật role để trả về
+                // Cập nhật vai trò nếu cần
                 var currentRoles = await _userManager.GetRolesAsync(user);
                 var currentRole = currentRoles.FirstOrDefault();
 
                 if (!string.IsNullOrEmpty(personUpdateDTO.Role) && personUpdateDTO.Role != currentRole)
                 {
-                    // Xóa role cũ
                     if (currentRole != null)
                     {
                         await _userManager.RemoveFromRoleAsync(user, currentRole);
                     }
 
-                    // Thêm role mới
                     var roleExists = await _roleManager.RoleExistsAsync(personUpdateDTO.Role);
                     if (roleExists)
                     {
@@ -309,6 +307,7 @@ namespace QLKhachSan.Controllers
                         return BadRequest(_response);
                     }
                 }
+
                 var personDto = _mapper.Map<PersonDTO>(user);
                 personDto.Role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
                 _response.Result = personDto;
@@ -323,6 +322,7 @@ namespace QLKhachSan.Controllers
                 return BadRequest(_response);
             }
         }
+
 
 
     }

@@ -1968,11 +1968,16 @@
   {
     "ContainingType": "QLKhachSan.Controllers.UserManagementAPIController",
     "Method": "UpdateUser",
-    "RelativePath": "api/UserManagement/UpdateUser",
+    "RelativePath": "api/UserManagement/UpdateUser/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
       {
         "Name": "personUpdateDTO",
         "Type": "QLKhachSan.Models.DTO.PersonUpdateDTO",
@@ -1989,7 +1994,8 @@
         ],
         "StatusCode": 200
       }
-    ]
+    ],
+    "EndpointName": "UpdateUser"
   },
   {
     "ContainingType": "QLKhachSan.Controllers.UserManagementAPIController",

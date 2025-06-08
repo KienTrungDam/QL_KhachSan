@@ -21,6 +21,7 @@ import PaymentCancel from "./components/home/my-order/PaymentCancell";
 import AvailableRooms from "./components/home/Booking/AvailableRooms";
 import Service from "./components/home/service/Service";
 import HomePage from "./components/home/HomePage";
+import News from "./components/home/new/new";
 function App() {
   const [user, setUser] = useState(null);
   const userRole = localStorage.getItem("role");
@@ -86,9 +87,7 @@ function App() {
             element={
               <>
                 <Header user={user} />
-                <About />
-                <Room />
-                <Service />
+                <News />
                 <Footer />
               </>
             }

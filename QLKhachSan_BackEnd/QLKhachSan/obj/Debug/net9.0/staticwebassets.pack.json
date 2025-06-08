@@ -1,8 +1,24 @@
 {
   "Files": [
     {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-10.jpg",
+      "PackagePath": "staticwebassets\\images\\new\\new-10.jpg"
+    },
+    {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-6.jpg",
       "PackagePath": "staticwebassets\\images\\new\\new-6.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-7.jpg",
+      "PackagePath": "staticwebassets\\images\\new\\new-7.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-8.jpg",
+      "PackagePath": "staticwebassets\\images\\new\\new-8.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-9.jpg",
+      "PackagePath": "staticwebassets\\images\\new\\new-9.jpg"
     },
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-10\\6dda2606-e6e5-445c-b735-363999d70c01.jpg",

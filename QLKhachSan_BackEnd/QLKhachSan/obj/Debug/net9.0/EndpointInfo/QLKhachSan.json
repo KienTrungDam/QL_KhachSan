@@ -3281,10 +3281,21 @@
         }
       }
     },
-    "/api/UserManagement/UpdateUser": {
+    "/api/UserManagement/UpdateUser/{id}": {
       "put": {
         "tags": [
           "UserManagementAPI"
+        ],
+        "operationId": "UpdateUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "content": {

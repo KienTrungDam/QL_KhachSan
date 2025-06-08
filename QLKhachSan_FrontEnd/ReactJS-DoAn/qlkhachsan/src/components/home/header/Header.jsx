@@ -113,11 +113,7 @@ function Header() {
             </span>
             <span
               className="relative cursor-pointer text-gray-700 hover:text-yellow-600 transition-all duration-300 group py-2"
-              onClick={() =>
-                document
-                  .getElementById("news")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={() => navigate("/news")}
             >
               Tin tức & Sự kiện
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-500 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
@@ -176,7 +172,13 @@ function Header() {
                       className="fixed inset-0 z-40"
                       onClick={() => setDropdownOpen(false)}
                     ></div>
-                    <div className={`absolute right-0 mt-3 w-64 bg-white border border-gray-100 rounded-2xl shadow-2xl z-50 p-2 space-y-1     transition-all duration-150 ease-out transform ${dropdownOpen ? "opacity-100 scale-100" : "opacity-0 scale-95"} pointer-events-${dropdownOpen ? "auto" : "none"}`}>
+                    <div
+                      className={`absolute right-0 mt-3 w-64 bg-white border border-gray-100 rounded-2xl shadow-2xl z-50 p-2 space-y-1     transition-all duration-150 ease-out transform ${
+                        dropdownOpen
+                          ? "opacity-100 scale-100"
+                          : "opacity-0 scale-95"
+                      } pointer-events-${dropdownOpen ? "auto" : "none"}`}
+                    >
                       {" "}
                       <div className="px-4 py-3 border-b border-gray-100">
                         <p className="text-sm font-medium text-gray-900">

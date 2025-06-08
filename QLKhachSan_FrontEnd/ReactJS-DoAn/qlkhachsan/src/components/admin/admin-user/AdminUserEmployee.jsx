@@ -25,6 +25,7 @@ const AdminUserEmployee = () => {
             });
             const filtered = response.data.result.filter(user => user.role === 'Employee' || user.role === 'Admin');
             setUsers(filtered);
+            console.log(filtered);
         } catch (error) {
             console.error('Error fetching users:', error);
         }
@@ -40,28 +41,30 @@ const AdminUserEmployee = () => {
     };
 
     const handleUpdateUser = async () => {
-        try {
-            const updated = {
-                ...editUser,
-                firstMidName: editUser.firstMidName,
-                lastName: editUser.lastName,
-                address: editUser.address,
-                cccd: editUser.cccd
-            };
+    try {
+        const updated = {
+            ...editUser,
+            firstMidName: editUser.firstMidName,
+            lastName: editUser.lastName,
+            address: editUser.address,
+            cccd: editUser.cccd,
+            role: editUser.role
+        };
 
-            await axios.put(`https://localhost:5001/api/UserManagement/${editUser.id}`, updated, {
-                headers: { 'Authorization': `Bearer ${storedToken}` }
-            });
+        await axios.put(`https://localhost:5001/api/UserManagement/UpdateUser/${editUser.id}`, updated, {
+            headers: { 'Authorization': `Bearer ${storedToken}` }
+        });
 
-            setEditUser(null);
-            setShowForm(false);
-            fetchUsers();
-            showNotification("success", "Cập nhật nhân viên thành công!");
-        } catch (error) {
-            console.error('Error updating user:', error);
-            showNotification("error", "Cập nhật nhân viên thất bại!", error.message);
-        }
-    };
+        setEditUser(null);
+        setShowForm(false);
+        fetchUsers();
+        showNotification("success", "Cập nhật nhân viên thành công!");
+    } catch (error) {
+        console.error('Error updating user:', error);
+        showNotification("error", "Cập nhật nhân viên thất bại!", error.message);
+    }
+};
+
 
     const openModal = (type, user = null) => {
         setActionType(type);
