@@ -295,8 +295,14 @@ namespace QLKhachSan.Controllers
                     else
                     {
                         // da co booking Room detail
-                        bookingRoomDetail.CheckOutDate = bookingRoomDetailUpSertDTO.CheckOutDate;
-                        bookingRoomDetail.CheckInDate = bookingRoomDetailUpSertDTO.CheckInDate;
+                        bookingRoomDetail.CheckInDate = bookingRoomDetailUpSertDTO.CheckInDate < bookingRoomDetail.CheckInDate
+                            ? bookingRoomDetailUpSertDTO.CheckInDate
+                            : bookingRoomDetail.CheckInDate;
+
+                        bookingRoomDetail.CheckOutDate = bookingRoomDetailUpSertDTO.CheckOutDate > bookingRoomDetail.CheckOutDate
+                            ? bookingRoomDetailUpSertDTO.CheckOutDate
+                            : bookingRoomDetail.CheckOutDate;
+
                         bookingRoomDetail.NumberOfGuests = bookingRoomDetailUpSertDTO.NumberOfGuests;
                         await _unitOfWork.BookingRoomDetail.UpdateAsync(bookingRoomDetail);
                         bookingRoom.BookingRoomDetails = await _unitOfWork.BookingRoomDetail.GetAllAsync(u => u.BookingRoomId == bookingRoom.Id, includeProperties: "Room");

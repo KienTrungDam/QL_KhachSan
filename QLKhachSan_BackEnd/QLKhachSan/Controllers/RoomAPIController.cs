@@ -130,7 +130,7 @@ namespace QLKhachSan.Controllers
 
                     using (var fileStream = new FileStream(Path.Combine(finalPath, fileName), FileMode.Create))
                     {
-                        image.CopyToAsync(fileStream);
+                        await image.CopyToAsync(fileStream);
                     }
 
                     RoomImage roomImage = new()

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
 
 function BookingForm({ closeModal }) {
   const navigate = useNavigate();
@@ -22,20 +22,20 @@ function BookingForm({ closeModal }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const userName = localStorage.getItem('userName');
+    const userName = localStorage.getItem("userName");
     if (!userName) {
-      navigate('/auth?mode=login');
+      navigate("/auth?mode=login");
       return;
     }
 
     if (!formData.checkIn || !formData.checkOut) {
-      showNotification('Vui lòng chọn ngày vào và ngày ra.');
+      showNotification("Vui lòng chọn ngày vào và ngày ra.");
       return;
     }
 
     const query = new URLSearchParams({
-      checkin: formData.checkIn.toISOString(),
-      checkout: formData.checkOut.toISOString(),
+      checkin: formData.checkIn.toLocaleDateString("sv-SE"),
+      checkout: formData.checkOut.toLocaleDateString("sv-SE"),
       people: formData.people,
       user: userName,
     });
@@ -57,19 +57,28 @@ function BookingForm({ closeModal }) {
         <div className="w-100 mx-auto mt-2 h-[2px] bg-yellow-200 rounded-full"></div>
       </div>
 
-      <h2 className="text-3xl font-extrabold mb-6 text-yellow-600 text-center">Đặt Phòng</h2>
+      <h2 className="text-3xl font-extrabold mb-6 text-yellow-600 text-center">
+        Đặt Phòng
+      </h2>
 
-      <form onSubmit={handleSubmit} className="space-y-6 flex-grow overflow-auto">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6 flex-grow overflow-auto"
+      >
         {/* Số người */}
         <div>
-          <label className="block text-lg font-semibold text-gray-800 mb-2">👥 Số người</label>
+          <label className="block text-lg font-semibold text-gray-800 mb-2">
+            👥 Số người
+          </label>
           <input
             type="number"
             name="people"
             value={formData.people}
             min={1}
-              className="w-full border-2 border-gray-200 p-3 rounded-xl shadow-sm focus:outline-none  focus:ring-gray-400 hover:border-gray-400 text-gray-800 text-lg"
-            onChange={(e) => setFormData({ ...formData, people: Number(e.target.value) })}
+            className="w-full border-2 border-gray-200 p-3 rounded-xl shadow-sm focus:outline-none  focus:ring-gray-400 hover:border-gray-400 text-gray-800 text-lg"
+            onChange={(e) =>
+              setFormData({ ...formData, people: Number(e.target.value) })
+            }
             required
           />
         </div>
@@ -77,7 +86,9 @@ function BookingForm({ closeModal }) {
         {/* Ngày vào và ngày ra */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-lg font-semibold text-gray-800 mb-2">🕓 Ngày vào</label>
+            <label className="block text-lg font-semibold text-gray-800 mb-2">
+              🕓 Ngày vào
+            </label>
             <DatePicker
               selected={formData.checkIn}
               onChange={(date) => setFormData({ ...formData, checkIn: date })}
@@ -92,14 +103,20 @@ function BookingForm({ closeModal }) {
           </div>
 
           <div>
-            <label className="block text-lg font-semibold text-gray-800 mb-2">🕘 Ngày ra</label>
+            <label className="block text-lg font-semibold text-gray-800 mb-2">
+              🕘 Ngày ra
+            </label>
             <DatePicker
               selected={formData.checkOut}
               onChange={(date) => setFormData({ ...formData, checkOut: date })}
               selectsEnd
               startDate={formData.checkIn}
               endDate={formData.checkOut}
-              minDate={formData.checkIn || new Date()}
+              minDate={
+                formData.checkIn
+                  ? new Date(formData.checkIn.getTime() + 24 * 60 * 60 * 1000)
+                  : new Date()
+              }
               placeholderText="Chọn ngày ra"
               className="w-full border-2 border-gray-200 p-3 rounded-xl shadow-sm text-gray-800 text-lg"
               dateFormat="dd/MM/yyyy"
@@ -116,14 +133,12 @@ function BookingForm({ closeModal }) {
             Tìm phòng
           </button>
 
-
           {/* Thông báo lỗi hiện ở đây */}
           {notifyProps && (
             <p className="mt-2 text-center text-xl font-bold text-red-700 select-none">
               {notifyProps}
             </p>
           )}
-
         </div>
       </form>
     </div>

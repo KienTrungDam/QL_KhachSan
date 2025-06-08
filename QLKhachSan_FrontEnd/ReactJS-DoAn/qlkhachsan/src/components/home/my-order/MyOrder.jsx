@@ -439,11 +439,11 @@ const MyOrder = () => {
                                       </div>
                                       <div>
                                         <span className="text-sm text-gray-500">Nhận phòng</span>
-                                        <p className="font-semibold">{new Date(detail.checkInDate).toLocaleDateString()}</p>
+                                        <p className="font-semibold">{new Date(detail.checkInDate).toLocaleDateString('vi-VN')}</p>
                                       </div>
                                       <div>
                                         <span className="text-sm text-gray-500">Trả phòng</span>
-                                        <p className="font-semibold">{new Date(detail.checkOutDate).toLocaleDateString()}</p>
+                                        <p className="font-semibold">{new Date(detail.checkOutDate).toLocaleDateString('vi-VN')}</p>
                                       </div>
                                     </div>
                                   </div>

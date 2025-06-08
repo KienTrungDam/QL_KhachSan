@@ -138,7 +138,7 @@ namespace QLKhachSan.Controllers
             existingNew.Title = newUpdateDTO.Title;
             existingNew.Content = newUpdateDTO.Content;
             existingNew.UpdatedAt = DateTime.UtcNow;
-
+            existingNew.Author = newUpdateDTO.Author;
             // Nếu có ảnh mới, lưu ảnh và xóa ảnh cũ
             if (newUpdateDTO.Image != null)
             {
