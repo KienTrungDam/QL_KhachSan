@@ -311,6 +311,69 @@ namespace QLKhachSan.Controllers
             _response.Result = _mapper.Map<IEnumerable<RoomDTO>>(availableRooms);
             return Ok(_response);
         }
+        [HttpGet("ListBookingDate/{roomId:int}")]
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<APIResponse>> GetRoomBookedDates(int roomId)
+        {
+            if (roomId <= 0)
+            {
+                _response.StatusCode = HttpStatusCode.BadRequest;
+                _response.IsSuccess = false;
+                _response.ErrorMessages.Add("Room ID không hợp lệ.");
+                return BadRequest(_response);
+            }
+
+            // Kiểm tra phòng có tồn tại không
+             var room = await _unitOfWork.Room.GetAsync(r => r.Id == roomId);
+            if (room == null)
+            {
+                _response.StatusCode = HttpStatusCode.NotFound;
+                _response.IsSuccess = false;
+                _response.ErrorMessages.Add("Không tìm thấy phòng.");
+                return NotFound(_response);
+            }
+
+            // Lấy danh sách các booking hợp lệ có liên quan đến phòng
+            var bookings = await _unitOfWork.Booking.GetAllAsync(
+                b => b.BookingStatus != SD.Status_Booking_Cancelled && b.BookingStatus != SD.Status_Booking_Completed && b.BookingRoomId > 0,
+                includeProperties: "BookingRoom"
+            );
+            //var validBookings = bookings
+            //    .Where(b => b.BookingRoomId > 0)
+            //    .ToList();
+            foreach (var booking in bookings)
+            {
+                if (booking.BookingRoom != null)
+                {
+                    booking.BookingRoom.BookingRoomDetails = await _unitOfWork.BookingRoomDetail.GetAllAsync(d => d.BookingRoomId == booking.BookingRoom.Id, includeProperties: "Room");
+
+                    foreach (var detail in booking.BookingRoom.BookingRoomDetails)
+                    {
+                        if (detail.Room != null)
+                        {
+                            detail.Room.RoomImages = await _unitOfWork.RoomImage.GetAllAsync(img => img.RoomId == detail.RoomId);
+                            detail.Room.CategoryRoom = await _unitOfWork.CategoryRoom.GetAsync(c => c.Id == detail.Room.CategoryRoomId);
+                        }
+                    }
+                }
+            }
+
+            var bookedDates = bookings
+            .SelectMany(b => b.BookingRoom.BookingRoomDetails)
+            .Where(d => d.RoomId == roomId && d.CheckInDate.HasValue && d.CheckOutDate.HasValue)
+            .Select(d => new
+            {
+                CheckIn = d.CheckInDate.Value.Date,
+                CheckOut = d.CheckOutDate.Value.Date
+            }).ToList();
+            
+            _response.Result = bookedDates;
+            _response.StatusCode = HttpStatusCode.OK;
+            return Ok(_response);
+        }
 
 
 

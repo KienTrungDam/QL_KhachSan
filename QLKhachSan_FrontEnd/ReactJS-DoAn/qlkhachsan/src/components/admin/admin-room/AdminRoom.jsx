@@ -3,7 +3,8 @@ import axios from "axios";
 import { FaHotel, FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import { MdDashboard, MdPeople, MdSettings } from "react-icons/md";
 import RoomModal from "../admin-model/RoomModel";
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch } from "react-icons/fa";
+import RoomDetailModal from "../admin-model/RoomDetailModel";
 const AdminRoom = () => {
   const [rooms, setRooms] = useState([]);
   const [newRoom, setNewRoom] = useState({
@@ -18,6 +19,10 @@ const AdminRoom = () => {
     MainImage: null,
     Images: [],
   });
+  const [selectedRoomDetail, setSelectedRoomDetail] = useState(null);
+  const [showRoomDetail, setShowRoomDetail] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategoryId, setSelectedCategoryId] = useState("");
   const [editRoom, setEditRoom] = useState(null);
   const [categories, setCategories] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -30,17 +35,35 @@ const AdminRoom = () => {
     setNotifyProps({ type, message, description });
     setTimeout(() => setNotifyProps(null), 3000);
   };
-
+  const handleViewRoomDetail = (room) => {
+    setSelectedRoomDetail(room);
+    setShowRoomDetail(true);
+  };
   const fetchRooms = async () => {
     try {
       const response = await axios.get("https://localhost:5001/api/Room", {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
       setRooms(response.data.result || []);
+      console.log(response.data.result || []);
     } catch (error) {
       console.error("Error fetching rooms:", error);
     }
   };
+  const filteredRooms = rooms.filter((room) => {
+    const roomNumberMatch = room.roomNumber
+      ?.toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const categoryMatch = room.categoryRoom?.name
+      ?.toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    const categoryFilterMatch =
+      selectedCategoryId === "" ||
+      room.categoryRoomId?.toString() === selectedCategoryId;
+
+    return (roomNumberMatch || categoryMatch) && categoryFilterMatch;
+  });
 
   const fetchCategories = async () => {
     try {
@@ -185,13 +208,17 @@ const AdminRoom = () => {
               type="text"
               placeholder="Tìm kiếm phòng..."
               className="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
 
           {/* Category Select */}
           <select
             className="w-full sm:w-64 px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-            defaultValue=""
+            value={selectedCategoryId}
+            onChange={(e) => {
+              setSelectedCategoryId(e.target.value);
+            }}
           >
             <option value="">Tất cả loại phòng</option>
             {categories.map((category) => (
@@ -203,7 +230,7 @@ const AdminRoom = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {rooms.map((room) => {
+          {filteredRooms.map((room) => {
             const mainImage = room.roomImages?.find((img) => img.isMain);
             const imageUrl = mainImage
               ? `https://localhost:5001/${mainImage.imageUrl.replace(
@@ -219,7 +246,8 @@ const AdminRoom = () => {
                 <img
                   src={imageUrl || "https://via.placeholder.com/150"}
                   alt="Room"
-                  className="w-full h-40 object-cover rounded mb-4"
+                  className="w-full h-40 object-cover rounded mb-4 cursor-pointer hover:opacity-80 transition"
+                  onClick={() => handleViewRoomDetail(room)}
                 />
                 <h3 className="text-lg font-bold">Phòng {room.roomNumber}</h3>
                 <p className="text-sm text-gray-500">
@@ -261,6 +289,11 @@ const AdminRoom = () => {
           onUpdate={handleUpdateRoom}
           onDelete={handleDeleteRoom}
           categories={categories}
+        />
+        <RoomDetailModal
+          isOpen={showRoomDetail}
+          onClose={() => setShowRoomDetail(false)}
+          room={selectedRoomDetail}
         />
       </main>
     </div>
