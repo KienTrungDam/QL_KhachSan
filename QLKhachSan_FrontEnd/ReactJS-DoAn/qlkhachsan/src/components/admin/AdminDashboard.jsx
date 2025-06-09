@@ -13,6 +13,7 @@ import AdminBookingDetail from "./admin-booking/AdminBookingDetail";
 import AdminPayment from "./admin-booking/AdminPayment";
 import AdminBookingRoom from "./admin-booking/AdminBookingRoom";
 import AdminBookingService from "./admin-booking/AdminBookingService";
+import AdminRoomDetail from "./admin-room/AdminRoomDetail";
 
 const AdminDashboard = () => {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
@@ -46,6 +47,7 @@ const AdminDashboard = () => {
             <Route path="booking-room" element={<AdminBookingRoom />} />
             <Route path="booking-service" element={<AdminBookingService />} />
             <Route path="booking/:bookingId" element={<AdminBookingDetail />} />
+            <Route path="room/:roomId" element={<AdminRoomDetail />} />
           </Routes>
         </main>
       </div>

@@ -71,13 +71,13 @@ const ServiceModal = ({
                                 className="px-4 py-2 bg-green-500 text-white rounded mr-2"
                                 onClick={onSave}
                             >
-                                Save
+                                Lưu
                             </button>
                             <button
                                 className="px-4 py-2 bg-gray-500 text-white rounded"
                                 onClick={onClose}
                             >
-                                Cancel
+                                Hủy
                             </button>
                         </div>
                     </>
@@ -124,13 +124,13 @@ const ServiceModal = ({
                                 className="px-4 py-2 bg-yellow-500 text-white rounded mr-2"
                                 onClick={onUpdate}
                             >
-                                Update
+                                Cập nhật
                             </button>
                             <button
                                 className="px-4 py-2 bg-gray-500 text-white rounded"
                                 onClick={onClose}
                             >
-                                Cancel
+                                Hủy
                             </button>
                         </div>
                     </>
@@ -174,13 +174,13 @@ const ServiceModal = ({
                                 className="px-4 py-2 bg-red-500 text-white rounded mr-2"
                                 onClick={onDelete}
                             >
-                                Confirm Delete
+                                Xóa
                             </button>
                             <button
                                 className="px-4 py-2 bg-gray-500 text-white rounded"
                                 onClick={onClose}
                             >
-                                Cancel
+                                Hủy
                             </button>
                         </div>
                     </>

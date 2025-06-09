@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "../Modal";
 
-const UserEmployeeModal = ({
+const UserCustomerModel = ({
   isOpen,
   onClose,
   actionType,
@@ -10,8 +10,8 @@ const UserEmployeeModal = ({
   onUpdate,
 }) => {
   const getTitle = () => {
-    if (actionType === "update") return "Cập Nhật Nhân Viên";
-    else if (actionType == "view") return "Thông tin nhân viên";
+    if (actionType === "update") return "Cập Nhật Khách Hàng";
+    else if (actionType == "view") return "Thông Tin Khách Hàng";
     return "";
   };
 
@@ -148,4 +148,4 @@ const UserEmployeeModal = ({
   );
 };
 
-export default UserEmployeeModal;
+export default UserCustomerModel;

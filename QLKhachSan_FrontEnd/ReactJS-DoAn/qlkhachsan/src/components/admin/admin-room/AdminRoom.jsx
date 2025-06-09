@@ -4,7 +4,8 @@ import { FaHotel, FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import { MdDashboard, MdPeople, MdSettings } from "react-icons/md";
 import RoomModal from "../admin-model/RoomModel";
 import { FaSearch } from "react-icons/fa";
-import RoomDetailModal from "../admin-model/RoomDetailModel";
+import { useNavigate } from "react-router-dom";
+// import RoomDetailModal from "../admin-model/RoomDetailModel";
 const AdminRoom = () => {
   const [rooms, setRooms] = useState([]);
   const [newRoom, setNewRoom] = useState({
@@ -19,8 +20,8 @@ const AdminRoom = () => {
     MainImage: null,
     Images: [],
   });
-  const [selectedRoomDetail, setSelectedRoomDetail] = useState(null);
-  const [showRoomDetail, setShowRoomDetail] = useState(false);
+  // const [selectedRoomDetail, setSelectedRoomDetail] = useState(null);
+  // const [showRoomDetail, setShowRoomDetail] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
   const [editRoom, setEditRoom] = useState(null);
@@ -29,16 +30,16 @@ const AdminRoom = () => {
   const [actionType, setActionType] = useState(null);
   const [notifyProps, setNotifyProps] = useState(null);
   const storedToken = localStorage.getItem("adminToken");
-
+  const navigate = useNavigate();
   const showNotification = (type, message, description = "") => {
     if (notifyProps) return;
     setNotifyProps({ type, message, description });
     setTimeout(() => setNotifyProps(null), 3000);
   };
-  const handleViewRoomDetail = (room) => {
-    setSelectedRoomDetail(room);
-    setShowRoomDetail(true);
-  };
+  // const handleViewRoomDetail = (room) => {
+  //   setSelectedRoomDetail(room);
+  //   setShowRoomDetail(true);
+  // };
   const fetchRooms = async () => {
     try {
       const response = await axios.get("https://localhost:5001/api/Room", {
@@ -247,7 +248,7 @@ const AdminRoom = () => {
                   src={imageUrl || "https://via.placeholder.com/150"}
                   alt="Room"
                   className="w-full h-40 object-cover rounded mb-4 cursor-pointer hover:opacity-80 transition"
-                  onClick={() => handleViewRoomDetail(room)}
+                  onClick={() => navigate(`/admin/dashboard/room/${room.id}`)}
                 />
                 <h3 className="text-lg font-bold">Phòng {room.roomNumber}</h3>
                 <p className="text-sm text-gray-500">
@@ -290,11 +291,11 @@ const AdminRoom = () => {
           onDelete={handleDeleteRoom}
           categories={categories}
         />
-        <RoomDetailModal
+        {/* <RoomDetailModal
           isOpen={showRoomDetail}
           onClose={() => setShowRoomDetail(false)}
           room={selectedRoomDetail}
-        />
+        /> */}
       </main>
     </div>
   );

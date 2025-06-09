@@ -205,7 +205,7 @@ namespace QLKhachSan.Controllers
 
                     using (var fileStream = new FileStream(Path.Combine(finalPath, fileName), FileMode.Create))
                     {
-                        image.CopyToAsync(fileStream);
+                        await image.CopyToAsync(fileStream);
                     }
 
                     RoomImage roomImage = new()
@@ -341,9 +341,6 @@ namespace QLKhachSan.Controllers
                 b => b.BookingStatus != SD.Status_Booking_Cancelled && b.BookingStatus != SD.Status_Booking_Completed && b.BookingRoomId > 0,
                 includeProperties: "BookingRoom"
             );
-            //var validBookings = bookings
-            //    .Where(b => b.BookingRoomId > 0)
-            //    .ToList();
             foreach (var booking in bookings)
             {
                 if (booking.BookingRoom != null)

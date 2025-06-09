@@ -186,7 +186,7 @@ const AdminBooking = () => {
                 key={pageNum}
                 className={`px-3 py-1 rounded ${
                   currentPage === pageNum
-                    ? 'bg-yellow-500 text-white'
+                    ? 'bg-gray-500 text-white'
                     : 'bg-gray-300 text-black'
                 }`}
                 onClick={() => goToPage(pageNum)}
