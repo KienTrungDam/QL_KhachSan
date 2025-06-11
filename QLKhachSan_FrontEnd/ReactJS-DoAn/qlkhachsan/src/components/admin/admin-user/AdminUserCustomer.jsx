@@ -201,7 +201,7 @@ const AdminUserCustomer = () => {
                             className="px-3 py-1 bg-blue-500 text-white rounded"
                             onClick={() => openModal("view", user)}
                           >
-                            Xem
+                            Xem chi tiết
                           </button>
                           <button
                             className="px-3 py-1 bg-yellow-500 text-white rounded"

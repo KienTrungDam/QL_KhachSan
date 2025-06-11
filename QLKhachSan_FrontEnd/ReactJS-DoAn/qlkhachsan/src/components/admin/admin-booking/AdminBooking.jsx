@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 const statusMap = {
-  Pending: 'Chờ xác nhận',
-  Confirmed: 'Đã xác nhận',
-  Ongoing: 'Đang diễn ra',
-  Completed: 'Hoàn tất',
-  Cancelled: 'Đã hủy',
+  Pending: "Chờ xác nhận",
+  Confirmed: "Đã xác nhận",
+  Ongoing: "Đang diễn ra",
+  Completed: "Hoàn tất",
+  Cancelled: "Đã hủy",
 };
 
 const AdminBooking = () => {
@@ -15,195 +16,208 @@ const AdminBooking = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [filterStatus, setFilterStatus] = useState('All');
+  const [filterStatus, setFilterStatus] = useState("All");
   const itemsPerPage = 10;
-  const storedToken = localStorage.getItem('token');
-
-  const fetchBookings = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await axios.get('https://localhost:5001/api/Booking', {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      });
-      const allBookings = response.data.result || [];
-      const nonDraftBookings = allBookings.filter(
-        (booking) => booking.bookingStatus !== 'Draft'
-      );
-      const sortedBookings = nonDraftBookings.sort((a, b) => {
-        return new Date(b.updateBookingDate) - new Date(a.updateBookingDate);
-      });
-      setBookings(sortedBookings);
-      console.log(sortedBookings)
-    } catch (err) {
-      console.error('Error fetching bookings:', err);
-      setError('Lỗi khi tải danh sách đặt phòng.');
-    } finally {
-      setLoading(false);
-    }
-  };
+  const storedToken = localStorage.getItem("token");
 
   useEffect(() => {
-    fetchBookings();
-  }, []);
+    const fetchBookings = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await axios.get("https://localhost:5001/api/Booking", {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        });
+        const all = response.data.result || [];
+        const filtered = all.filter((b) => b.bookingStatus !== "Draft");
+        const sorted = filtered.sort(
+          (a, b) => new Date(b.updateBookingDate) - new Date(a.updateBookingDate)
+        );
+        setBookings(sorted);
+      } catch (err) {
+        console.error("Error fetching bookings:", err);
+        setError("Lỗi khi tải danh sách đặt phòng.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  // Lọc và phân trang
-  const filteredByStatus =
-    filterStatus === 'All'
+    fetchBookings();
+  }, [storedToken]);
+
+  const filteredBookings =
+    filterStatus === "All"
       ? bookings
       : bookings.filter((b) => b.bookingStatus === filterStatus);
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentBookings = filteredByStatus.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(filteredByStatus.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredBookings.length / itemsPerPage);
+  const indexOfLast = currentPage * itemsPerPage;
+  const indexOfFirst = indexOfLast - itemsPerPage;
+  const currentItems = filteredBookings.slice(indexOfFirst, indexOfLast);
 
   const goToPage = (page) => {
-    if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-    }
+    if (page >= 1 && page <= totalPages) setCurrentPage(page);
   };
 
   return (
-    <div className="p-8 bg-gray-100 min-h-screen">
-      <h1 className="text-2xl font-bold mb-6">Danh sách đơn đặt</h1>
+    <div className="min-h-screen p-8">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-3xl font-bold text-gray-800 mb-8">Quản lý đơn đặt phòng</h1>
 
-      {loading && <p>Đang tải dữ liệu...</p>}
-      {error && <p className="text-red-600">{error}</p>}
-
-      {!loading && !error && (
-        <>
-          {/* Nút lọc trạng thái */}
-          <div className="flex justify-end mb-4 space-x-2">
-            {['All', 'Pending', 'Confirmed', 'Ongoing', 'Completed', 'Cancelled'].map((status) => (
-                <button
-                key={status}
-                className={`px-3 py-1 rounded outline-none border-none hover:border-none focus:border-none focus:outline-none ${
-                    filterStatus === status
-                    ? 'bg-yellow-500 text-white'
-                    : 'bg-gray-300 text-black'
-                }`}
-                onClick={() => {
-                    setFilterStatus(status);
-                    setCurrentPage(1);
-                }}
-                >
-                {status === 'All' ? 'Tất cả' : statusMap[status]}
-                </button>
-            ))}
+        <div className="bg-white rounded-xl shadow-md overflow-hidden">
+          <div className="p-6 border-b border-gray-200">
+            <div className="items-center flex justify-end mb-6">
+              <div className="flex space-x-2">
+                {["All", "Pending", "Confirmed", "Ongoing", "Completed", "Cancelled"].map(
+                  (status) => (
+                    <button
+                      key={status}
+                      onClick={() => {
+                        setFilterStatus(status);
+                        setCurrentPage(1);
+                      }}
+                      className={`px-4 py-2 rounded text-sm font-medium ${
+                        filterStatus === status
+                          ? "bg-gray-700 text-white"
+                          : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                      }`}
+                    >
+                      {status === "All" ? "Tất cả" : statusMap[status]}
+                    </button>
+                  )
+                )}
+              </div>
             </div>
 
+            {loading && <p className="text-gray-600">Đang tải dữ liệu...</p>}
+            {error && <p className="text-red-500">{error}</p>}
 
-          {/* Bảng dữ liệu */}
-          <table className="min-w-full bg-white rounded shadow">
-            <thead className="bg-gray-500 text-white">
-              <tr>
-                <th className="py-2 px-4 border">ID</th>
-                <th className="py-2 px-4 border">Tên khách hàng</th>
-                <th className="py-2 px-4 border">Id đơn dịch vụ</th>
-                <th className="py-2 px-4 border">Id đơn phòng</th>
-                <th className="py-2 px-4 border">Ngày cập nhật</th>
-                <th className="py-2 px-4 border">Ngày đặt</th>
-                <th className="py-2 px-4 border">Trạng thái</th>
-                <th className="py-2 px-4 border">Tổng tiền</th>
-                <th className="py-2 px-4 border">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentBookings.length === 0 ? (
-                <tr>
-                  <td colSpan={8} className="text-center py-4">
-                    Không có dữ liệu đặt phòng
-                  </td>
-                </tr>
-              ) : (
-                currentBookings.map((booking) => (
-                  <tr key={booking.id} className="border-b">
-                    <td className="py-2 px-4 text-center">{booking.id}</td>
-                    <td className="py-2 px-4">
-                      {booking.person?.firstMidName} {booking.person?.lastName}
-                    </td>
-                    <td className="py-2 px-4 text-center">
-                      {booking.bookingServiceId ?? 'Không có'}
-                    </td>
-                    <td className="py-2 px-4 text-center">
-                      {booking.bookingRoomId ?? 'Không có'}
-                    </td>
-                    <td className="py-2 px-4 text-center">
-                      {new Date(booking.updateBookingDate).toLocaleDateString()}
-                    </td>
-                    <td className="py-2 px-4 text-center">
-                      {new Date(booking.bookingDate).toLocaleDateString()}
-                    </td>
-                    <td className="py-2 px-4 text-center">
-                        <span
-                            className={`inline-block w-32 text-center px-3 py-1 rounded-full text-white text-sm font-medium ${
-                            {
-                                Pending: 'bg-yellow-500',
-                                Confirmed: 'bg-blue-500',
-                                Ongoing: 'bg-purple-500',
-                                Completed: 'bg-green-600',
-                                Cancelled: 'bg-red-500',
-                            }[booking.bookingStatus] || 'bg-gray-400'
-                            }`}
-                        >
-                            {statusMap[booking.bookingStatus] ?? booking.bookingStatus}
-                        </span>
-                    </td>
-                    <td className="py-2 px-4 text-center">
-                        {booking.totalPrice.toLocaleString('en-US', {
-                            style: 'currency',
-                            currency: 'USD',
-                        })}
-                    </td>
-                    <td className="py-2 px-4 text-center">
-                        <button
-                            className="bg-green-600 hover:bg-green-700 text-white font-semibold py-1 px-3 rounded"
-                            onClick={() => {
-                                navigate(`/admin/dashboard/booking/${booking.id}`);
-                            }}
-                        >
-                            Cập nhật trạng thái
-                        </button>
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+            {!loading && !error && (
+              <>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="bg-gradient-to-r from-gray-700 to-gray-500 text-white">
+                        <th className="px-6 py-4 text-left text-xs font-semibold uppercase">ID</th>
+                        <th className="px-6 py-4 text-left text-xs font-semibold uppercase">Khách hàng</th>
+                        {/* <th className="px-6 py-4 text-left text-xs font-semibold uppercase">Cập nhật</th> */}
+                        <th className="px-6 py-4 text-left text-xs font-semibold uppercase">Ngày đặt</th>
+                        <th className="px-6 py-4 text-left text-xs font-semibold uppercase">Trạng thái</th>
+                        <th className="px-6 py-4 text-left text-xs font-semibold uppercase">Tổng tiền</th>
+                        <th className="px-6 py-4 text-left text-xs font-semibold uppercase">Hành động</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
+                      {currentItems.length === 0 ? (
+                        <tr>
+                          <td colSpan={7} className="text-center py-4 text-gray-500">
+                            Không có đơn đặt phòng nào
+                          </td>
+                        </tr>
+                      ) : (
+                        currentItems.map((booking, idx) => (
+                          <tr
+                            key={booking.id}
+                            className={`${idx % 2 === 0 ? "bg-gray-50" : "bg-white"} hover:bg-gray-100`}
+                          >
+                            <td className="px-6 py-4 text-sm">{booking.id}</td>
+                            <td className="px-6 py-4 text-sm">
+                              {booking.person?.firstMidName} {booking.person?.lastName}
+                            </td>
+                            {/* <td className="px-6 py-4 text-sm">
+                              {new Date(booking.updateBookingDate).toLocaleDateString("vi-Vn")}
+                            </td> */}
+                            <td className="px-6 py-4 text-sm">
+                              {new Date(booking.bookingDate).toLocaleDateString("vi-Vn")}
+                            </td>
+                            <td className="px-6 py-4 text-sm">
+                              <span
+                        className={`inline-block w-32 text-center px-3 py-1 rounded-full text-white text-sm font-medium ${
+                          {
+                            Pending: "bg-yellow-500",
+                            Confirmed: "bg-blue-500",
+                            Ongoing: "bg-purple-500",
+                            Completed: "bg-green-600",
+                            Cancelled: "bg-red-500",
+                          }[booking.bookingStatus] || "bg-gray-400"
+                        }`}
+                      >
+                        {statusMap[booking.bookingStatus] ??
+                          booking.bookingStatus}
+                      </span>
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-800">
+                              {booking.totalPrice.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                      })}
+                            </td>
+                            <td className="px-6 py-4 text-sm flex space-x-2">
+                              <button
+                                className="px-3 py-1 bg-green-500 text-white rounded"
+                                onClick={() =>
+                                  navigate(`/admin/dashboard/booking/${booking.id}`)
+                                }
+                              >
+                                Cập nhật trạng thái
+                              </button>
+                              <button
+                                className="px-3 py-1 bg-blue-500 text-white rounded"
+                                onClick={() =>
+                                  navigate(`/admin/dashboard/booking-detail/${booking.id}`)
+                                }
+                              >
+                                Xem chi tiết
+                              </button>
+                            </td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                </div>
 
-          {/* Phân trang */}
-          <div className="flex justify-end items-center mt-4 space-x-2">
-            <button
-              className="px-3 py-1 bg-gray-300 text-black rounded disabled:opacity-50"
-              onClick={() => goToPage(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              &lt; Trang trước
-            </button>
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
-              <button
-                key={pageNum}
-                className={`px-3 py-1 rounded ${
-                  currentPage === pageNum
-                    ? 'bg-gray-500 text-white'
-                    : 'bg-gray-300 text-black'
-                }`}
-                onClick={() => goToPage(pageNum)}
-              >
-                {pageNum}
-              </button>
-            ))}
-            <button
-              className="px-3 py-1 bg-gray-300 text-black rounded disabled:opacity-50"
-              onClick={() => goToPage(currentPage + 1)}
-              disabled={currentPage === totalPages}
-            >
-              Trang sau &gt;
-            </button>
+                <div className="flex items-center justify-between mt-6">
+                  <div className="text-sm text-gray-500">
+                    Hiển thị {indexOfFirst + 1} đến{" "}
+                    {Math.min(indexOfLast, filteredBookings.length)} trong tổng số{" "}
+                    {filteredBookings.length} đơn đặt
+                  </div>
+                  <div className="flex space-x-2">
+                    <button
+                      onClick={() => goToPage(currentPage - 1)}
+                      disabled={currentPage === 1}
+                      className="px-4 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+                    >
+                      &lt; Trước
+                    </button>
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                      <button
+                        key={page}
+                        onClick={() => goToPage(page)}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium ${
+                          currentPage === page
+                            ? "bg-gray-500 text-white"
+                            : "bg-gray-300 text-gray-700 hover:bg-gray-400"
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ))}
+                    <button
+                      onClick={() => goToPage(currentPage + 1)}
+                      disabled={currentPage === totalPages}
+                      className="px-4 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+                    >
+                      Tiếp &gt;
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
-        </>
-      )}
+        </div>
+      </div>
     </div>
   );
 };

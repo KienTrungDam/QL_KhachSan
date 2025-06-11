@@ -1,324 +1,173 @@
 import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 
 const AdminBookingDetail = () => {
   const { bookingId } = useParams();
+  const navigate = useNavigate();
   const [booking, setBooking] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const token = localStorage.getItem("token");
 
-  const storedToken = localStorage.getItem("token");
-  const [notifyProps, setNotifyProps] = useState(null);
-  const showNotification = (type, message, description = "") => {
-    if (notifyProps) return;
-    const newNotifyProps = {
-      type,
-      message,
-      description,
-      placement: "topRight",
-    };
-    setNotifyProps(newNotifyProps);
-    setTimeout(() => setNotifyProps(null), 3000);
-  };
   useEffect(() => {
-    const fetchBooking = async () => {
+    const fetchBookingDetail = async () => {
       try {
-        const res = await axios.get(
-          `https://localhost:5001/api/Booking/${bookingId}`,
-          {
-            headers: { Authorization: `Bearer ${storedToken}` },
-          }
-        );
+        const res = await axios.get(`https://localhost:5001/api/Booking/${bookingId}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         setBooking(res.data.result);
+        console.log(res.data.result);
       } catch (error) {
-        console.error("Lỗi tải chi tiết booking:", error);
-        setError("Không tải được chi tiết đơn đặt phòng.");
+        console.error("Lỗi khi tải chi tiết đơn đặt:", error);
       } finally {
         setLoading(false);
       }
     };
-    fetchBooking();
-  }, [bookingId, storedToken]);
-  const geStatus = (status) => {
-  switch (status) {
-    case "Pending":
-      return "Chờ xác nhận";
-    case "Confirmed":
-      return "Đã xác nhận";
-    case "Ongoing":
-      return "Đang diễn ra";
-    case "Completed":
-      return "Hoàn thành";
-    case "Cancelled":
-      return "Đã hủy";
-    default:
-      return "Không xác định";
-  }
-};
-  const updateBookingStatus = async (newStatus) => {
-  try {
-    const response = await axios.put(
-      `https://localhost:5001/api/Booking/UpdateStatus?bookingId=${booking.id}&nextStatus=${newStatus}`,
-      {},
-      {
-        headers: {
-          Authorization: `Bearer ${storedToken}`,
-        },
-      }
-    );
 
-    if (response.data.isSuccess) {
-      setBooking(response.data.result);
-      showNotification("success", `Cập nhật trạng thái sang "${newStatus}" thành công.`);
+    fetchBookingDetail();
+  }, [bookingId]);
 
-      // Nếu là huỷ thì gọi Refund
-      if (newStatus === "Cancelled") {
-        try {
-          const refundResponse = await axios.post(
-            `https://localhost:5001/api/Payment/RefundPayment/${bookingId}`,
-            {},
-            {
-              headers: {
-                Authorization: `Bearer ${storedToken}`,
-              },
-            }
-          );
-          showNotification("success", "Hủy đơn thành công", "Đã hoàn tiền cho khách.");
-        } catch (error) {
-          console.error("Lỗi khi hủy đơn:", error);
-          showNotification("error", "Lỗi khi hủy đơn", "Có lỗi xảy ra khi hoàn tiền.");
-        }
-      }
-    } else {
-      const errorMsg =
-        response.data.errorMessages?.[0] || "Lỗi không xác định";
-      showNotification("error", "Cập nhật thất bại", errorMsg);
+  const getStatusColor = (status) => {
+    switch (status?.toLowerCase()) {
+      case 'confirmed':
+      case 'xác nhận':
+        return 'bg-green-100 text-green-700';
+      case 'pending':
+      case 'chờ xử lý':
+        return 'bg-yellow-100 text-yellow-700';
+      case 'cancelled':
+      case 'đã hủy':
+        return 'bg-red-100 text-red-700';
+      default:
+        return 'bg-gray-100 text-gray-700';
     }
-  } catch (error) {
-    console.error("Lỗi cập nhật trạng thái:", error);
-    showNotification("error", "Lỗi hệ thống", "Không thể cập nhật trạng thái.");
+  };
+
+  if (loading) {
+    return (
+      <div className="p-8 text-center">
+        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+        <p className="mt-2 text-gray-600">Đang tải chi tiết đơn...</p>
+      </div>
+    );
   }
-};
 
-
-  if (loading) return <div>Đang tải chi tiết đơn đặt ...</div>;
-  if (error) return <div className="text-red-600">{error}</div>;
-  if (!booking) return <div>Không tìm thấy đơn đặt </div>;
+  if (!booking) {
+    return (
+      <div className="p-8 text-center">
+        <p className="text-red-600">Không tìm thấy đơn đặt</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="space-y-6">
-      {notifyProps && (
-        <div
-          className={`fixed top-[90px] right-6 bg-${
-            notifyProps.type === "success"
-              ? "green"
-              : notifyProps.type === "error"
-              ? "red"
-              : "yellow"
-          }-100 border border-${
-            notifyProps.type === "success"
-              ? "green"
-              : notifyProps.type === "error"
-              ? "red"
-              : "yellow"
-          }-400 text-${
-            notifyProps.type === "success"
-              ? "green"
-              : notifyProps.type === "error"
-              ? "red"
-              : "yellow"
-          }-700 px-4 py-3 rounded shadow z-50`}
-        >
-          <strong className="font-bold">{notifyProps.message}</strong>
-          {notifyProps.description && <p>{notifyProps.description}</p>}
+    <div className="p-6 max-w-4xl mx-auto">
+      {/* Back Button */}
+      <button 
+        onClick={() => navigate(-1)}
+        className="mb-4 flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+        <span>Trở về</span>
+      </button>
+
+      {/* Header */}
+      <div className="bg-white rounded-lg shadow p-6 mb-6">
+        <div className="flex justify-between items-start mb-4">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">Đơn đặt #{booking.id}</h1>
+            <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium mt-2 ${getStatusColor(booking.bookingStatus)}`}>
+              {booking.bookingStatus}
+            </span>
+          </div>
+          <div className="text-right">
+            <div className="text-2xl font-bold text-blue-600">
+              {booking.totalPrice.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })}
+            </div>
+          </div>
         </div>
-      )}
-      {booking.bookingRoom?.bookingRoomDetails?.length === 0 &&
-      booking.bookingService?.bookingServiceDetails?.length === 0 ? (
-        <p className="text-center text-gray-500 mt-4">
-          Không có đơn nào trong trạng thái này.
-        </p>
-      ) : (
-        <div className="bg-white rounded-2xl shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow relative">
-          <div className="w-full flex justify-center mb-4">
-            <span
-              className={`
-                min-w-[200px] text-center
-                text-white font-bold px-6 py-2 rounded-full
-                ${
-                  booking.bookingStatus === "Pending"
-                    ? "bg-yellow-500"
-                    : booking.bookingStatus === "Confirmed"
-                    ? "bg-blue-500"
-                    : booking.bookingStatus === "Ongoing"
-                    ? "bg-purple-500"
-                    : booking.bookingStatus === "Completed"
-                    ? "bg-green-600"
-                    : booking.bookingStatus === "Cancelled"
-                    ? "bg-red-500"
-                    : "bg-gray-400"
-                }
-            `}
-            >
-              {geStatus(booking.bookingStatus)}
-            </span>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+          <div>
+            <span className="text-gray-500">Khách hàng:</span>
+            <p className="font-medium">{booking.person?.firstMidName} {booking.person?.lastName}</p>
           </div>
+          <div>
+            <span className="text-gray-500">Ngày đặt:</span>
+            <p className="font-medium">{new Date(booking.bookingDate).toLocaleDateString("vi-VN")}</p>
+          </div>
+          <div>
+            <span className="text-gray-500">Cập nhật:</span>
+            <p className="font-medium">{new Date(booking.updateBookingDate).toLocaleDateString("vi-VN")}</p>
+          </div>
+        </div>
+      </div>
 
-          <div className="mb-4 font-semibold text-gray-700 text-lg">
-            Mã đơn: #{booking.id}
-          </div>
-          {booking.bookingStatus === "Cancelled" ? (
-            <span className="absolute top-6 right-6 text-sm text-red-700 font-semibold bg-red-100 px-3 py-1 rounded-full z-10">
-              Đã hoàn tiền
-            </span>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Rooms */}
+        <div className="bg-white rounded-lg shadow p-6">
+          <h2 className="text-lg font-semibold mb-4 text-gray-800">Phòng đã đặt</h2>
+          
+          {booking.bookingRoomId === null ? (
+            <p className="text-gray-500 text-center py-4">Không có phòng</p>
           ) : (
-            <span className="absolute top-6 right-6 text-sm text-green-700 font-semibold bg-green-100 px-3 py-1 rounded-full z-10">
-              Đã thanh toán
-            </span>
-          )}
-
-          {/* Danh sách phòng */}
-          <div className="space-y-6">
-            {booking.bookingRoom?.bookingRoomDetails?.length > 0 ? (
-              booking.bookingRoom.bookingRoomDetails.map((detail, index) => {
-                const mainImage = detail.room?.roomImages?.find(
-                  (img) => img.isMain
-                );
-                const imageUrl = mainImage
-                  ? `https://localhost:5001/${mainImage.imageUrl.replace(
-                      /\\/g,
-                      "/"
-                    )}`
-                  : "https://via.placeholder.com/600x400?text=No+Image";
-
-                return (
-                  <div
-                    key={index}
-                    className="relative flex flex-col md:flex-row gap-6 bg-gray-50 rounded-xl overflow-hidden shadow-sm border border-gray-200"
-                  >
-                    {/* Hình ảnh phòng */}
-                    <div className="md:w-1/2 w-full">
-                      <img
-                        src={imageUrl}
-                        alt="Room"
-                        className="w-full h-60 object-cover"
-                      />
+            <div className="space-y-3">
+              {booking.bookingRoom.bookingRoomDetails.map((room, index) => (
+                <div key={index} className="border rounded-lg p-4 bg-gray-50">
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <span className="text-gray-500">Phòng:</span>
+                      <p className="font-medium">{room.room.roomNumber || "Không rõ"}</p>
                     </div>
-
-                    {/* Thông tin phòng */}
-                    <div className="md:w-1/2 w-full p-6 flex flex-col justify-between">
-                      <div className="space-y-2 text-gray-700">
-                        <div>
-                          <span className="font-semibold">Số phòng:</span>{" "}
-                          {detail.room?.roomNumber}
-                        </div>
-                        <div>
-                          <span className="font-semibold">Kích thước:</span>{" "}
-                          {detail.room?.roomSize} m²
-                        </div>
-                        <div>
-                          <span className="font-semibold">Nhận phòng:</span>{" "}
-                          {new Date(detail.checkInDate).toLocaleDateString()}
-                        </div>
-                        <div>
-                          <span className="font-semibold">Trả phòng:</span>{" "}
-                          {new Date(detail.checkOutDate).toLocaleDateString()}
-                        </div>
-                        <div>
-                          <span className="font-semibold">Số người:</span>{" "}
-                          {detail.numberOfGuests}
-                        </div>
-                      </div>
+                    <div>
+                      <span className="text-gray-500">Số khách:</span>
+                      <p className="font-medium">{room.numberOfGuests} người</p>
+                    </div>
+                    <div>
+                      <span className="text-gray-500">Check-in:</span>
+                      <p className="font-medium">{new Date(room.checkInDate).toLocaleDateString("vi-VN")}</p>
+                    </div>
+                    <div>
+                      <span className="text-gray-500">Check-out:</span>
+                      <p className="font-medium">{new Date(room.checkOutDate).toLocaleDateString("vi-VN")}</p>
                     </div>
                   </div>
-                );
-              })
-            ) : (
-              <div className="w-full">
-                <div className="bg-yellow-50 border border-yellow-300 text-yellow-700 p-4 rounded-lg mb-4 text-center font-semibold">
-                  Không đặt phòng
                 </div>
-              </div>
-            )}
-          </div>
-
-          {/* Dịch vụ */}
-          <div className="mt-6">
-            <h4 className="font-semibold text-gray-900 mb-3 text-lg">
-              Dịch vụ đi kèm:
-            </h4>
-            {booking.bookingService?.bookingServiceDetails?.length > 0 ? (
-              <ul className="space-y-3">
-                {booking.bookingService.bookingServiceDetails.map(
-                  (detail, index) => (
-                    <li
-                      key={index}
-                      className="flex items-center justify-between bg-gray-100 rounded-md px-4 py-2"
-                    >
-                      <div className="text-base font-medium text-gray-800">
-                        {detail.service?.name || "Dịch vụ"}
-                      </div>
-                      <div>
-                        <span className="font-semibold">{detail.quantity}</span>
-                      </div>
-                    </li>
-                  )
-                )}
-              </ul>
-            ) : (
-              <p className="text-gray-500 italic">Không có dịch vụ</p>
-            )}
-          </div>
-
-          {/* Tổng tiền */}
-          <div className="text-right font-semibold text-2xl text-blue-600 my-6">
-            Tổng tiền: {booking.totalPrice?.toLocaleString() || "0"}$
-          </div>
-          {booking.bookingStatus === "Pending" && (
-            <div className="flex gap-4 justify-end mt-6">
-              <button
-                type="button"
-                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-md transition w-48 border-none hover:border-none"
-                onClick={() => updateBookingStatus("Confirmed")}
-              >
-                Xác nhận
-              </button>
-              <button
-                type="button"
-                className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2 rounded-md transition w-48 border-none hover:border-none"
-                onClick={() => updateBookingStatus("Cancelled")}
-              >
-                Hủy đơn
-              </button>
-            </div>
-          )}
-
-          {booking.bookingStatus === "Confirmed" && (
-            <div className="flex justify-end mt-6">
-              <button
-                type="button"
-                className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-2 rounded-md transition w-48 border-none hover:border-none"
-                onClick={() => updateBookingStatus("Ongoing")}
-              >
-                Đang ở
-              </button>
-            </div>
-          )}
-
-          {booking.bookingStatus === "Ongoing" && (
-            <div className="flex justify-end mt-6">
-              <button
-                type="button"
-                className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-md transition w-48 border-none hover:border-none"
-                onClick={() => updateBookingStatus("Completed")}
-              >
-                Hoàn thành
-              </button>
+              ))}
             </div>
           )}
         </div>
-      )}
+
+        {/* Services */}
+        <div className="bg-white rounded-lg shadow p-6">
+          <h2 className="text-lg font-semibold mb-4 text-gray-800">Dịch vụ đã đặt</h2>
+          
+          {booking.bookingServiceId === null ? (
+            <p className="text-gray-500 text-center py-4">Không có dịch vụ</p>
+          ) : (
+            <div className="space-y-3">
+              {booking.bookingService.bookingServiceDetails.map((service, index) => (
+                <div key={index} className="border rounded-lg p-4 bg-gray-50">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="font-medium">{service.service?.name || "Không rõ"}</p>
+                      <p className="text-sm text-gray-500">Dịch vụ</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-bold text-blue-600">x{service.quantity}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

@@ -17,7 +17,7 @@ namespace QLKhachSan.Models.DTO
         public string Description { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-        public IFormFile MainImage { get; set; }
-        public List<IFormFile> Images { get; set; }
+        public IFormFile? MainImage { get; set; }
+        public List<IFormFile>? Images { get; set; }
     }
 }

@@ -73,14 +73,7 @@ namespace QLKhachSan.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<APIResponse>> CreateRoom([FromForm] RoomCreateDTO roomCreateDTO)
         {
-            //var temp = await _unitOfWork.Room.GetAsync(u => u.Name == roomCreateDTO.Name);
-            //if (temp != null)
-            //{ 
-            //    _response.StatusCode = HttpStatusCode.NotFound;
-            //    _response.IsSuccess = false;
-            //    _response.ErrorMessages.Add("Name is already exist");
-            //    return BadRequest(_response);
-            //}
+            
             if (roomCreateDTO == null)
             {
                 _response.StatusCode = HttpStatusCode.NotFound;
@@ -148,7 +141,6 @@ namespace QLKhachSan.Controllers
             return CreatedAtRoute("GetRoom", new { id = room.Id }, _response);
         }
         [HttpPut("{id:int}", Name = "UpdateRoom")]
-        //[Authorize(Roles = SD.Role_Admin)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -161,13 +153,32 @@ namespace QLKhachSan.Controllers
                 _response.ErrorMessages.Add("Not Found");
                 return BadRequest();
             }
+
             roomUpdateDTO.UpdatedAt = DateTime.UtcNow;
             Room room = _mapper.Map<Room>(roomUpdateDTO);
-            await _unitOfWork.Room.UpdateAsync(room);
-            await DeleteRoomImages(room.Id);
+            
+
             string wwwRootPath = _webHostEnvironment.WebRootPath;
+
+            // Lấy ảnh hiện tại của phòng từ DB
+            var existingImages = await _unitOfWork.RoomImage.GetAllAsync(i => i.RoomId == room.Id);
+
+            // --- XỬ LÝ ẢNH CHÍNH ---
             if (roomUpdateDTO.MainImage != null)
             {
+                // Xoá ảnh chính cũ nếu có
+                var oldMainImage = existingImages.FirstOrDefault(i => i.IsMain);
+                if (oldMainImage != null)
+                {
+                    await _unitOfWork.RoomImage.RemoveAsync(oldMainImage);
+
+                    // Xoá file vật lý
+                    string oldPath = Path.Combine(wwwRootPath, oldMainImage.ImageUrl.TrimStart('\\'));
+                    if (System.IO.File.Exists(oldPath))
+                        System.IO.File.Delete(oldPath);
+                }
+
+                // Lưu ảnh chính mới
                 string fileName = Guid.NewGuid().ToString() + Path.GetExtension(roomUpdateDTO.MainImage.FileName);
                 string roomPath = @"images\rooms\room-" + room.Id;
                 string finalPath = Path.Combine(wwwRootPath, roomPath);
@@ -184,21 +195,26 @@ namespace QLKhachSan.Controllers
                 {
                     ImageUrl = @"\" + roomPath + @"\" + fileName,
                     RoomId = room.Id,
-                    IsMain = true // 
+                    IsMain = true
                 };
 
-                await _unitOfWork.RoomImage.UpdateAsync(mainImage);
+                await _unitOfWork.RoomImage.CreateAsync(mainImage);
             }
 
-            if (roomUpdateDTO.Images != null)
+            // --- XỬ LÝ ẢNH PHỤ ---
+            if (roomUpdateDTO.Images != null && roomUpdateDTO.Images.Any())
             {
-
                 foreach (IFormFile image in roomUpdateDTO.Images)
                 {
+                    // Kiểm tra trùng tên file (không thêm nếu đã tồn tại)
+                    string originalFileName = Path.GetFileName(image.FileName);
+                    bool isDuplicate = existingImages.Any(img => !img.IsMain && Path.GetFileName(img.ImageUrl) == originalFileName);
+                    if (isDuplicate)
+                        continue;
 
                     string fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
-                    string toomPath = @"images\rooms\room-" + room.Id;
-                    string finalPath = Path.Combine(wwwRootPath, toomPath);
+                    string roomPath = @"images\rooms\room-" + room.Id;
+                    string finalPath = Path.Combine(wwwRootPath, roomPath);
 
                     if (!Directory.Exists(finalPath))
                         Directory.CreateDirectory(finalPath);
@@ -210,17 +226,20 @@ namespace QLKhachSan.Controllers
 
                     RoomImage roomImage = new()
                     {
-                        ImageUrl = @"\" + toomPath + @"\" + fileName,
+                        ImageUrl = @"\" + roomPath + @"\" + fileName,
                         RoomId = room.Id,
                         IsMain = false
                     };
-                    await _unitOfWork.RoomImage.UpdateAsync(roomImage);
+
+                    await _unitOfWork.RoomImage.CreateAsync(roomImage);
                 }
             }
+            await _unitOfWork.Room.UpdateAsync(room);
             _response.Result = _mapper.Map<RoomDTO>(room);
             _response.StatusCode = HttpStatusCode.NoContent;
             return Ok(_response);
         }
+
         [HttpDelete("{id:int}", Name = "DeleteRoom")]
         //[Authorize(Roles = SD.Role_Admin)]    
         [ProducesResponseType(StatusCodes.Status200OK)]

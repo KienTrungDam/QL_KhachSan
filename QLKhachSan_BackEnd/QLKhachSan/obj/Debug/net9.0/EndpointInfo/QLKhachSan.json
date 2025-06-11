@@ -2489,6 +2489,29 @@
         }
       }
     },
+    "/api/RoomImage/{id}": {
+      "delete": {
+        "tags": [
+          "RoomImage"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Service": {
       "get": {
         "tags": [
@@ -2894,6 +2917,78 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/api/Statistic/TotalRooms": {
+      "get": {
+        "tags": [
+          "Statistic"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Statistic/TotalCustomers": {
+      "get": {
+        "tags": [
+          "Statistic"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Statistic/TodayBookings": {
+      "get": {
+        "tags": [
+          "Statistic"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Statistic/RoomsOccupiedToday": {
+      "get": {
+        "tags": [
+          "Statistic"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Statistic/RevenueLast7Days": {
+      "get": {
+        "tags": [
+          "Statistic"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Statistic/BookingCountByRoomType": {
+      "get": {
+        "tags": [
+          "Statistic"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }

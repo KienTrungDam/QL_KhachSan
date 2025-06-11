@@ -209,7 +209,14 @@ const AdminRoomDetail = () => {
               <strong>Giá tuần:</strong> ${room.priceWeek?.toLocaleString()}
             </p>
             <p>
+              <strong>Diện tích:</strong> {room.roomSize} m²
+            </p>
+            <p>
               <strong>Trạng thái:</strong> {room.status}
+            </p>
+            <p>
+              <strong>Ngày cập nhật:</strong>{" "}
+              {new Date(room.updatedAt).toLocaleDateString("vi-VN")}
             </p>
           </div>
         </div>

@@ -9,19 +9,18 @@ import { useNavigate } from "react-router-dom";
 const AdminRoom = () => {
   const [rooms, setRooms] = useState([]);
   const [newRoom, setNewRoom] = useState({
-    CategoryRoomId: "",
-    Status: "",
-    MaxOccupancy: "",
-    RoomNumber: "",
-    RoomSize: "",
-    PriceDay: "",
-    PriceWeek: "",
-    Description: "",
-    MainImage: null,
-    Images: [],
+    categoryRoomId: "",
+    status: "",
+    maxOccupancy: "",
+    roomNumber: "",
+    roomSize: "",
+    priceDay: "",
+    priceWeek: "",
+    description: "",
+    mainImage: null,
+    images: [],
   });
-  // const [selectedRoomDetail, setSelectedRoomDetail] = useState(null);
-  // const [showRoomDetail, setShowRoomDetail] = useState(false);
+  const [errors, setErrors] = React.useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
   const [editRoom, setEditRoom] = useState(null);
@@ -30,16 +29,99 @@ const AdminRoom = () => {
   const [actionType, setActionType] = useState(null);
   const [notifyProps, setNotifyProps] = useState(null);
   const storedToken = localStorage.getItem("adminToken");
+  const [existingRoomImages, setExistingRoomImages] = useState({
+    mainImage: null,
+    images: [],
+  });
   const navigate = useNavigate();
   const showNotification = (type, message, description = "") => {
     if (notifyProps) return;
-    setNotifyProps({ type, message, description });
+    const newNotifyProps = {
+      type,
+      message,
+      description,
+      placement: "topRight",
+    };
+    setNotifyProps(newNotifyProps);
     setTimeout(() => setNotifyProps(null), 3000);
   };
-  // const handleViewRoomDetail = (room) => {
-  //   setSelectedRoomDetail(room);
-  //   setShowRoomDetail(true);
-  // };
+
+  const validateRoom = () => {
+    const target = actionType === "add" ? newRoom : editRoom;
+    const newErrors = {};
+
+    if (!target.roomNumber)
+      newErrors.roomNumber = "Số phòng không được để trống";
+    if (!target.status) newErrors.status = "Trạng thái là bắt buộc";
+    if (!target.categoryRoomId)
+      newErrors.categoryRoomId = "Danh mục phòng là bắt buộc";
+    if (!target.maxOccupancy || target.maxOccupancy <= 0)
+      newErrors.maxOccupancy = "Số người phải lớn hơn 0";
+    if (!target.roomSize || target.roomSize <= 0)
+      newErrors.roomSize = "Diện tích không hợp lệ";
+    if (!target.priceDay || target.priceDay < 0)
+      newErrors.priceDay = "Giá ngày không hợp lệ";
+    if (!target.priceWeek || target.priceWeek < 0)
+      newErrors.priceWeek = "Giá tuần không hợp lệ";
+    if (!target.description)
+      newErrors.description = "Mô tả không được để trống";
+    if (actionType === "add") {
+      if (!newRoom.mainImage) {
+        newErrors.mainImage = "Ảnh chính không được để trống";
+      }
+      if (!newRoom.images || newRoom.images.length === 0) {
+        newErrors.images = "Ảnh phụ không được để trống";
+      }
+    } else if (actionType === "update") {
+      // Kiểm tra ảnh chính: nếu không có ảnh mới, cũng không có ảnh chính từ server thì báo lỗi
+      if (!editRoom.mainImage && !existingRoomImages.mainImage) {
+        newErrors.mainImageEdit = "Ảnh chính không được để trống";
+      }
+      // Kiểm tra ảnh phụ: nếu không có ảnh mới, cũng không có ảnh phụ từ server thì báo lỗi
+      if (
+        (!editRoom.images || editRoom.images.length === 0) &&
+        existingRoomImages.images.length === 0
+      ) {
+        newErrors.imagesEdit = "Ảnh phụ không được để trống";
+      }
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+  const handleSave = async () => {
+    if (actionType === "delete") {
+      await handleDeleteRoom();
+      return;
+    }
+    const isValid = validateRoom();
+    if (!isValid) return;
+
+    if (actionType === "add") {
+      await handleAddRoom();
+    } else if (actionType === "update") {
+      await handleUpdateRoom();
+    }
+  };
+  const handleClose = () => {
+    setShowForm(false);
+    setEditRoom(null);
+    setNewRoom({
+      categoryRoomId: "",
+      status: "",
+      maxOccupancy: "",
+      roomNumber: "",
+      roomSize: "",
+      priceDay: "",
+      priceWeek: "",
+      description: "",
+      mainImage: null,
+      images: [],
+    });
+    setActionType(null);
+    setErrors({});
+    setExistingRoomImages({ mainImage: null, images: [] });
+  };
+
   const fetchRooms = async () => {
     try {
       const response = await axios.get("https://localhost:5001/api/Room", {
@@ -49,6 +131,29 @@ const AdminRoom = () => {
       console.log(response.data.result || []);
     } catch (error) {
       console.error("Error fetching rooms:", error);
+    }
+  };
+  useEffect(() => {
+    if (actionType === "update") {
+      console.log(">> existingRoomImages:", existingRoomImages);
+    }
+  }, [existingRoomImages]);
+  const handleDeleteImage = async (imageId) => {
+    try {
+      await axios.delete(`https://localhost:5001/api/RoomImage/${imageId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      });
+
+      const response = await axios.get(
+        `https://localhost:5001/api/Room/${editRoom.id}`,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      );
+      await fetchRoomDetails(editRoom.id);
+      setEditRoom(response.data.result);
+    } catch (error) {
+      console.error("Lỗi khi xoá ảnh:", error);
     }
   };
   const filteredRooms = rooms.filter((room) => {
@@ -79,13 +184,12 @@ const AdminRoom = () => {
       console.error("Error fetching categories:", error);
     }
   };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (actionType === "add") {
-      setNewRoom({ ...newRoom, [name]: value });
-    } else {
-      setEditRoom({ ...editRoom, [name]: value });
+      setNewRoom((prev) => ({ ...prev, [name]: value }));
+    } else if (actionType === "update") {
+      setEditRoom((prev) => ({ ...prev, [name]: value }));
     }
   };
 
@@ -93,10 +197,10 @@ const AdminRoom = () => {
     try {
       const formData = new FormData();
       Object.entries(newRoom).forEach(([key, value]) => {
-        if (key === "Images")
-          value.forEach((file) => formData.append("Images", file));
-        else if (key === "MainImage" && value)
-          formData.append("MainImage", value);
+        if (key === "images")
+          value.forEach((file) => formData.append("images", file));
+        else if (key === "mainImage" && value)
+          formData.append("mainImage", value);
         else formData.append(key, value);
       });
 
@@ -114,20 +218,35 @@ const AdminRoom = () => {
       showNotification("error", "Thêm phòng thất bại!", error.message);
     }
   };
-
+  const fetchRoomDetails = async (roomId) => {
+    try {
+      const response = await axios.get(
+        `https://localhost:5001/api/Room/${roomId}`,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      );
+      const roomData = response.data.result;
+      setExistingRoomImages({
+        mainImage: roomData.roomImages?.find((img) => img.isMain) || null,
+        images: roomData.roomImages?.filter((img) => !img.isMain) || [],
+      });
+    } catch (error) {
+      console.error("Lỗi khi lấy chi tiết phòng:", error);
+      setExistingRoomImages({ mainImage: null, images: [] });
+    }
+  };
   const handleUpdateRoom = async () => {
+    console.log(editRoom);
     try {
       const formData = new FormData();
-      formData.append("id", editRoom.id);
-      formData.append("CategoryRoomId", editRoom.categoryRoomId);
-      formData.append("Status", editRoom.status);
-      formData.append("MaxOccupancy", editRoom.maxOccupancy);
-      formData.append("PriceDay", editRoom.priceDay);
-      formData.append("PriceWeek", editRoom.priceWeek);
-      if (editRoom.newMainImage)
-        formData.append("MainImage", editRoom.newMainImage);
-      if (editRoom.newImages)
-        editRoom.newImages.forEach((file) => formData.append("Images", file));
+      Object.entries(editRoom).forEach(([key, value]) => {
+        if (key === "images")
+          value.forEach((file) => formData.append("images", file));
+        else if (key === "mainImage" && value)
+          formData.append("mainImage", value);
+        else formData.append(key, value);
+      });
 
       await axios.put(
         `https://localhost:5001/api/Room/${editRoom.id}`,
@@ -139,6 +258,7 @@ const AdminRoom = () => {
           },
         }
       );
+
       setShowForm(false);
       fetchRooms();
       showNotification("success", "Cập nhật phòng thành công!");
@@ -147,7 +267,6 @@ const AdminRoom = () => {
       showNotification("error", "Cập nhật phòng thất bại!", error.message);
     }
   };
-
   const handleDeleteRoom = async () => {
     try {
       await axios.delete(`https://localhost:5001/api/Room/${editRoom.id}`, {
@@ -166,6 +285,11 @@ const AdminRoom = () => {
     setActionType(type);
     setEditRoom(room);
     setShowForm(true);
+    if (type === "update" && room?.id) {
+      fetchRoomDetails(room.id);
+    } else {
+      setExistingRoomImages({ mainImage: null, images: [] });
+    }
   };
 
   useEffect(() => {
@@ -277,25 +401,16 @@ const AdminRoom = () => {
 
         <RoomModal
           isOpen={showForm}
-          onClose={() => {
-            setShowForm(false);
-            setEditRoom(null);
-            setActionType(null);
-          }}
+          onClose={handleClose}
           actionType={actionType}
           editRoom={editRoom}
           newRoom={newRoom}
           onInputChange={handleInputChange}
-          onSave={handleAddRoom}
-          onUpdate={handleUpdateRoom}
-          onDelete={handleDeleteRoom}
+          onSave={handleSave}
           categories={categories}
+          onDeleteImage={handleDeleteImage}
+          errors={errors}
         />
-        {/* <RoomDetailModal
-          isOpen={showRoomDetail}
-          onClose={() => setShowRoomDetail(false)}
-          room={selectedRoomDetail}
-        /> */}
       </main>
     </div>
   );

@@ -224,9 +224,9 @@ const AdminCategory = () => {
               <table className="w-full">
                 <thead>
                   <tr className="bg-gradient-to-r from-gray-700 to-gray-500 text-white">
-                    <th className="px-6 py-4 text-left text-xs font-semibold uppercase">
+                    {/* <th className="px-6 py-4 text-left text-xs font-semibold uppercase">
                       ID
-                    </th>
+                    </th> */}
                     <th className="px-6 py-4 text-left text-xs font-semibold uppercase">
                       Tên danh mục
                     </th>
@@ -256,9 +256,9 @@ const AdminCategory = () => {
                           index % 2 === 0 ? "bg-gray-50" : "bg-white"
                         } hover:bg-gray-100 transition-colors`}
                       >
-                        <td className="px-6 py-4 text-sm text-gray-900 text-center">
+                        {/* <td className="px-6 py-4 text-sm text-gray-900 text-center">
                           {category.id}
-                        </td>
+                        </td> */}
                         <td className="px-6 py-4 text-sm text-gray-500">
                           {category.name}
                         </td>

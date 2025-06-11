@@ -1520,6 +1520,22 @@
     ]
   },
   {
+    "ContainingType": "QLKhachSan.Controllers.RoomImageController",
+    "Method": "DeleteRoomImage",
+    "RelativePath": "api/RoomImage/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "QLKhachSan.Controllers.ServiceAPIController",
     "Method": "GetServices",
     "RelativePath": "api/Service",
@@ -1747,6 +1763,66 @@
       }
     ],
     "EndpointName": "DeleteService"
+  },
+  {
+    "ContainingType": "QLKhachSan.Controllers.StatisticController",
+    "Method": "GetBookingCountByRoomType",
+    "RelativePath": "api/Statistic/BookingCountByRoomType",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKhachSan.Controllers.StatisticController",
+    "Method": "GetRevenueLast7Days",
+    "RelativePath": "api/Statistic/RevenueLast7Days",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKhachSan.Controllers.StatisticController",
+    "Method": "GetRoomsOccupiedToday",
+    "RelativePath": "api/Statistic/RoomsOccupiedToday",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKhachSan.Controllers.StatisticController",
+    "Method": "GetTodayBookings",
+    "RelativePath": "api/Statistic/TodayBookings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKhachSan.Controllers.StatisticController",
+    "Method": "GetTotalCustomers",
+    "RelativePath": "api/Statistic/TotalCustomers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKhachSan.Controllers.StatisticController",
+    "Method": "GetTotalRooms",
+    "RelativePath": "api/Statistic/TotalRooms",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "QLKhachSan.Controllers.UserManagementAPIController",

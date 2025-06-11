@@ -13,6 +13,7 @@ namespace QLKhachSan.Models.DTO
         public double PriceDay { get; set; }
         public double PriceWeek { get; set; }
         public string Description { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public CategoryRoomDTO CategoryRoom { get; set; }
         public ICollection<RoomImageDTO> RoomImages { get; set; }
     }

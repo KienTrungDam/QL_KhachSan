@@ -720,23 +720,329 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-17\57fe5218-2d0f-4cc2-a43b-3f8b5a76c30e.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-17\b43fa9a0-cdea-4b55-82ff-f7226ceff28d.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-18\097ec7d1-ccff-4ebe-a02f-b9ae50889266.png'))">
       <SourceType>Package</SourceType>
       <SourceId>QLKhachSan</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/QLKhachSan</BasePath>
-      <RelativePath>images/rooms/room-17/b43fa9a0-cdea-4b55-82ff-f7226ceff28d.jpg</RelativePath>
+      <RelativePath>images/rooms/room-18/097ec7d1-ccff-4ebe-a02f-b9ae50889266.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>sgmjjo2qjv</Fingerprint>
-      <Integrity>hBQs2x/8IeTKHJxzMsHE6FhXIW2m3NHOoXm10ZVrzvs=</Integrity>
+      <Fingerprint>lp6l3iegn5</Fingerprint>
+      <Integrity>x58y0PsG4H6ntgbIIHtFwk1aSd6tf20FSdVCvaCePXg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-17\b43fa9a0-cdea-4b55-82ff-f7226ceff28d.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-18\097ec7d1-ccff-4ebe-a02f-b9ae50889266.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-18\3f0bab9f-e19d-460b-bad4-9c39c6a93c9c.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-18/3f0bab9f-e19d-460b-bad4-9c39c6a93c9c.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>rv08ib4mqv</Fingerprint>
+      <Integrity>d9RD5IVVtJVyzZCTxBHLNFRuAq9RQiwLFCh7CXqYKLY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-18\3f0bab9f-e19d-460b-bad4-9c39c6a93c9c.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-19\06ad9f0d-a218-43b1-b68f-9f28f610d33e.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-19/06ad9f0d-a218-43b1-b68f-9f28f610d33e.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>dfrom7hydt</Fingerprint>
+      <Integrity>2YLVT5pRlfJc1wQGS0ApEtW3wQqb2lFQONEaJY9Vaxw=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-19\06ad9f0d-a218-43b1-b68f-9f28f610d33e.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-19\4df8ea4e-80a8-405c-88ae-6ac7a3dcd316.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-19/4df8ea4e-80a8-405c-88ae-6ac7a3dcd316.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>t5f9c73hl1</Fingerprint>
+      <Integrity>AS0do2YkjU4cI2KG+W3oWH5Wj/Gd79UcqUG+K4e8KL4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-19\4df8ea4e-80a8-405c-88ae-6ac7a3dcd316.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-19\7ccbfac0-03ee-43ef-b9ef-b2fae746fd31.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-19/7ccbfac0-03ee-43ef-b9ef-b2fae746fd31.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>dfrom7hydt</Fingerprint>
+      <Integrity>2YLVT5pRlfJc1wQGS0ApEtW3wQqb2lFQONEaJY9Vaxw=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-19\7ccbfac0-03ee-43ef-b9ef-b2fae746fd31.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-19\b199a509-731a-4e71-8fd9-0cb32351f83a.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-19/b199a509-731a-4e71-8fd9-0cb32351f83a.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>45cs1fp5dq</Fingerprint>
+      <Integrity>iMZNi7SlIKnFnL9crhFZRDTAevp4fCprK/D1NgWpC50=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-19\b199a509-731a-4e71-8fd9-0cb32351f83a.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-19\bf200490-8c55-447c-b3a2-ffb5be8e63a6.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-19/bf200490-8c55-447c-b3a2-ffb5be8e63a6.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>eestivjfx6</Fingerprint>
+      <Integrity>BlPZn/5NV+IG4gkaX3eQLD1tKFXk3dANcUUUhYtZMVg=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-19\bf200490-8c55-447c-b3a2-ffb5be8e63a6.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-20\130ff45d-6962-40ae-932b-8c6d16a27bc6.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-20/130ff45d-6962-40ae-932b-8c6d16a27bc6.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>dfrom7hydt</Fingerprint>
+      <Integrity>2YLVT5pRlfJc1wQGS0ApEtW3wQqb2lFQONEaJY9Vaxw=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-20\130ff45d-6962-40ae-932b-8c6d16a27bc6.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-20\20954c3e-8b84-4917-83d7-c0c0efe76023.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-20/20954c3e-8b84-4917-83d7-c0c0efe76023.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>muki15nmws</Fingerprint>
+      <Integrity>Dv9PiwJUXiZMN1wqj+gT+ZDUGR75Nffm5AX4Lib8Wow=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-20\20954c3e-8b84-4917-83d7-c0c0efe76023.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-20\3422476d-5f71-4d35-93f6-7c9a5936036f.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-20/3422476d-5f71-4d35-93f6-7c9a5936036f.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>yzs8ggxi55</Fingerprint>
+      <Integrity>Mtuqm5fexbXvm3bDj5drprhVr/D9NU62OuWageKv5gc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-20\3422476d-5f71-4d35-93f6-7c9a5936036f.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-20\491b7031-0bea-4fe4-b928-1a28b7d21282.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-20/491b7031-0bea-4fe4-b928-1a28b7d21282.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>eestivjfx6</Fingerprint>
+      <Integrity>BlPZn/5NV+IG4gkaX3eQLD1tKFXk3dANcUUUhYtZMVg=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-20\491b7031-0bea-4fe4-b928-1a28b7d21282.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-21\20a98933-b60b-4de9-999f-8467da71137b.jpeg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-21/20a98933-b60b-4de9-999f-8467da71137b.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>ykf568twp1</Fingerprint>
+      <Integrity>IpTMR19wNxkNgTb7goED9HUAanRu1ZoClug8EDaEOOA=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-21\20a98933-b60b-4de9-999f-8467da71137b.jpeg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-21\88942ffa-ce86-4d69-a615-c0997fb91927.jpeg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-21/88942ffa-ce86-4d69-a615-c0997fb91927.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>gs7o2ki7jv</Fingerprint>
+      <Integrity>cC+L2RPqPpFYXJYeIAUlEMrGNQFp0Lid2fTQRTmt5MQ=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-21\88942ffa-ce86-4d69-a615-c0997fb91927.jpeg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-21\adba0da6-4e29-4850-b45d-121473a127ef.jpeg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-21/adba0da6-4e29-4850-b45d-121473a127ef.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>0m2v5joccb</Fingerprint>
+      <Integrity>CBCTD7PcNzX9JZUji5AdevjddcCcUsDME+C2+f3ATbY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-21\adba0da6-4e29-4850-b45d-121473a127ef.jpeg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-21\c627a263-54b5-4ad6-aa38-fb3e0587b0e7.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-21/c627a263-54b5-4ad6-aa38-fb3e0587b0e7.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>t5f9c73hl1</Fingerprint>
+      <Integrity>AS0do2YkjU4cI2KG+W3oWH5Wj/Gd79UcqUG+K4e8KL4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-21\c627a263-54b5-4ad6-aa38-fb3e0587b0e7.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-22\702f574f-9ff7-4848-8629-2711b8fa2e49.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-22/702f574f-9ff7-4848-8629-2711b8fa2e49.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>ls7visrji6</Fingerprint>
+      <Integrity>NeuszWm2Xd5HQY8AAbnFK+Wint+hhWY7MGJWDNitlBc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-22\702f574f-9ff7-4848-8629-2711b8fa2e49.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-22\9723a870-6dd4-4cd3-bd32-7d8f380b5097.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-22/9723a870-6dd4-4cd3-bd32-7d8f380b5097.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>45cs1fp5dq</Fingerprint>
+      <Integrity>iMZNi7SlIKnFnL9crhFZRDTAevp4fCprK/D1NgWpC50=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-22\9723a870-6dd4-4cd3-bd32-7d8f380b5097.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-22\9e726c05-2ceb-40b3-b08e-e51addecffd8.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QLKhachSan</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QLKhachSan</BasePath>
+      <RelativePath>images/rooms/room-22/9e726c05-2ceb-40b3-b08e-e51addecffd8.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>dfrom7hydt</Fingerprint>
+      <Integrity>2YLVT5pRlfJc1wQGS0ApEtW3wQqb2lFQONEaJY9Vaxw=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-22\9e726c05-2ceb-40b3-b08e-e51addecffd8.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-5\08e4ab67-3c7b-4529-bb7b-3010c955d395.jpg'))">
       <SourceType>Package</SourceType>
@@ -792,42 +1098,6 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-5\a2a7bac1-8964-40be-99b8-e151b8773ed5.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-5\aa1fbd08-5d80-46d5-b965-39ec8ff3a6be.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>QLKhachSan</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/QLKhachSan</BasePath>
-      <RelativePath>images/rooms/room-5/aa1fbd08-5d80-46d5-b965-39ec8ff3a6be.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>5ipweew5fc</Fingerprint>
-      <Integrity>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-5\aa1fbd08-5d80-46d5-b965-39ec8ff3a6be.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-5\acf5828d-00ea-47a9-940e-0a1126e0cab6.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>QLKhachSan</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/QLKhachSan</BasePath>
-      <RelativePath>images/rooms/room-5/acf5828d-00ea-47a9-940e-0a1126e0cab6.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>5ipweew5fc</Fingerprint>
-      <Integrity>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-5\acf5828d-00ea-47a9-940e-0a1126e0cab6.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-6\19301323-0447-480f-9fa6-97ed4ade167e.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>QLKhachSan</SourceId>
@@ -881,42 +1151,6 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-6\763a4191-df02-4d41-9158-b8b425378b22.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-6\79729add-c20d-4e16-b824-b5f01de0297f.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>QLKhachSan</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/QLKhachSan</BasePath>
-      <RelativePath>images/rooms/room-6/79729add-c20d-4e16-b824-b5f01de0297f.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>5ipweew5fc</Fingerprint>
-      <Integrity>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-6\79729add-c20d-4e16-b824-b5f01de0297f.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-6\797a34ff-d6dd-45ef-acf7-deb9f47e216a.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>QLKhachSan</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/QLKhachSan</BasePath>
-      <RelativePath>images/rooms/room-6/797a34ff-d6dd-45ef-acf7-deb9f47e216a.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>5ipweew5fc</Fingerprint>
-      <Integrity>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-6\797a34ff-d6dd-45ef-acf7-deb9f47e216a.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\rooms\room-6\7c4b2edf-3350-4eff-8594-72c2ed784133.jpg'))">
       <SourceType>Package</SourceType>
