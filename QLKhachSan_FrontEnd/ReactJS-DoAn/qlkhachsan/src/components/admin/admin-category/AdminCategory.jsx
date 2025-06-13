@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FiSearch } from "react-icons/fi";
-import { IoMdNotifications } from "react-icons/io";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 import CategoryModal from "../admin-model/CategoryModel";
 
 const AdminCategory = () => {
@@ -13,11 +12,20 @@ const AdminCategory = () => {
   const [showForm, setShowForm] = useState(false);
   const [actionType, setActionType] = useState(null);
   const [notifyProps, setNotifyProps] = useState(null);
-
+  const [errors, setErrors] = React.useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const storedToken = localStorage.getItem("adminToken");
+  const validateRoom = () => {
+    const target = actionType === "add" ? newCategory : editCategory;
+    const newErrors = {};
 
+    if (!target.name) newErrors.name = "Tên loại phòng không được để trống";
+    if (!target.description) newErrors.description = "Mô tả không được để trống";
+      
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
@@ -148,7 +156,28 @@ const AdminCategory = () => {
     setEditCategory(category);
     setShowForm(true);
   };
+  const handleClose = () => {
+    setShowForm(false);
+    setEditCategory(null);
+    setNewCategory({ name: "", description: "" });
+    setActionType(null);
+    setErrors({});
 
+  };
+  const handleSave = async () => {
+    if (actionType === "delete") {
+      await handleDeleteCategory();
+      return;
+    }
+    const isValid = validateRoom();
+    if (!isValid) return;
+
+    if (actionType === "add") {
+      await handleAddCategory();
+    } else if (actionType === "update") {
+      await handleUpdateCategory();
+    }
+  };
   useEffect(() => {
     fetchCategories();
   }, []);
@@ -201,23 +230,18 @@ const AdminCategory = () => {
                 className="px-4 py-2 bg-green-500 text-white rounded-lg"
                 onClick={() => openModal("add")}
               >
-                Thêm danh mục
+                <FaPlus className="inline mr-2" />Thêm danh mục
               </button>
             </div>
             <CategoryModal
               isOpen={showForm}
-              onClose={() => {
-                setShowForm(false);
-                setEditCategory(null);
-                setActionType(null);
-              }}
+              onClose={handleClose}
               actionType={actionType}
               editCategory={editCategory}
               newCategory={newCategory}
               onInputChange={handleInputChange}
-              onSave={handleAddCategory}
-              onUpdate={handleUpdateCategory}
-              onDelete={handleDeleteCategory}
+              onSave={handleSave}
+              errors={errors}
             />
 
             <div className="overflow-x-auto">

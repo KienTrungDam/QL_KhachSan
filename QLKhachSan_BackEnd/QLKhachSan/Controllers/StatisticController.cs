@@ -136,15 +136,15 @@ namespace QLKhachSan.Controllers
                 var sevenDaysAgo = today.AddDays(-6);
 
                 // Lấy danh sách bookings hợp lệ
-                var bookings = await _unitOfWork.Booking.GetAllAsync(
-                    b => b.UpdateBookingDate >= sevenDaysAgo &&
-                         b.UpdateBookingDate <= today.AddDays(1) &&
-                         b.BookingStatus != SD.Status_Booking_Cancelled
+                var payments = await _unitOfWork.Payment.GetAllAsync(
+                    b => b.PaymentDate >= sevenDaysAgo &&
+                         b.PaymentDate <= today.AddDays(1) &&
+                         b.PaymentStatus != SD.PaymentStatusRejected
                 );
 
                 // Tính tổng doanh thu theo ngày có dữ liệu
-                var revenueDict = bookings
-                    .GroupBy(b => b.UpdateBookingDate!.Date)
+                var revenueDict = payments
+                    .GroupBy(b => b.PaymentDate!.Value.Date)
                     .ToDictionary(
                         g => g.Key,
                         g => g.Sum(b => b.TotalPrice)

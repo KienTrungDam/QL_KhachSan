@@ -825,7 +825,7 @@
         "IsRequired": false
       },
       {
-        "Name": "Image",
+        "Name": "ImageUrl",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
       },
@@ -940,7 +940,7 @@
         "IsRequired": false
       },
       {
-        "Name": "Image",
+        "Name": "ImageUrl",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
       },

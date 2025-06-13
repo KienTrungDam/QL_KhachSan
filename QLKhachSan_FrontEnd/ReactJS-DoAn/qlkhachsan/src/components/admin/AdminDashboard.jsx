@@ -10,12 +10,11 @@ import AdminUserEmployee from "./admin-user/AdminUserEmployee";
 import AdminUserRoles from "./admin-user/AdminUserRole";
 import AdminBooking from "./admin-booking/AdminBooking";
 import AdminPayment from "./admin-booking/AdminPayment";
-import AdminBookingRoom from "./admin-booking/AdminBookingRoom";
-import AdminBookingService from "./admin-booking/AdminBookingService";
 import AdminRoomDetail from "./admin-room/AdminRoomDetail";
 import AdminBookingUpdateStatus from "./admin-booking/AdminBookingUpdateStatus";
 import AdminBookingDetail from "./admin-booking/AdminBookingDetail";
 import AdminHome from "./admin-home/AdminHome";
+import AdminNew from "./admin-new/AdminNew";
 
 const AdminDashboard = () => {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
@@ -46,8 +45,9 @@ const AdminDashboard = () => {
             <Route path="role" element={<AdminUserRoles />} />
             <Route path="booking" element={<AdminBooking />} />
             <Route path="payment" element={<AdminPayment />} />
-            <Route path="booking-room" element={<AdminBookingRoom />} />
-            <Route path="booking-service" element={<AdminBookingService />} />
+            <Route path="new" element={<AdminNew />} />
+            {/* <Route path="booking-room" element={<AdminBookingRoom />} />
+            <Route path="booking-service" element={<AdminBookingService />} /> */}
             <Route path="booking/:bookingId" element={<AdminBookingUpdateStatus />} />
             <Route path="booking-detail/:bookingId" element={<AdminBookingDetail />} />
             <Route path="room/:roomId" element={<AdminRoomDetail />} />

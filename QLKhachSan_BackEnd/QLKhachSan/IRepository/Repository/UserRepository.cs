@@ -79,8 +79,8 @@ namespace QLKhachSan.IRepository.Repository
                     }
                     else
                     {
-                        await _userManager.AddToRoleAsync(user, SD.Role_Customer);
-                        userDTO.Role = SD.Role_Customer;
+                        await _userManager.AddToRoleAsync(user, registerRequestDTO.Role);
+                        userDTO.Role = registerRequestDTO.Role;
                     }
                     return userDTO;
                 }

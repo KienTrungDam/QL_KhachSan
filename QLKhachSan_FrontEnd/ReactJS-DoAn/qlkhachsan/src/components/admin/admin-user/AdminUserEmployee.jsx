@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FiSearch } from "react-icons/fi";
-import { IoMdNotifications } from "react-icons/io";
 import UserEmployeeModel from "../admin-model/UserEmployeeModel";
-
+import { FaPlus } from "react-icons/fa";
 const AdminUserEmployee = () => {
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState({
     firstMidName: "",
     lastName: "",
-    address: "",
+    userName: "",
+    password: "",
+    email: "",
     cccd: "",
+    address: "",
   });
+  const [errors, setErrors] = React.useState({});
   const [editUser, setEditUser] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [actionType, setActionType] = useState(null);
@@ -20,6 +23,73 @@ const AdminUserEmployee = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const storedToken = localStorage.getItem("adminToken");
+  const validateRoom = () => {
+    const target = actionType === "add" ? newUser : editUser;
+    const newErrors = {};
+
+    // Regex kiểm tra
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const cccdRegex = /^\d+$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/;
+
+    if (!target.firstMidName)
+      newErrors.firstMidName = "Họ tên đệm không được để trống";
+    if (!target.lastName) newErrors.lastName = "Tên không được để trống";
+    if (!target.address) newErrors.address = "Địa chỉ là bắt buộc";
+    if (!target.cccd) {
+      newErrors.cccd = "CCCD là bắt buộc";
+    } else if (!cccdRegex.test(target.cccd)) {
+      newErrors.cccd = "CCCD phải là chuỗi số";
+    }
+
+    if (actionType === "add") {
+      if (!target.password) {
+        newErrors.password = "Mật khẩu không được để trống";
+      } else if (!passwordRegex.test(target.password)) {
+        newErrors.password =
+          "Mật khẩu phải có ít nhất 1 chữ hoa, 1 số và 1 ký tự đặc biệt";
+      }
+
+      if (!target.email) {
+        newErrors.email = "Email là bắt buộc";
+      } else if (!emailRegex.test(target.email)) {
+        newErrors.email = "Email không hợp lệ";
+      }
+
+      if (!target.userName) {
+        newErrors.userName = "Tên tài khoản là bắt buộc";
+      }
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleClose = () => {
+    setShowForm(false);
+    setEditUser(null);
+    setNewUser({
+      firstMidName: "",
+      lastName: "",
+      userName: "",
+      password: "",
+      email: "",
+      cccd: "",
+      address: "",
+    });
+    setActionType(null);
+    setErrors({});
+  };
+  const handleSave = async () => {
+    const isValid = validateRoom();
+    if (!isValid) return;
+
+    if (actionType === "add") {
+      await handleAddUser();
+    } else if (actionType === "update") {
+      await handleUpdateUser();
+    }
+  };
   const showNotification = (type, message, description = "") => {
     if (notifyProps) return;
     const newNotifyProps = {
@@ -90,6 +160,32 @@ const AdminUserEmployee = () => {
       showNotification("error", "Cập nhật nhân viên thất bại!", error.message);
     }
   };
+  const handleAddUser = async () => {
+    try {
+      const payload = {
+        ...newUser,
+        role: "Employee",
+      };
+
+      const response = await axios.post(
+        "https://localhost:5001/api/Auth/register",
+        payload,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      );
+
+      showNotification("success", "Thêm nhân viên thành công!");
+      setShowForm(false);
+      fetchUsers(); // Làm mới danh sách
+    } catch (error) {
+      showNotification(
+        "error",
+        "Thêm nhân viên thất bại!",
+        error.response?.data?.errorMessages?.[0] || error.message
+      );
+    }
+  };
 
   const openModal = (type, user = null) => {
     setActionType(type);
@@ -155,6 +251,15 @@ const AdminUserEmployee = () => {
                   }}
                 />
               </div>
+              <button
+                className="ml-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                onClick={() => {
+                  setActionType("add");
+                  setShowForm(true);
+                }}
+              >
+                <FaPlus className="inline mr-2" /> Thêm nhân viên
+              </button>
             </div>
 
             <div className="overflow-x-auto">
@@ -222,15 +327,13 @@ const AdminUserEmployee = () => {
             </div>
             <UserEmployeeModel
               isOpen={showForm}
-              onClose={() => {
-                setShowForm(false);
-                setEditUser(null);
-                setActionType(null);
-              }}
+              onClose={handleClose}
+              newUser={newUser}
               actionType={actionType}
               editUser={editUser}
               onInputChange={handleInputChange}
-              onUpdate={handleUpdateUser}
+              onSave={handleSave}
+              errors={errors}
             />
 
             {/* Phân trang */}

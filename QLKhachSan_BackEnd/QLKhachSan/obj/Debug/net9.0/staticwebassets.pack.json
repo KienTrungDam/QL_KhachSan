@@ -5,6 +5,18 @@
       "PackagePath": "staticwebassets\\images\\new\\new-10.jpg"
     },
     {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-20.jpg",
+      "PackagePath": "staticwebassets\\images\\new\\new-20.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-22.jpg",
+      "PackagePath": "staticwebassets\\images\\new\\new-22.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-23.png",
+      "PackagePath": "staticwebassets\\images\\new\\new-23.png"
+    },
+    {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-6.jpg",
       "PackagePath": "staticwebassets\\images\\new\\new-6.jpg"
     },
@@ -21,6 +33,10 @@
       "PackagePath": "staticwebassets\\images\\new\\new-9.jpg"
     },
     {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-10\\43a6cd0a-3cd7-4402-a7dd-83efae74343f.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-10\\43a6cd0a-3cd7-4402-a7dd-83efae74343f.jpg"
+    },
+    {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-10\\6dda2606-e6e5-445c-b735-363999d70c01.jpg",
       "PackagePath": "staticwebassets\\images\\rooms\\room-10\\6dda2606-e6e5-445c-b735-363999d70c01.jpg"
     },
@@ -29,28 +45,28 @@
       "PackagePath": "staticwebassets\\images\\rooms\\room-10\\8c2841dc-027b-4e07-843a-98f4097e3231.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-10\\d1dd57e8-2003-4401-8907-024d2043a208.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-10\\d1dd57e8-2003-4401-8907-024d2043a208.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-10\\ed392da7-dc18-47c1-bc33-49e64f22cc63.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-10\\ed392da7-dc18-47c1-bc33-49e64f22cc63.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-11\\18d12b11-898d-463a-8c27-cdf1d206d529.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-11\\18d12b11-898d-463a-8c27-cdf1d206d529.jpg"
     },
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-11\\2ff7384d-0e84-46c9-b2e9-2c181b35cdf0.jpg",
       "PackagePath": "staticwebassets\\images\\rooms\\room-11\\2ff7384d-0e84-46c9-b2e9-2c181b35cdf0.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-11\\376cab4e-ec89-4735-ba87-1a1582bbaa6b.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-11\\376cab4e-ec89-4735-ba87-1a1582bbaa6b.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-11\\acee5853-d561-410e-aadd-fe9e0c9c685b.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-11\\acee5853-d561-410e-aadd-fe9e0c9c685b.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-11\\3d67a795-0d4f-4663-a57a-a12449c789c0.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-11\\3d67a795-0d4f-4663-a57a-a12449c789c0.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-11\\b2c2a36f-dab6-4b71-93f5-d264df627b27.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-11\\b2c2a36f-dab6-4b71-93f5-d264df627b27.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-11\\9501d9c9-6e37-4b8d-82e7-8dab990ab6cf.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-11\\9501d9c9-6e37-4b8d-82e7-8dab990ab6cf.jpg"
-    },
-    {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-11\\d6d67170-e649-4cb1-b894-e563f5851aaf.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-11\\d6d67170-e649-4cb1-b894-e563f5851aaf.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-11\\dfad74ff-ede5-4b3b-95a3-361b69754d17.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-11\\dfad74ff-ede5-4b3b-95a3-361b69754d17.jpg"
     },
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-12\\3b6601b6-31ef-4403-9230-414fb0638242.jpg",
@@ -73,60 +89,60 @@
       "PackagePath": "staticwebassets\\images\\rooms\\room-12\\f865be6e-a26a-43cb-b154-f22a72ddcd2f.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-13\\012be5c1-2712-487c-9b68-6650bf9975af.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-13\\012be5c1-2712-487c-9b68-6650bf9975af.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-13\\187c5a7b-34af-4ef4-9195-300fd80d7092.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-13\\187c5a7b-34af-4ef4-9195-300fd80d7092.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-13\\585ec087-8ecc-418a-9ec9-ec07c224fa1e.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-13\\585ec087-8ecc-418a-9ec9-ec07c224fa1e.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-13\\2504c52a-8616-4d51-a04e-9a1df74b06f5.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-13\\2504c52a-8616-4d51-a04e-9a1df74b06f5.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-13\\79463e7f-1150-4ab8-a706-6cdf9e803f56.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-13\\79463e7f-1150-4ab8-a706-6cdf9e803f56.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-13\\5b04a188-7673-407e-a376-159d76aeb06b.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-13\\5b04a188-7673-407e-a376-159d76aeb06b.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-13\\96edd1e2-7735-48ea-96f7-4e1c78ab4699.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-13\\96edd1e2-7735-48ea-96f7-4e1c78ab4699.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-13\\6e09195e-6eae-4b6c-82fe-51e9f05156f5.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-13\\6e09195e-6eae-4b6c-82fe-51e9f05156f5.jpg"
     },
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-13\\d3c972e0-06fe-4d51-9028-9c74009ac68f.jpg",
       "PackagePath": "staticwebassets\\images\\rooms\\room-13\\d3c972e0-06fe-4d51-9028-9c74009ac68f.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\1dca9b34-6f7d-4bda-98de-6abce5315232.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\1dca9b34-6f7d-4bda-98de-6abce5315232.jpg"
-    },
-    {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\356446b0-943a-4b6f-9078-3662b73c98ff.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\356446b0-943a-4b6f-9078-3662b73c98ff.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\38b87545-1c50-422c-9342-2549106c61d3.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\38b87545-1c50-422c-9342-2549106c61d3.jpg"
     },
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\3e9ff058-7ed9-4913-84dd-1183f1b91e56.jpg",
       "PackagePath": "staticwebassets\\images\\rooms\\room-14\\3e9ff058-7ed9-4913-84dd-1183f1b91e56.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\6c364cf9-0daa-4604-9cf5-a80506d27f99.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\6c364cf9-0daa-4604-9cf5-a80506d27f99.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\6b31f9ff-72a4-4388-9fb7-80b8ad0fe6c0.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\6b31f9ff-72a4-4388-9fb7-80b8ad0fe6c0.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\a513eeff-2e51-42bf-8199-807f5ee7d501.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\a513eeff-2e51-42bf-8199-807f5ee7d501.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\70d42337-0067-405b-9424-55554ca4a559.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\70d42337-0067-405b-9424-55554ca4a559.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\d30cf3aa-17cd-487e-a951-7424ee660393.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\d30cf3aa-17cd-487e-a951-7424ee660393.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\ab3a20ec-e994-46a6-af60-c114d2db5f62.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\ab3a20ec-e994-46a6-af60-c114d2db5f62.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\d55eafea-a219-48df-a8c1-92c9f523b2d0.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\d55eafea-a219-48df-a8c1-92c9f523b2d0.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\c1898bf3-9bf2-48c8-bf3c-eb127af72661.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\c1898bf3-9bf2-48c8-bf3c-eb127af72661.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\d8f382fd-7399-4731-8347-2eaa1a70f981.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\d8f382fd-7399-4731-8347-2eaa1a70f981.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\c2888f95-1d5d-4ff7-99d7-20bd0cf44076.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\c2888f95-1d5d-4ff7-99d7-20bd0cf44076.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\dcf8c0a8-d9ad-4e09-b846-6a9d3c4f7fe8.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\dcf8c0a8-d9ad-4e09-b846-6a9d3c4f7fe8.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\fc0843e1-d982-46b1-97c4-7b6e056ae2f3.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\fc0843e1-d982-46b1-97c4-7b6e056ae2f3.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-14\\fdbe8252-6e81-46b2-b491-5a9b86e0e27a.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-14\\fdbe8252-6e81-46b2-b491-5a9b86e0e27a.jpg"
     },
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-15\\18af8ae4-76e9-44c8-b84d-0f1a98942214.png",
@@ -233,32 +249,56 @@
       "PackagePath": "staticwebassets\\images\\rooms\\room-22\\9e726c05-2ceb-40b3-b08e-e51addecffd8.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-5\\08e4ab67-3c7b-4529-bb7b-3010c955d395.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-5\\08e4ab67-3c7b-4529-bb7b-3010c955d395.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-23\\0b3ff515-821d-4ee5-b264-f4a1eeef5149.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-23\\0b3ff515-821d-4ee5-b264-f4a1eeef5149.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-23\\b5b8b587-241c-437f-b15e-a69c967ae55d.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-23\\b5b8b587-241c-437f-b15e-a69c967ae55d.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-23\\e7395302-76c9-478b-bf1a-4d3fb964d190.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-23\\e7395302-76c9-478b-bf1a-4d3fb964d190.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-5\\2f4b1f08-f595-411d-b1d7-1be7c92dbfbc.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-5\\2f4b1f08-f595-411d-b1d7-1be7c92dbfbc.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-5\\424339c7-3139-4bf9-adf6-ebca90799547.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-5\\424339c7-3139-4bf9-adf6-ebca90799547.jpg"
     },
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-5\\70ba6037-6fa6-4111-a3dd-34010c864952.jpg",
       "PackagePath": "staticwebassets\\images\\rooms\\room-5\\70ba6037-6fa6-4111-a3dd-34010c864952.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-5\\a2a7bac1-8964-40be-99b8-e151b8773ed5.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-5\\a2a7bac1-8964-40be-99b8-e151b8773ed5.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-5\\c9aafedc-cc8b-4cca-9f57-6ab510edc55c.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-5\\c9aafedc-cc8b-4cca-9f57-6ab510edc55c.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-6\\19301323-0447-480f-9fa6-97ed4ade167e.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-6\\19301323-0447-480f-9fa6-97ed4ade167e.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-6\\250d2094-8b67-4bb1-b5cf-3ce8a96fb4ee.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-6\\250d2094-8b67-4bb1-b5cf-3ce8a96fb4ee.jpg"
     },
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-6\\30d9e463-41d2-4d94-8eb5-b78ea3edf30b.jpg",
       "PackagePath": "staticwebassets\\images\\rooms\\room-6\\30d9e463-41d2-4d94-8eb5-b78ea3edf30b.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-6\\763a4191-df02-4d41-9158-b8b425378b22.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-6\\763a4191-df02-4d41-9158-b8b425378b22.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-6\\40973853-1880-4de8-9da6-9b064dc23a01.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-6\\40973853-1880-4de8-9da6-9b064dc23a01.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-6\\7c4b2edf-3350-4eff-8594-72c2ed784133.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-6\\7c4b2edf-3350-4eff-8594-72c2ed784133.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-6\\589df1fd-f6fe-48a3-9cbf-cfaaa713802e.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-6\\589df1fd-f6fe-48a3-9cbf-cfaaa713802e.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-6\\fdb9e171-8a36-4d8a-bca4-f73bf4174245.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-6\\fdb9e171-8a36-4d8a-bca4-f73bf4174245.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-7\\1611015d-dc76-41a1-8334-2541bf67915b.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-7\\1611015d-dc76-41a1-8334-2541bf67915b.jpg"
     },
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-7\\5dc77fc4-b1ba-45f9-baab-7ad09ad0b881.jpg",
@@ -281,8 +321,8 @@
       "PackagePath": "staticwebassets\\images\\rooms\\room-9\\864ddf9e-0887-4d0a-995f-fae7bbebcf20.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-9\\f4a9615e-d679-421e-941b-ceb9ae73c4ae.jpg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-9\\f4a9615e-d679-421e-941b-ceb9ae73c4ae.jpg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-9\\f1c5ab99-2422-4e75-abbf-4b710432efe3.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-9\\f1c5ab99-2422-4e75-abbf-4b710432efe3.jpg"
     },
     {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.QLKhachSan.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

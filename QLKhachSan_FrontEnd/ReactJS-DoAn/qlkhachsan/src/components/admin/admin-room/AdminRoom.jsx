@@ -56,12 +56,13 @@ const AdminRoom = () => {
     if (!target.categoryRoomId)
       newErrors.categoryRoomId = "Danh mục phòng là bắt buộc";
     if (!target.maxOccupancy || target.maxOccupancy <= 0)
-      newErrors.maxOccupancy = "Số người phải lớn hơn 0";
+      newErrors.maxOccupancy = "Số người không hợp lệ";
     if (!target.roomSize || target.roomSize <= 0)
       newErrors.roomSize = "Diện tích không hợp lệ";
-    if (!target.priceDay || target.priceDay < 0)
+    if (!target.priceDay || target.priceDay <= 0)
       newErrors.priceDay = "Giá ngày không hợp lệ";
-    if (!target.priceWeek || target.priceWeek < 0)
+    
+    if (!target.priceWeek || target.priceWeek <= 0)
       newErrors.priceWeek = "Giá tuần không hợp lệ";
     if (!target.description)
       newErrors.description = "Mô tả không được để trống";
@@ -195,6 +196,7 @@ const AdminRoom = () => {
 
   const handleAddRoom = async () => {
     try {
+      console.log("ê", newRoom.mainImage);
       const formData = new FormData();
       Object.entries(newRoom).forEach(([key, value]) => {
         if (key === "images")

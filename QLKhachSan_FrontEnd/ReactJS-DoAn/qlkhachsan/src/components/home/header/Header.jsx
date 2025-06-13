@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import BookingForm from "../Booking/Booking";
 
 function Header() {
+  const [lastName, setLastName] = useState("");
+  const [firstMidName, setFirstMidName] = useState("");
   const [userName, setUserName] = useState("");
   const [userRole, setUserRole] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -24,7 +26,8 @@ function Header() {
   useEffect(() => {
     setUserName(localStorage.getItem("userName") || "");
     setUserRole(localStorage.getItem("role") || "");
-
+    setLastName(localStorage.getItem("lastName") || "");
+    setFirstMidName(localStorage.getItem("firstMidName") || "");
     // Add scroll listener for header background effect
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -146,9 +149,9 @@ function Header() {
                   className="flex items-center space-x-2 font-medium text-gray-800 hover:text-yellow-600 border-none outline-none focus:outline-none ring-0 focus:ring-0 px-3 py-2 rounded-full hover:bg-yellow-50 transition-all duration-300"
                 >
                   <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                    {userName.charAt(0).toUpperCase()}
+                    {lastName.charAt(0).toUpperCase()}
                   </div>
-                  <span className="hidden sm:block">Xin chào, {userName}</span>
+                  <span className="hidden sm:block">{firstMidName} {lastName}</span>
                   <svg
                     className={`w-4 h-4 transition-transform duration-300 ${
                       dropdownOpen ? "rotate-180" : ""

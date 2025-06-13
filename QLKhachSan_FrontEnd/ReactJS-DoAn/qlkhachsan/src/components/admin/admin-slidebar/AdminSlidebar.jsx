@@ -6,6 +6,7 @@ import {
   FiClipboard,
   FiList,
   FiHome,
+  FiFileText,
   FiCircle,
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
@@ -45,11 +46,12 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
       icon: FiClipboard,
       children: [
         { title: "Đơn đặt", to: "/admin/dashboard/booking" },
-        { title: "Đơn dịch vụ", to: "/admin/dashboard/booking-service" },
-        { title: "Đơn đặt phòng", to: "/admin/dashboard/booking-room" },
+        // { title: "Đơn dịch vụ", to: "/admin/dashboard/booking-service" },
+        // { title: "Đơn đặt phòng", to: "/admin/dashboard/booking-room" },
         { title: "Thanh toán", to: "/admin/dashboard/payment" },
       ],
     },
+    { title: "Tin tức", to: "/admin/dashboard/new", icon: FiFileText},
   ];
 
   return (

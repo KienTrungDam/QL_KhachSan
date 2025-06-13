@@ -7,11 +7,13 @@ const UserCustomerModel = ({
   actionType,
   editUser,
   onInputChange,
-  onUpdate,
+  onSave,
+  errors,
 }) => {
   const getTitle = () => {
     if (actionType === "update") return "Cập Nhật Khách Hàng";
     else if (actionType == "view") return "Thông Tin Khách Hàng";
+
     return "";
   };
 
@@ -90,7 +92,6 @@ const UserCustomerModel = ({
               value={editUser.id}
               readOnly
             />
-
             <label className="block font-medium mt-2">Họ</label>
             <input
               type="text"
@@ -99,7 +100,9 @@ const UserCustomerModel = ({
               value={editUser.lastName}
               onChange={onInputChange}
             />
-
+            {errors.lastName && (
+              <p className="text-red-600 text-sm">{errors.lastName}</p>
+            )}
             <label className="block font-medium mt-2">Tên và tên đệm</label>
             <input
               type="text"
@@ -108,7 +111,9 @@ const UserCustomerModel = ({
               value={editUser.firstMidName}
               onChange={onInputChange}
             />
-
+            {errors.firstMidName && (
+              <p className="text-red-600 text-sm">{errors.firstMidName}</p>
+            )}
             <label className="block font-medium mt-2">Địa chỉ</label>
             <input
               type="text"
@@ -117,7 +122,9 @@ const UserCustomerModel = ({
               value={editUser.address}
               onChange={onInputChange}
             />
-
+            {errors.address && (
+              <p className="text-red-600 text-sm">{errors.address}</p>
+            )}
             <label className="block font-medium mt-2">CCCD</label>
             <input
               type="text"
@@ -126,11 +133,13 @@ const UserCustomerModel = ({
               value={editUser.cccd}
               onChange={onInputChange}
             />
-
+            {errors.cccd && (
+              <p className="text-red-600 text-sm">{errors.cccd}</p>
+            )}
             <div className="flex justify-center mt-4">
               <button
                 className="px-4 py-2 bg-yellow-500 text-white rounded mr-2"
-                onClick={onUpdate}
+                onClick={onSave}
               >
                 Cập nhật
               </button>

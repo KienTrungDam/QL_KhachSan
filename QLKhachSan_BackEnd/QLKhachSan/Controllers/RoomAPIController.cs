@@ -357,7 +357,7 @@ namespace QLKhachSan.Controllers
 
             // Lấy danh sách các booking hợp lệ có liên quan đến phòng
             var bookings = await _unitOfWork.Booking.GetAllAsync(
-                b => b.BookingStatus != SD.Status_Booking_Cancelled && b.BookingStatus != SD.Status_Booking_Completed && b.BookingRoomId > 0,
+                b => b.BookingStatus != SD.Status_Booking_Cancelled && b.BookingStatus != SD.Status_Booking_Completed && b.BookingStatus != SD.Status_Booking_Draft && b.BookingRoomId > 0,
                 includeProperties: "BookingRoom"
             );
             foreach (var booking in bookings)

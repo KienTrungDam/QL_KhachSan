@@ -84,10 +84,9 @@ namespace QLKhachSan.Controllers
             newEntity.UpdatedAt = DateTime.UtcNow;
 
             await _unitOfWork.New.CreateAsync(newEntity);
-            await _unitOfWork.SaveAsync();
 
             // Lưu ảnh vào wwwroot/images/new
-            if (newCreateDTO.Image != null)
+            if (newCreateDTO.ImageUrl != null)
             {
                 string wwwRootPath = _webHostEnvironment.WebRootPath;
                 string folderPath = Path.Combine(wwwRootPath, "images", "new");
@@ -95,17 +94,16 @@ namespace QLKhachSan.Controllers
                 if (!Directory.Exists(folderPath))
                     Directory.CreateDirectory(folderPath);
 
-                string fileName = $"new-{newEntity.Id}{Path.GetExtension(newCreateDTO.Image.FileName)}";
+                string fileName = $"new-{newEntity.Id}{Path.GetExtension(newCreateDTO.ImageUrl.FileName)}";
                 string filePath = Path.Combine(folderPath, fileName);
 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    await newCreateDTO.Image.CopyToAsync(fileStream);
+                    await newCreateDTO.ImageUrl.CopyToAsync(fileStream);
                 }
 
                 newEntity.ImageUrl = Path.Combine("images", "new", fileName).Replace("\\", "/");
                 await _unitOfWork.New.UpdateAsync(newEntity);
-                await _unitOfWork.SaveAsync();
             }
 
             _response.StatusCode = HttpStatusCode.Created;
@@ -140,7 +138,7 @@ namespace QLKhachSan.Controllers
             existingNew.UpdatedAt = DateTime.UtcNow;
             existingNew.Author = newUpdateDTO.Author;
             // Nếu có ảnh mới, lưu ảnh và xóa ảnh cũ
-            if (newUpdateDTO.Image != null)
+            if (newUpdateDTO.ImageUrl != null)
             {
                 string wwwRootPath = _webHostEnvironment.WebRootPath;
 
@@ -157,12 +155,12 @@ namespace QLKhachSan.Controllers
                 if (!Directory.Exists(folderPath))
                     Directory.CreateDirectory(folderPath);
 
-                string fileName = $"new-{existingNew.Id}{Path.GetExtension(newUpdateDTO.Image.FileName)}";
+                string fileName = $"new-{existingNew.Id}{Path.GetExtension(newUpdateDTO.ImageUrl.FileName)}";
                 string filePath = Path.Combine(folderPath, fileName);
 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    await newUpdateDTO.Image.CopyToAsync(fileStream);
+                    await newUpdateDTO.ImageUrl.CopyToAsync(fileStream);
                 }
 
                 existingNew.ImageUrl = Path.Combine("images", "new", fileName).Replace("\\", "/");

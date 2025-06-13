@@ -150,7 +150,7 @@ const News = () => {
                 <NewsCard article={filteredArticles[0]} isFeature={true} />
               </div>
               <div className="lg:w-[30%] space-y-4">
-                {filteredArticles.slice(1, 6).map((article) => (
+                {filteredArticles.slice(1, 5).map((article) => (
                   <NewsCard
                     key={article.id}
                     article={article}

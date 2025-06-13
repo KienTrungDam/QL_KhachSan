@@ -7,11 +7,14 @@ const UserEmployeeModal = ({
   actionType,
   editUser,
   onInputChange,
-  onUpdate,
+  newUser,
+  onSave,
+  errors,
 }) => {
   const getTitle = () => {
     if (actionType === "update") return "Cập Nhật Nhân Viên";
     else if (actionType == "view") return "Thông tin nhân viên";
+    else if (actionType === "add") return "Thêm Nhân Viên";
     return "";
   };
 
@@ -80,18 +83,113 @@ const UserEmployeeModal = ({
             </div>
           </>
         )}
-
+        {actionType === "add" && (
+          <>
+            <label className="block font-medium mt-2">Tên tài khoản</label>
+            <input
+              type="text"
+              className="px-4 py-2 border rounded w-full"
+              name="userName"
+              value={newUser.userName}
+              onChange={onInputChange}
+            />
+            {errors.userName && (
+              <p className="text-red-600 text-sm">{errors.userName}</p>
+            )}
+            <label className="block font-medium mt-2">Họ và tên đệm</label>
+            <input
+              type="text"
+              className="px-4 py-2 border rounded w-full"
+              name="firstMidName"
+              value={newUser.firstMidName}
+              onChange={onInputChange}
+            />
+            {errors.firstMidName && (
+              <p className="text-red-600 text-sm">{errors.firstMidName}</p>
+            )}
+            <label className="block font-medium mt-2">Tên</label>
+            <input
+              type="text"
+              className="px-4 py-2 border rounded w-full"
+              name="lastName"
+              value={newUser.lastName}
+              onChange={onInputChange}
+            />
+            {errors.lastName && (
+              <p className="text-red-600 text-sm">{errors.lastName}</p>
+            )}
+            <label className="block font-medium mt-2">Mật khẩu</label>
+            <input
+              type="text"
+              className="px-4 py-2 border rounded w-full"
+              name="password"
+              value={newUser.password}
+              onChange={onInputChange}
+            />
+            {errors.password && (
+              <p className="text-red-600 text-sm">{errors.password}</p>
+            )}
+            <label className="block font-medium mt-2">Email</label>
+            <input
+              type="text"
+              className="px-4 py-2 border rounded w-full"
+              name="email"
+              value={newUser.email}
+              onChange={onInputChange}
+            />
+            {errors.email && (
+              <p className="text-red-600 text-sm">{errors.email}</p>
+            )}
+            <label className="block font-medium mt-2">Địa chỉ</label>
+            <input
+              type="text"
+              className="px-4 py-2 border rounded w-full"
+              name="address"
+              value={newUser.address}
+              onChange={onInputChange}
+            />
+            {errors.address && (
+              <p className="text-red-600 text-sm">{errors.address}</p>
+            )}
+            <label className="block font-medium mt-2">CCCD</label>
+            <input
+              type="text"
+              className="px-4 py-2 border rounded w-full"
+              name="cccd"
+              value={newUser.cccd}
+              onChange={onInputChange}
+            />
+            {errors.cccd && (
+              <p className="text-red-600 text-sm">{errors.cccd}</p>
+            )}
+            <div className="flex justify-center mt-4">
+              <button
+                className="px-4 py-2 bg-yellow-500 text-white rounded mr-2"
+                onClick={onSave}
+              >
+                Lưu
+              </button>
+              <button
+                className="px-4 py-2 bg-gray-500 text-white rounded"
+                onClick={onClose}
+              >
+                Huỷ
+              </button>
+            </div>
+          </>
+        )}
         {actionType === "update" && editUser && (
           <>
-            <label className="block font-medium mt-2">ID</label>
+            {/* <label className="block font-medium mt-2">ID</label>
             <input
               type="text"
               className="px-4 py-2 border rounded w-full bg-gray-200"
               value={editUser.id}
+              
               readOnly
-            />
+            /> */}
 
-            <label className="block font-medium mt-2">Họ</label>
+            <label className="block font-medium mt-2">Tên</label>
             <input
               type="text"
               className="px-4 py-2 border rounded w-full"
@@ -99,8 +197,10 @@ const UserEmployeeModal = ({
               value={editUser.lastName}
               onChange={onInputChange}
             />
-
-            <label className="block font-medium mt-2">Tên và tên đệm</label>
+            {errors.lastName && (
+              <p className="text-red-600 text-sm">{errors.lastName}</p>
+            )}
+            <label className="block font-medium mt-2">Họ và tên đệm</label>
             <input
               type="text"
               className="px-4 py-2 border rounded w-full"
@@ -108,7 +208,9 @@ const UserEmployeeModal = ({
               value={editUser.firstMidName}
               onChange={onInputChange}
             />
-
+            {errors.firstMidName && (
+              <p className="text-red-600 text-sm">{errors.firstMidName}</p>
+            )}
             <label className="block font-medium mt-2">Địa chỉ</label>
             <input
               type="text"
@@ -117,7 +219,9 @@ const UserEmployeeModal = ({
               value={editUser.address}
               onChange={onInputChange}
             />
-
+            {errors.address && (
+              <p className="text-red-600 text-sm">{errors.address}</p>
+            )}
             <label className="block font-medium mt-2">CCCD</label>
             <input
               type="text"
@@ -126,11 +230,13 @@ const UserEmployeeModal = ({
               value={editUser.cccd}
               onChange={onInputChange}
             />
-
+            {errors.cccd && (
+              <p className="text-red-600 text-sm">{errors.cccd}</p>
+            )}
             <div className="flex justify-center mt-4">
               <button
                 className="px-4 py-2 bg-yellow-500 text-white rounded mr-2"
-                onClick={onUpdate}
+                onClick={onSave}
               >
                 Cập nhật
               </button>

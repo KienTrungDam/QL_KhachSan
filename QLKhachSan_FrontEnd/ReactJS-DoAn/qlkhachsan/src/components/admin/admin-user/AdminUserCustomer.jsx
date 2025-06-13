@@ -19,7 +19,46 @@ const AdminUserCustomer = () => {
   const [notifyProps, setNotifyProps] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
+  const [errors, setErrors] = React.useState({});
   const storedToken = localStorage.getItem("adminToken");
+  const validateRoom = () => {
+    const target = actionType === "add" ? newUser : editUser;
+    const newErrors = {};
+    const cccdRegex = /^\d+$/;
+
+    if (!target.firstMidName)
+      newErrors.firstMidName = "Họ tên đệm không được để trống";
+    if (!target.lastName) newErrors.lastName = "Tên không được để trống";
+    if (!target.address) newErrors.address = "Địa chỉ là bắt buộc";
+    if (!target.cccd) {
+      newErrors.cccd = "CCCD là bắt buộc";
+    } else if (!cccdRegex.test(target.cccd)) {
+      newErrors.cccd = "CCCD phải là chuỗi số";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleClose = () => {
+    setShowForm(false);
+    setEditUser(null);
+    setNewUser({
+      firstMidName: "",
+      lastName: "",
+      address: "",
+      cccd: "",
+    });
+    setActionType(null);
+    setErrors({});
+  };
+  const handleSave = async () => {
+    const isValid = validateRoom();
+    if (!isValid) return;
+
+    if (actionType === "update") {
+      await handleUpdateUser();
+    }
+  };
 
   const showNotification = (type, message, description = "") => {
     if (notifyProps) return;
@@ -136,7 +175,6 @@ const AdminUserCustomer = () => {
         </div>
       )}
 
-
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-800 mb-8">
           Quản lý khách hàng
@@ -178,7 +216,10 @@ const AdminUserCustomer = () => {
                 <tbody className="divide-y divide-gray-200">
                   {currentUsers.length === 0 ? (
                     <tr>
-                      <td colSpan={3} className="text-center py-4 text-gray-500">
+                      <td
+                        colSpan={3}
+                        className="text-center py-4 text-gray-500"
+                      >
                         Không có khách hàng nào
                       </td>
                     </tr>
@@ -219,15 +260,12 @@ const AdminUserCustomer = () => {
 
             <UserCustomerModel
               isOpen={showForm}
-              onClose={() => {
-                setShowForm(false);
-                setEditUser(null);
-                setActionType(null);
-              }}
+              onClose={handleClose}
               actionType={actionType}
               editUser={editUser}
               onInputChange={handleInputChange}
-              onUpdate={handleUpdateUser}
+              onSave={handleSave}
+              errors={errors}
             />
 
             <div className="flex items-center justify-between mt-6">

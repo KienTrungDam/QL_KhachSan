@@ -73,7 +73,11 @@ namespace QLKhachSan.Controllers
                 //bool valid = _unitOfWork.User.UniqueUserName(registerRequestDTO.UserName);   
                 if (user == null)
                 {
-                    registerRequestDTO.Role = SD.Role_Customer;
+                    if(registerRequestDTO.Role != SD.Role_Admin && registerRequestDTO.Role != SD.Role_Employee)
+                    {
+                        registerRequestDTO.Role = SD.Role_Customer;
+                    }
+                    
                     PersonDTO userDTO = await _unitOfWork.User.RegisterAsync(registerRequestDTO);
                     if (userDTO == null)
                     {

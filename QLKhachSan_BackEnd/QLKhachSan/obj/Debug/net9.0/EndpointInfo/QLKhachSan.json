@@ -1313,7 +1313,7 @@
                   "Content": {
                     "type": "string"
                   },
-                  "Image": {
+                  "ImageUrl": {
                     "type": "string",
                     "format": "binary"
                   },
@@ -1337,7 +1337,7 @@
                 "Content": {
                   "style": "form"
                 },
-                "Image": {
+                "ImageUrl": {
                   "style": "form"
                 },
                 "CreatedAt": {
@@ -1508,7 +1508,7 @@
                   "Content": {
                     "type": "string"
                   },
-                  "Image": {
+                  "ImageUrl": {
                     "type": "string",
                     "format": "binary"
                   },
@@ -1531,7 +1531,7 @@
                 "Content": {
                   "style": "form"
                 },
-                "Image": {
+                "ImageUrl": {
                   "style": "form"
                 },
                 "UpdatedAt": {

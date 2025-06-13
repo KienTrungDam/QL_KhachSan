@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FiSearch } from "react-icons/fi";
-import { IoMdNotifications } from "react-icons/io";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 import ServiceModal from "../admin-model/ServiceModel";
 
 const AdminService = () => {
@@ -12,6 +11,7 @@ const AdminService = () => {
     description: "",
     price: "",
   });
+  const [errors, setErrors] = React.useState({});
   const [editService, setEditService] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [actionType, setActionType] = useState(null);
@@ -20,6 +20,18 @@ const AdminService = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const storedToken = localStorage.getItem("adminToken");
+  
+  const validateRoom = () => {
+    const target = actionType === "add" ? newService : editService;
+    const newErrors = {};
+
+    if (!target.name) newErrors.name = "Tên dịch vụ không được để trống";
+    if (!target.description) newErrors.description = "Mô tả không được để trống";
+    if (!target.price) newErrors.price = "Giá dịch vụ là bắt buộc";
+      
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +41,8 @@ const AdminService = () => {
       setEditService({ ...editService, [name]: value });
     }
   };
-
+  
+  
   const fetchServices = async () => {
     try {
       const response = await axios.get("https://localhost:5001/api/Service", {
@@ -111,7 +124,20 @@ const AdminService = () => {
       showNotification("error", "Xoá dịch vụ thất bại!", error.message);
     }
   };
+  const handleSave = async () => {
+    if (actionType === "delete") {
+      await handleDeleteService();
+      return;
+    }
+    const isValid = validateRoom();
+    if (!isValid) return;
 
+    if (actionType === "add") {
+      await handleAddService();
+    } else if (actionType === "update") {
+      await handleUpdateService();
+    }
+  };
 
   const showNotification = (type, message, description = "") => {
     if (notifyProps) return;
@@ -142,7 +168,18 @@ const AdminService = () => {
     setShowForm(true);
   };
 
+  const handleClose = () => {
+    setShowForm(false);
+    setEditService(null);
+    setNewService({
+      name: "",
+      description: "",
+      price: "",
+    });
+    setActionType(null);
+    setErrors({});
 
+  };
   const goToPage = (page) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
@@ -195,23 +232,18 @@ const AdminService = () => {
                 className="px-4 py-2 bg-green-500 text-white rounded-lg"
                 onClick={() => openModal("add")}
               >
-                Thêm dịch vụ
+                <FaPlus className="inline mr-2" /> Thêm dịch vụ
               </button>
             </div>
             <ServiceModal
               isOpen={showForm}
-              onClose={() => {
-                setShowForm(false);
-                setEditService(null);
-                setActionType(null);
-              }}
+              onClose={handleClose}
               actionType={actionType}
               editService={editService}
               newService={newService}
               onInputChange={handleInputChange}
-              onSave={handleAddService}
-              onUpdate={handleUpdateService}
-              onDelete={handleDeleteService}
+              onSave={handleSave}
+              errors={errors}
             />
 
             <div className="overflow-x-auto">

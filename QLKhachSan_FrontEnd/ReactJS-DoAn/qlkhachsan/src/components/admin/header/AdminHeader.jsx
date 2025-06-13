@@ -24,7 +24,7 @@ const UserDropdown = ({ user, onLogout }) => {
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [user, setUser] = useState({ name: "", fullName: "" });
+  const [user, setUser] = useState({ name: "", fullName: "", lastName: ""});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Header = () => {
       return;
     }
 
-    setUser({ name, fullName });
+    setUser({ name, fullName, lastName});
   }, [navigate]);
 
   const handleLogout = useCallback(() => {
@@ -79,11 +79,10 @@ const Header = () => {
               onClick={toggleDropdown}
               className="flex items-center space-x-3 px-3 py-2 rounded-full hover:bg-slate-800 transition"
             >
-              <img
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt="Avatar"
-                className="h-8 w-8 rounded-full object-cover border-2 border-yellow-400"
-              />
+              <div className="h-8 w-8 rounded-full bg-yellow-500 flex items-center justify-center text-white font-bold uppercase border-2 border-yellow-400">
+                {user.lastName.charAt(0)}
+              </div>
+
               <div className="hidden md:flex items-center text-white capitalize text-sm font-medium">
                 {user.fullName}
                 <FiChevronDown
@@ -94,7 +93,9 @@ const Header = () => {
               </div>
             </button>
 
-            {isDropdownOpen && <UserDropdown user={user} onLogout={handleLogout} />}
+            {isDropdownOpen && (
+              <UserDropdown user={user} onLogout={handleLogout} />
+            )}
           </div>
         </div>
       </div>

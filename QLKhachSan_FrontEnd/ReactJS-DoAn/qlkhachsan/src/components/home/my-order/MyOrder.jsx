@@ -16,7 +16,7 @@ const MyOrder = () => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [cancelBookingId, setCancelBookingId] = useState(null);
   const [notifyProps, setNotifyProps] = useState(null);
-  
+
   const showNotification = (type, message, description = "") => {
     if (notifyProps) return;
     const newNotifyProps = {
@@ -137,7 +137,9 @@ const MyOrder = () => {
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center">
         <div className="flex flex-col items-center space-y-4">
           <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
-          <p className="text-lg text-gray-600 font-medium">Đang tải dữ liệu...</p>
+          <p className="text-lg text-gray-600 font-medium">
+            Đang tải dữ liệu...
+          </p>
         </div>
       </div>
     );
@@ -149,36 +151,59 @@ const MyOrder = () => {
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <span className="text-red-600 text-2xl">⚠️</span>
           </div>
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">Có lỗi xảy ra</h3>
+          <h3 className="text-xl font-semibold text-gray-800 mb-2">
+            Có lỗi xảy ra
+          </h3>
           <p className="text-red-600">{error}</p>
         </div>
       </div>
     );
 
   return (
-    <div className="pt-10 min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="pt-5 min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Enhanced Notification */}
       {notifyProps && (
-        <div className={`fixed top-6 right-6 z-50 transform transition-all duration-300 ease-in-out animate-pulse`}>
-          <div className={`
+        <div
+          className={`fixed top-6 right-6 z-50 transform transition-all duration-300 ease-in-out animate-pulse`}
+        >
+          <div
+            className={`
             px-6 py-4 rounded-xl shadow-lg border-l-4 backdrop-blur-sm
-            ${notifyProps.type === "success" 
-              ? "bg-green-50 border-green-500 text-green-800" 
-              : notifyProps.type === "error" 
-              ? "bg-red-50 border-red-500 text-red-800" 
-              : "bg-yellow-50 border-yellow-500 text-yellow-800"
+            ${
+              notifyProps.type === "success"
+                ? "bg-green-50 border-green-500 text-green-800"
+                : notifyProps.type === "error"
+                ? "bg-red-50 border-red-500 text-red-800"
+                : "bg-yellow-50 border-yellow-500 text-yellow-800"
             }
-          `}>
+          `}
+          >
             <div className="flex items-center space-x-3">
-              <div className={`
+              <div
+                className={`
                 w-8 h-8 rounded-full flex items-center justify-center
-                ${notifyProps.type === "success" ? "bg-green-100" : notifyProps.type === "error" ? "bg-red-100" : "bg-yellow-100"}
-              `}>
-                {notifyProps.type === "success" ? "✓" : notifyProps.type === "error" ? "✕" : "!"}
+                ${
+                  notifyProps.type === "success"
+                    ? "bg-green-100"
+                    : notifyProps.type === "error"
+                    ? "bg-red-100"
+                    : "bg-yellow-100"
+                }
+              `}
+              >
+                {notifyProps.type === "success"
+                  ? "✓"
+                  : notifyProps.type === "error"
+                  ? "✕"
+                  : "!"}
               </div>
               <div>
                 <p className="font-semibold">{notifyProps.message}</p>
-                {notifyProps.description && <p className="text-sm opacity-90">{notifyProps.description}</p>}
+                {notifyProps.description && (
+                  <p className="text-sm opacity-90">
+                    {notifyProps.description}
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -188,11 +213,13 @@ const MyOrder = () => {
       <div className="max-w-7xl mx-auto px-4 pt-8 pb-12">
         {/* Enhanced Header */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+          <h1 className="pt-5 text-5xl font-bold leading-normal bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
             {isStaff ? "Quản lý đơn đặt phòng" : "Đơn đặt của bạn"}
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            {isStaff ? "Theo dõi và quản lý tất cả các đơn đặt phòng trong hệ thống" : "Quản lý và theo dõi các đơn đặt phòng của bạn"}
+            {isStaff
+              ? "Theo dõi và quản lý tất cả các đơn đặt phòng trong hệ thống"
+              : "Quản lý và theo dõi các đơn đặt phòng của bạn"}
           </p>
         </div>
 
@@ -201,39 +228,63 @@ const MyOrder = () => {
             <div className="w-32 h-32 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <span className="text-6xl text-gray-400">📋</span>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-700 mb-2">Chưa có đơn đặt nào</h3>
-            <p className="text-gray-500">Hãy bắt đầu đặt phòng để xem thông tin tại đây</p>
+            <h3 className="text-2xl font-semibold text-gray-700 mb-2">
+              Chưa có đơn đặt nào
+            </h3>
+            <p className="text-gray-500">
+              Hãy bắt đầu đặt phòng để xem thông tin tại đây
+            </p>
           </div>
         ) : isStaff ? (
           // Enhanced Staff Table
           <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
             <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-4">
-              <h2 className="text-xl font-semibold text-white">Danh sách đơn đặt phòng</h2>
+              <h2 className="text-xl font-semibold text-white">
+                Danh sách đơn đặt phòng
+              </h2>
             </div>
             <div className="overflow-x-auto">
               <table className="min-w-full">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Mã đơn</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Khách hàng</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Phòng</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Dịch vụ</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Trạng thái</th>
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      Mã đơn
+                    </th>
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      Khách hàng
+                    </th>
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      Phòng
+                    </th>
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      Dịch vụ
+                    </th>
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      Trạng thái
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                   {bookings.map((booking, index) => (
-                    <tr key={booking.id} className={`hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-25'}`}>
+                    <tr
+                      key={booking.id}
+                      className={`hover:bg-gray-50 transition-colors ${
+                        index % 2 === 0 ? "bg-white" : "bg-gray-25"
+                      }`}
+                    >
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                            <span className="text-blue-600 font-semibold text-sm">#{booking.id}</span>
+                            <span className="text-blue-600 font-semibold text-sm">
+                              #{booking.id}
+                            </span>
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm font-medium text-gray-900">
-                          {booking.person?.firstMidName} {booking.person?.lastName}
+                          {booking.person?.firstMidName}{" "}
+                          {booking.person?.lastName}
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -247,14 +298,22 @@ const MyOrder = () => {
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`
+                        <span
+                          className={`
                           inline-flex px-3 py-1 rounded-full text-xs font-semibold
-                          ${booking.bookingStatus === "Cancel" ? "bg-red-100 text-red-800" :
-                            booking.bookingStatus === "Confirmed" ? "bg-green-100 text-green-800" :
-                            booking.bookingStatus === "Ongoing" ? "bg-blue-100 text-blue-800" :
-                            booking.bookingStatus === "Completed" ? "bg-gray-100 text-gray-800" :
-                            "bg-yellow-100 text-yellow-800"}
-                        `}>
+                          ${
+                            booking.bookingStatus === "Cancel"
+                              ? "bg-red-100 text-red-800"
+                              : booking.bookingStatus === "Confirmed"
+                              ? "bg-green-100 text-green-800"
+                              : booking.bookingStatus === "Ongoing"
+                              ? "bg-blue-100 text-blue-800"
+                              : booking.bookingStatus === "Completed"
+                              ? "bg-gray-100 text-gray-800"
+                              : "bg-yellow-100 text-yellow-800"
+                          }
+                        `}
+                        >
                           {booking.bookingStatus}
                         </span>
                       </td>
@@ -319,12 +378,36 @@ const MyOrder = () => {
 
               <div className="flex flex-wrap justify-center gap-3 flex-1">
                 {[
-                  { key: "Draft", label: "Chưa xác nhận", color: "from-gray-400 to-gray-500" },
-                  { key: "Pending", label: "Chờ xác nhận", color: "from-yellow-400 to-orange-500" },
-                  { key: "Confirmed", label: "Đã xác nhận", color: "from-green-400 to-green-500" },
-                  { key: "Ongoing", label: "Đang diễn ra", color: "from-blue-400 to-blue-500" },
-                  { key: "Completed", label: "Hoàn tất", color: "from-purple-400 to-purple-500" },
-                  { key: "Cancelled", label: "Đã huỷ", color: "from-red-400 to-red-500" },
+                  {
+                    key: "Draft",
+                    label: "Chưa xác nhận",
+                    color: "from-gray-400 to-gray-500",
+                  },
+                  {
+                    key: "Pending",
+                    label: "Chờ xác nhận",
+                    color: "from-yellow-400 to-orange-500",
+                  },
+                  {
+                    key: "Confirmed",
+                    label: "Đã xác nhận",
+                    color: "from-green-400 to-green-500",
+                  },
+                  {
+                    key: "Ongoing",
+                    label: "Đang diễn ra",
+                    color: "from-blue-400 to-blue-500",
+                  },
+                  {
+                    key: "Completed",
+                    label: "Hoàn tất",
+                    color: "from-purple-400 to-purple-500",
+                  },
+                  {
+                    key: "Cancelled",
+                    label: "Đã huỷ",
+                    color: "from-red-400 to-red-500",
+                  },
                 ].map((status) => (
                   <button
                     key={status.key}
@@ -343,13 +426,18 @@ const MyOrder = () => {
 
             {/* Enhanced Booking Cards */}
             <div className="space-y-8">
-              {bookings.filter((b) => b.bookingStatus === activeStatus).length === 0 ? (
+              {bookings.filter((b) => b.bookingStatus === activeStatus)
+                .length === 0 ? (
                 <div className="text-center py-16">
                   <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-4xl text-gray-400">📝</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-600 mb-2">Không có đơn nào</h3>
-                  <p className="text-gray-500">Chưa có đơn đặt nào trong trạng thái này.</p>
+                  <h3 className="text-xl font-semibold text-gray-600 mb-2">
+                    Không có đơn nào
+                  </h3>
+                  <p className="text-gray-500">
+                    Chưa có đơn đặt nào trong trạng thái này.
+                  </p>
                 </div>
               ) : (
                 bookings
@@ -361,7 +449,7 @@ const MyOrder = () => {
                     >
                       {/* Background Gradient */}
                       <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-blue-50 to-purple-50 rounded-full transform translate-x-32 -translate-y-32 opacity-50"></div>
-                      
+
                       {/* Header */}
                       <div className="relative z-10 flex justify-between items-start mb-6">
                         <div>
@@ -388,69 +476,100 @@ const MyOrder = () => {
                       {/* Rooms Section */}
                       <div className="relative z-10 space-y-6 mb-8">
                         {booking.bookingRoom?.bookingRoomDetails?.length > 0 ? (
-                          booking.bookingRoom.bookingRoomDetails.map((detail, index) => {
-                            const mainImage = detail.room?.roomImages?.find((img) => img.isMain);
-                            const imageUrl = mainImage
-                              ? `https://localhost:5001/${mainImage.imageUrl.replace(/\\/g, "/")}`
-                              : "https://via.placeholder.com/600x300?text=No+Image";
+                          booking.bookingRoom.bookingRoomDetails.map(
+                            (detail, index) => {
+                              const mainImage = detail.room?.roomImages?.find(
+                                (img) => img.isMain
+                              );
+                              const imageUrl = mainImage
+                                ? `https://localhost:5001/${mainImage.imageUrl.replace(
+                                    /\\/g,
+                                    "/"
+                                  )}`
+                                : "https://via.placeholder.com/600x300?text=No+Image";
 
-                            return (
-                              <div
-                                key={index}
-                                className="relative flex flex-col lg:flex-row gap-6 bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl overflow-hidden shadow-md border border-gray-200"
-                              >
-                                {/* Remove Button */}
-                                {booking.bookingStatus === "Draft" && (
-                                  <button
-                                    className="absolute top-4 right-4 w-10 h-10 bg-gradient-to-r from-red-400 to-red-500 text-white rounded-full hover:from-red-500 hover:to-red-600 flex items-center justify-center z-20 shadow-lg transform hover:scale-110 transition-all duration-200"
-                                    onClick={() => handleRemoveRoom(detail.id)}
-                                    title="Xóa phòng"
-                                  >
-                                    ×
-                                  </button>
-                                )}
+                              return (
+                                <div
+                                  key={index}
+                                  className="relative flex flex-col lg:flex-row gap-6 bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl overflow-hidden shadow-md border border-gray-200"
+                                >
+                                  {/* Remove Button */}
+                                  {booking.bookingStatus === "Draft" && (
+                                    <button
+                                      className="absolute top-4 right-4 w-10 h-10 bg-gradient-to-r from-red-400 to-red-500 text-white rounded-full hover:from-red-500 hover:to-red-600 flex items-center justify-center z-20 shadow-lg transform hover:scale-110 transition-all duration-200"
+                                      onClick={() =>
+                                        handleRemoveRoom(detail.id)
+                                      }
+                                      title="Xóa phòng"
+                                    >
+                                      ×
+                                    </button>
+                                  )}
 
-                                {/* Room Image - Made shorter */}
-                                <div className="lg:w-1/2 w-full">
-                                  <img
-                                    src={imageUrl}
-                                    alt="Room"
-                                    className="w-full h-40 lg:h-48 object-cover"
-                                  />
-                                </div>
+                                  {/* Room Image - Made shorter */}
+                                  <div className="lg:w-1/2 w-full">
+                                    <img
+                                      src={imageUrl}
+                                      alt="Room"
+                                      className="w-full h-40 lg:h-48 object-cover"
+                                    />
+                                  </div>
 
-                                {/* Room Info */}
-                                <div className="lg:w-1/2 w-full p-6 flex flex-col justify-center">
-                                  <div className="space-y-3 text-gray-700">
-                                    <div className="flex items-center space-x-3">
-                                      <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-semibold text-sm">
-                                        {detail.room?.roomNumber}
-                                      </span>
-                                      <span className="font-semibold text-lg">Phòng {detail.room?.roomNumber}</span>
-                                    </div>
-                                    <div className="grid grid-cols-2 gap-4">
-                                      <div>
-                                        <span className="text-sm text-gray-500">Kích thước</span>
-                                        <p className="font-semibold">{detail.room?.roomSize} m²</p>
+                                  {/* Room Info */}
+                                  <div className="lg:w-1/2 w-full p-6 flex flex-col justify-center">
+                                    <div className="space-y-3 text-gray-700">
+                                      <div className="flex items-center space-x-3">
+                                        <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-semibold text-sm">
+                                          {detail.room?.roomNumber}
+                                        </span>
+                                        <span className="font-semibold text-lg">
+                                          Phòng {detail.room?.roomNumber}
+                                        </span>
                                       </div>
-                                      <div>
-                                        <span className="text-sm text-gray-500">Số người</span>
-                                        <p className="font-semibold">{detail.numberOfGuests} người</p>
-                                      </div>
-                                      <div>
-                                        <span className="text-sm text-gray-500">Nhận phòng</span>
-                                        <p className="font-semibold">{new Date(detail.checkInDate).toLocaleDateString('vi-VN')}</p>
-                                      </div>
-                                      <div>
-                                        <span className="text-sm text-gray-500">Trả phòng</span>
-                                        <p className="font-semibold">{new Date(detail.checkOutDate).toLocaleDateString('vi-VN')}</p>
+                                      <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                          <span className="text-sm text-gray-500">
+                                            Kích thước
+                                          </span>
+                                          <p className="font-semibold">
+                                            {detail.room?.roomSize} m²
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <span className="text-sm text-gray-500">
+                                            Số người
+                                          </span>
+                                          <p className="font-semibold">
+                                            {detail.numberOfGuests} người
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <span className="text-sm text-gray-500">
+                                            Nhận phòng
+                                          </span>
+                                          <p className="font-semibold">
+                                            {new Date(
+                                              detail.checkInDate
+                                            ).toLocaleDateString("vi-VN")}
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <span className="text-sm text-gray-500">
+                                            Trả phòng
+                                          </span>
+                                          <p className="font-semibold">
+                                            {new Date(
+                                              detail.checkOutDate
+                                            ).toLocaleDateString("vi-VN")}
+                                          </p>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
-                              </div>
-                            );
-                          })
+                              );
+                            }
+                          )
                         ) : (
                           <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-200 text-yellow-700 p-6 rounded-2xl text-center font-semibold shadow-md">
                             <span className="text-2xl mb-2 block">🏨</span>
@@ -467,48 +586,63 @@ const MyOrder = () => {
                           </span>
                           Dịch vụ đi kèm
                         </h4>
-                        {booking.bookingService?.bookingServiceDetails?.length > 0 ? (
+                        {booking.bookingService?.bookingServiceDetails?.length >
+                        0 ? (
                           <div className="grid gap-3">
-                            {booking.bookingService.bookingServiceDetails.map((detail, index) => (
-                              <div
-                                key={index}
-                                className="flex items-center justify-between bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl px-6 py-4 border border-purple-100 shadow-sm"
-                              >
-                                <div className="flex items-center space-x-3">
-                                  <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                                    <span className="text-purple-600">⭐</span>
+                            {booking.bookingService.bookingServiceDetails.map(
+                              (detail, index) => (
+                                <div
+                                  key={index}
+                                  className="flex items-center justify-between bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl px-6 py-4 border border-purple-100 shadow-sm"
+                                >
+                                  <div className="flex items-center space-x-3">
+                                    <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                      <span className="text-purple-600">
+                                        ⭐
+                                      </span>
+                                    </div>
+                                    <span className="text-lg font-semibold text-gray-800">
+                                      {detail.service?.name || "Dịch vụ"}
+                                    </span>
                                   </div>
-                                  <span className="text-lg font-semibold text-gray-800">
-                                    {detail.service?.name || "Dịch vụ"}
-                                  </span>
-                                </div>
-                                <div className="flex items-center space-x-3">
-                                  {booking.bookingStatus === "Draft" ? (
-                                    <div className="flex items-center space-x-2">
-                                      <button
-                                        className="w-10 h-10 bg-gradient-to-r from-red-400 to-red-500 text-white rounded-full hover:from-red-500 hover:to-red-600 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-110"
-                                        onClick={() => handleChangeServiceQuantity(detail.id, -1)}
-                                      >
-                                        -
-                                      </button>
-                                      <span className="w-12 text-center font-bold text-lg bg-white rounded-lg py-2 shadow-sm">
+                                  <div className="flex items-center space-x-3">
+                                    {booking.bookingStatus === "Draft" ? (
+                                      <div className="flex items-center space-x-2">
+                                        <button
+                                          className="w-10 h-10 bg-gradient-to-r from-red-400 to-red-500 text-white rounded-full hover:from-red-500 hover:to-red-600 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-110"
+                                          onClick={() =>
+                                            handleChangeServiceQuantity(
+                                              detail.id,
+                                              -1
+                                            )
+                                          }
+                                        >
+                                          -
+                                        </button>
+                                        <span className="w-12 text-center font-bold text-lg bg-white rounded-lg py-2 shadow-sm">
+                                          {detail.quantity}
+                                        </span>
+                                        <button
+                                          className="w-10 h-10 bg-gradient-to-r from-green-400 to-green-500 text-white rounded-full hover:from-green-500 hover:to-green-600 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-110"
+                                          onClick={() =>
+                                            handleChangeServiceQuantity(
+                                              detail.id,
+                                              1
+                                            )
+                                          }
+                                        >
+                                          +
+                                        </button>
+                                      </div>
+                                    ) : (
+                                      <span className="font-bold text-lg bg-white rounded-lg px-4 py-2 shadow-sm">
                                         {detail.quantity}
                                       </span>
-                                      <button
-                                        className="w-10 h-10 bg-gradient-to-r from-green-400 to-green-500 text-white rounded-full hover:from-green-500 hover:to-green-600 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-110"
-                                        onClick={() => handleChangeServiceQuantity(detail.id, 1)}
-                                      >
-                                        +
-                                      </button>
-                                    </div>
-                                  ) : (
-                                    <span className="font-bold text-lg bg-white rounded-lg px-4 py-2 shadow-sm">
-                                      {detail.quantity}
-                                    </span>
-                                  )}
+                                    )}
+                                  </div>
                                 </div>
-                              </div>
-                            ))}
+                              )
+                            )}
                           </div>
                         ) : (
                           <div className="text-center py-6 text-gray-500 bg-gray-50 rounded-xl">
@@ -521,12 +655,14 @@ const MyOrder = () => {
                       {/* Total & Actions */}
                       <div className="relative z-10 border-t-2 border-gray-100 pt-6">
                         <div className="text-right mb-4">
-                          <p className="text-sm text-gray-500 mb-1">Tổng thanh toán</p>
+                          <p className="text-sm text-gray-500 mb-1">
+                            Tổng thanh toán
+                          </p>
                           <p className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                             {booking.totalPrice?.toLocaleString() || "0"}$
                           </p>
                         </div>
-                        
+
                         <div className="flex justify-end gap-3">
                           {booking.bookingStatus === "Draft" && (
                             <button

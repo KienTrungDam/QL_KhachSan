@@ -32,6 +32,9 @@ namespace QLKhachSan.Data
                 new CategoryRoom { Id = 3, Name = "Phòng Vip", Description = "Phòng đơn"},
                 new CategoryRoom { Id = 4, Name = "Phòng SupperVip", Description = "Phòng đơn"}
                 );
+            modelBuilder.Entity<Room>()
+        .HasIndex(r => r.RoomNumber)
+        .IsUnique();
             //modelBuilder.Entity<Resort>().HasData(
             //    new Resort { Id = 1, Name = "Resort 1", Address = "123", PhoneNumber = "123", Rate = 5 },
             //    new Resort { Id = 2, Name = "Resort 2", Address = "123", PhoneNumber = "123", Rate = 4 },
@@ -44,8 +47,8 @@ namespace QLKhachSan.Data
             //    new Room { Id = 3, CategoryRoomId = 2, Status = "Đã thuê", PriceDay = 100, PriceWeek = 500, Floor = 2, Description = "View: biển, núi, có cửa sổ ngắm biển" },
             //    new Room { Id = 4, CategoryRoomId = 3, Status = "Trống", PriceDay = 100, PriceWeek = 500, Floor = 9, Description = "View: biển, núi, có cửa sổ ngắm biển" }
             //    );
-                
-                
+
+
         }
     }
 }

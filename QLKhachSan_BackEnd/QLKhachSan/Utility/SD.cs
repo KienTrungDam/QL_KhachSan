@@ -1,4 +1,4 @@
-﻿namespace QLKhachSan.Utility
+﻿ namespace QLKhachSan.Utility
 { 
     public static class  SD
     {
