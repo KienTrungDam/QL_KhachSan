@@ -21,7 +21,8 @@ import PaymentCancel from "./components/home/my-order/PaymentCancell";
 import AvailableRooms from "./components/home/Booking/AvailableRooms";
 import Service from "./components/home/service/Service";
 import HomePage from "./components/home/HomePage";
-import News from "./components/home/new/new";
+import News from "./components/home/new/New";
+
 function App() {
   const [user, setUser] = useState(null);
   const userRole = localStorage.getItem("role");

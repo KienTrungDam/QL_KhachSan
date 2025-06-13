@@ -17,6 +17,38 @@
       "PackagePath": "staticwebassets\\images\\new\\new-23.png"
     },
     {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-24.png",
+      "PackagePath": "staticwebassets\\images\\new\\new-24.png"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-25.webp",
+      "PackagePath": "staticwebassets\\images\\new\\new-25.webp"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-26.webp",
+      "PackagePath": "staticwebassets\\images\\new\\new-26.webp"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-27.webp",
+      "PackagePath": "staticwebassets\\images\\new\\new-27.webp"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-28.webp",
+      "PackagePath": "staticwebassets\\images\\new\\new-28.webp"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-29.webp",
+      "PackagePath": "staticwebassets\\images\\new\\new-29.webp"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-30.webp",
+      "PackagePath": "staticwebassets\\images\\new\\new-30.webp"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-31.webp",
+      "PackagePath": "staticwebassets\\images\\new\\new-31.webp"
+    },
+    {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-6.jpg",
       "PackagePath": "staticwebassets\\images\\new\\new-6.jpg"
     },
@@ -259,6 +291,14 @@
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-23\\e7395302-76c9-478b-bf1a-4d3fb964d190.jpg",
       "PackagePath": "staticwebassets\\images\\rooms\\room-23\\e7395302-76c9-478b-bf1a-4d3fb964d190.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-26\\84dd0ae8-af80-4e00-8b47-8bddde6365c2.jpeg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-26\\84dd0ae8-af80-4e00-8b47-8bddde6365c2.jpeg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-26\\b2face70-92c6-4d8c-8a90-7697590d16e2.png",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-26\\b2face70-92c6-4d8c-8a90-7697590d16e2.png"
     },
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-5\\2f4b1f08-f595-411d-b1d7-1be7c92dbfbc.jpg",

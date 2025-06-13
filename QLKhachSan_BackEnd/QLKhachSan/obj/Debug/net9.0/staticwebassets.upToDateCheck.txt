@@ -2,6 +2,14 @@ wwwroot\images\new\new-10.jpg
 wwwroot\images\new\new-20.jpg
 wwwroot\images\new\new-22.jpg
 wwwroot\images\new\new-23.png
+wwwroot\images\new\new-24.png
+wwwroot\images\new\new-25.webp
+wwwroot\images\new\new-26.webp
+wwwroot\images\new\new-27.webp
+wwwroot\images\new\new-28.webp
+wwwroot\images\new\new-29.webp
+wwwroot\images\new\new-30.webp
+wwwroot\images\new\new-31.webp
 wwwroot\images\new\new-6.jpg
 wwwroot\images\new\new-7.jpg
 wwwroot\images\new\new-8.jpg
@@ -63,6 +71,8 @@ wwwroot\images\rooms\room-22\9e726c05-2ceb-40b3-b08e-e51addecffd8.jpg
 wwwroot\images\rooms\room-23\0b3ff515-821d-4ee5-b264-f4a1eeef5149.jpg
 wwwroot\images\rooms\room-23\b5b8b587-241c-437f-b15e-a69c967ae55d.jpg
 wwwroot\images\rooms\room-23\e7395302-76c9-478b-bf1a-4d3fb964d190.jpg
+wwwroot\images\rooms\room-26\84dd0ae8-af80-4e00-8b47-8bddde6365c2.jpeg
+wwwroot\images\rooms\room-26\b2face70-92c6-4d8c-8a90-7697590d16e2.png
 wwwroot\images\rooms\room-5\2f4b1f08-f595-411d-b1d7-1be7c92dbfbc.jpg
 wwwroot\images\rooms\room-5\424339c7-3139-4bf9-adf6-ebca90799547.jpg
 wwwroot\images\rooms\room-5\70ba6037-6fa6-4111-a3dd-34010c864952.jpg

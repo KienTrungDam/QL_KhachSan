@@ -1477,6 +1477,43 @@
   },
   {
     "ContainingType": "QLKhachSan.Controllers.RoomAPIController",
+    "Method": "CheckRoomNumberExists",
+    "RelativePath": "api/Room/CheckRoomNumberExists/{roomId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roomNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "roomId",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKhachSan.Controllers.RoomAPIController",
+    "Method": "HasFutureBookings",
+    "RelativePath": "api/Room/HasFutureBookings/{roomId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roomId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKhachSan.Controllers.RoomAPIController",
     "Method": "GetRoomBookedDates",
     "RelativePath": "api/Room/ListBookingDate/{roomId}",
     "HttpMethod": "GET",

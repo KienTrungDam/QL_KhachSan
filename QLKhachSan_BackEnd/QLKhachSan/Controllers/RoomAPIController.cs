@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using QLKhachSan.Models;
 using QLKhachSan.Models.DTO;
 using QLKhachSan.Repository.IRepository;
@@ -390,10 +391,34 @@ namespace QLKhachSan.Controllers
             _response.StatusCode = HttpStatusCode.OK;
             return Ok(_response);
         }
+        [HttpGet("CheckRoomNumberExists/{roomId}")]
+        public async Task<IActionResult> CheckRoomNumberExists(string roomNumber)
+        {
+            var exists = await _unitOfWork.Room.GetAsync(r => r.RoomNumber == roomNumber);
+            return Ok(exists); // true nếu đã tồn tại
+        }
+        [HttpGet("HasFutureBookings/{roomId}")]
+        public async Task<IActionResult> HasFutureBookings(int roomId)
+        {
+            var bookings = await _unitOfWork.Booking.GetAllAsync(u => u.BookingRoomId != null ,includeProperties: "BookingRoom,Person");
 
+            foreach (var booking in bookings)
+            {
+                if (booking.BookingRoom != null)
+                {
+                    booking.BookingRoom.BookingRoomDetails = await _unitOfWork.BookingRoomDetail
+                        .GetAllAsync(d => d.BookingRoomId == booking.BookingRoom.Id, includeProperties: "Room");
+                }
+            }
 
+            // Kiểm tra có đơn nào chứa phòng này và ngày nhận phòng còn ở tương lai không
+            var hasBooking = bookings.Any(booking =>
+                booking.BookingRoom.BookingRoomDetails.Any(detail => detail.CheckInDate > DateTime.Now) &&
+                booking.BookingRoom?.BookingRoomDetails.Any(detail => detail.RoomId == roomId) == true
+            );
 
-
+            return Ok(hasBooking);
+        }
 
     }
 

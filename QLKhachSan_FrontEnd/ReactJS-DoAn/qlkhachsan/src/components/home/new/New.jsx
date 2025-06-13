@@ -7,6 +7,7 @@ const News = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [featuredArticle, setFeaturedArticle] = useState(null);
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -39,9 +40,16 @@ const News = () => {
     fetchArticles();
   }, []);
 
-  const filteredArticles = articles.filter((article) =>
+  const sortedArticles = [...articles].sort((a, b) => b.date - a.date);
+  const filteredArticles = sortedArticles.filter((article) =>
     article.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  useEffect(() => {
+    if (!loading && filteredArticles.length > 0 && !featuredArticle) {
+      setFeaturedArticle(filteredArticles[0]);
+    }
+  }, [filteredArticles, loading]);
 
   const NewsCard = React.memo(({ article, isFeature }) => (
     <div
@@ -49,7 +57,6 @@ const News = () => {
         isFeature ? "" : "flex h-32 items-stretch"
       }`}
     >
-      {/* Hình ảnh */}
       <div
         className={`${
           isFeature ? "relative h-96 w-full" : "w-32 h-full flex-shrink-0"
@@ -63,7 +70,6 @@ const News = () => {
         />
       </div>
 
-      {/* Nội dung */}
       <div
         className={`${
           isFeature ? "p-6" : "p-4"
@@ -76,13 +82,15 @@ const News = () => {
         >
           {article.title}
         </h2>
-        <p
-          className={`text-gray-600 text-sm ${
-            isFeature ? "line-clamp-3" : "line-clamp-2 h-10" // tùy chỉnh h-10/h-12 theo font-size
-          }`}
-        >
-          {article.content}
-        </p>
+
+        {isFeature && (
+          <div
+            className="text-gray-600 text-base prose max-w-none"
+            dangerouslySetInnerHTML={{
+              __html: article.content.replace(/\n/g, "<br />"),
+            }}
+          />
+        )}
 
         {isFeature ? (
           <div className="flex items-center justify-end text-sm text-gray-500 mt-auto space-x-4">
@@ -93,9 +101,7 @@ const News = () => {
           <div className="flex items-center justify-between text-sm text-gray-500 mt-auto">
             <div className="flex items-center space-x-4">
               <span>{format(article.date, "dd/MM/yyyy")}</span>
-              <div className="flex items-center">
-                <span>Tác giả: {article.author}</span>
-              </div>
+              <span>Tác giả: {article.author}</span>
             </div>
           </div>
         )}
@@ -133,7 +139,10 @@ const News = () => {
                 placeholder="Tìm kiếm bài viết..."
                 className="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900 w-full sm:w-64"
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  setFeaturedArticle(null); // Reset lại tin chính khi tìm kiếm mới
+                }}
               />
             </div>
           </div>
@@ -145,18 +154,24 @@ const News = () => {
               ))}
             </div>
           ) : filteredArticles.length > 0 ? (
-            <div className="flex flex-col lg:flex-row gap-8">
-              <div className="lg:w-[70%]">
-                <NewsCard article={filteredArticles[0]} isFeature={true} />
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                {featuredArticle && (
+                  <NewsCard article={featuredArticle} isFeature={true} />
+                )}
               </div>
-              <div className="lg:w-[30%] space-y-4">
-                {filteredArticles.slice(1, 5).map((article) => (
-                  <NewsCard
-                    key={article.id}
-                    article={article}
-                    isFeature={false}
-                  />
-                ))}
+
+              <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2">
+                <h2 className="bg-gray-300 font-bold pl-4 text-lg mb-4 text-gray-800 sticky top-0 z-10 py-2 border-b border-gray-400">
+                  Tin mới nhất
+                </h2>
+                {filteredArticles
+                  .filter((a) => a.id !== featuredArticle?.id)
+                  .map((article) => (
+                    <div key={article.id} onClick={() => setFeaturedArticle(article)}>
+                      <NewsCard article={article} isFeature={false} />
+                    </div>
+                  ))}
               </div>
             </div>
           ) : (

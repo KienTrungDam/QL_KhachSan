@@ -33,8 +33,8 @@ namespace QLKhachSan.Data
                 new CategoryRoom { Id = 4, Name = "Phòng SupperVip", Description = "Phòng đơn"}
                 );
             modelBuilder.Entity<Room>()
-        .HasIndex(r => r.RoomNumber)
-        .IsUnique();
+                .HasIndex(r => r.RoomNumber)
+                .IsUnique();
             //modelBuilder.Entity<Resort>().HasData(
             //    new Resort { Id = 1, Name = "Resort 1", Address = "123", PhoneNumber = "123", Rate = 5 },
             //    new Resort { Id = 2, Name = "Resort 2", Address = "123", PhoneNumber = "123", Rate = 4 },

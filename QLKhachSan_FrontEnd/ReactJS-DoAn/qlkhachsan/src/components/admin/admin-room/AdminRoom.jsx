@@ -46,12 +46,26 @@ const AdminRoom = () => {
     setTimeout(() => setNotifyProps(null), 3000);
   };
 
-  const validateRoom = () => {
+  const validateRoom = async () => {
     const target = actionType === "add" ? newRoom : editRoom;
     const newErrors = {};
 
-    if (!target.roomNumber)
+    if (!target.roomNumber) {
       newErrors.roomNumber = "Số phòng không được để trống";
+    } else {
+      try {
+        const res = await axios.get(
+          `https://localhost:5001/api/Room/CheckRoomNumberExists/${target.roomNumber}`
+        );
+        if (res.data && actionType === "add") {
+          newErrors.roomNumber = "Số phòng đã tồn tại";
+        }
+        // Nếu actionType là update, bạn có thể thêm điều kiện nếu trùng nhưng khác id
+      } catch (error) {
+        console.error("Lỗi khi kiểm tra roomNumber:", error);
+        newErrors.roomNumber = "Không thể kiểm tra số phòng";
+      }
+    }
     if (!target.status) newErrors.status = "Trạng thái là bắt buộc";
     if (!target.categoryRoomId)
       newErrors.categoryRoomId = "Danh mục phòng là bắt buộc";
@@ -61,7 +75,7 @@ const AdminRoom = () => {
       newErrors.roomSize = "Diện tích không hợp lệ";
     if (!target.priceDay || target.priceDay <= 0)
       newErrors.priceDay = "Giá ngày không hợp lệ";
-    
+
     if (!target.priceWeek || target.priceWeek <= 0)
       newErrors.priceWeek = "Giá tuần không hợp lệ";
     if (!target.description)
@@ -94,7 +108,7 @@ const AdminRoom = () => {
       await handleDeleteRoom();
       return;
     }
-    const isValid = validateRoom();
+    const isValid = await validateRoom();
     if (!isValid) return;
 
     if (actionType === "add") {
@@ -271,9 +285,28 @@ const AdminRoom = () => {
   };
   const handleDeleteRoom = async () => {
     try {
+      // Kiểm tra phòng có đơn đặt trong tương lai không
+      const checkRes = await axios.get(
+        `https://localhost:5001/api/Room/HasFutureBookings/${editRoom.id}`,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      );
+
+      if (checkRes.data === true) {
+        showNotification(
+          "error",
+          "Không thể xoá phòng",
+          "Phòng này hiện đã có đơn đặt trong thời gian tiếp theo không thể xóa."
+        );
+        return;
+      }
+
+      // Nếu không có đơn, tiến hành xoá
       await axios.delete(`https://localhost:5001/api/Room/${editRoom.id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
+
       setShowForm(false);
       fetchRooms();
       showNotification("success", "Xoá phòng thành công!");
