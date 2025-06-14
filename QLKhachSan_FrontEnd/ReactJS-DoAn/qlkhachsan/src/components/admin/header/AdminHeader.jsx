@@ -24,7 +24,7 @@ const UserDropdown = ({ user, onLogout }) => {
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [user, setUser] = useState({ name: "", fullName: "", lastName: "" });
+  const [user, setUser] = useState({ name: "", fullName: "", lastName: ""});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Header = () => {
       return;
     }
 
-    setUser({ name, fullName, lastName });
+    setUser({ name, fullName, lastName});
   }, [navigate]);
 
   const handleLogout = useCallback(() => {
@@ -58,17 +58,18 @@ const Header = () => {
       <div className="max-w-8xl mx-auto px-2 h-[72px] flex items-center justify-between relative">
         {/* Tên khách sạn ở giữa, màu vàng */}
         <Link
-          to="/admin/dashboard"
-          className="absolute left-1/2 transform -translate-x-1/2 text-xl font-bold text-white hover:text-white"
-        >
-          Hệ thống quản lý khách sạn
-        </Link>
+  to="/admin/dashboard"
+  className="absolute left-1/2 transform -translate-x-1/2 text-xl font-bold text-white hover:text-white"
+>
+  Hệ thống quản lý khách sạn
+</Link>
+
 
         {/* Bên phải: Trang chủ + Avatar */}
         <div className="flex items-center gap-4 ml-auto">
           <button
             onClick={goHome}
-            className="bg-gray-700 text-white px-4 py-2 rounded-full text-sm hover:bg-gray-600"
+            className="bg-gray-700 text-white px-4 py-2 rounded-full text-sm hover:bg-gray-600 border-none hover:border-none focus:outline-none"
             title="Về trang chủ"
           >
             Trang chủ
@@ -77,9 +78,9 @@ const Header = () => {
           <div className="relative">
             <button
               onClick={toggleDropdown}
-              className="flex items-center space-x-3 px-3 py-2 rounded-full hover:bg-slate-800 transition"
+              className="flex items-center space-x-3 px-3 py-2 rounded-full hover:bg-slate-800 transition border-none hover:border-none focus:outline-none"
             >
-              <div className="h-8 w-8 rounded-full bg-yellow-500 flex items-center justify-center text-white font-bold uppercase border-2 border-yellow-400">
+              <div className="border-none hover:border-none focus:outline-noneh-8 w-8 rounded-full bg-yellow-500 flex items-center justify-center text-white font-bold uppercase border-2 border-yellow-400">
                 {user.lastName.charAt(0)}
               </div>
 

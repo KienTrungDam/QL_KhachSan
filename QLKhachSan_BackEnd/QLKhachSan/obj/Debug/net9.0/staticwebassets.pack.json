@@ -1,26 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-10.jpg",
-      "PackagePath": "staticwebassets\\images\\new\\new-10.jpg"
-    },
-    {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-20.jpg",
-      "PackagePath": "staticwebassets\\images\\new\\new-20.jpg"
-    },
-    {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-22.jpg",
-      "PackagePath": "staticwebassets\\images\\new\\new-22.jpg"
-    },
-    {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-23.png",
-      "PackagePath": "staticwebassets\\images\\new\\new-23.png"
-    },
-    {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-24.png",
-      "PackagePath": "staticwebassets\\images\\new\\new-24.png"
-    },
-    {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-25.webp",
       "PackagePath": "staticwebassets\\images\\new\\new-25.webp"
     },
@@ -33,10 +13,6 @@
       "PackagePath": "staticwebassets\\images\\new\\new-27.webp"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-28.webp",
-      "PackagePath": "staticwebassets\\images\\new\\new-28.webp"
-    },
-    {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-29.webp",
       "PackagePath": "staticwebassets\\images\\new\\new-29.webp"
     },
@@ -47,22 +23,6 @@
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-31.webp",
       "PackagePath": "staticwebassets\\images\\new\\new-31.webp"
-    },
-    {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-6.jpg",
-      "PackagePath": "staticwebassets\\images\\new\\new-6.jpg"
-    },
-    {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-7.jpg",
-      "PackagePath": "staticwebassets\\images\\new\\new-7.jpg"
-    },
-    {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-8.jpg",
-      "PackagePath": "staticwebassets\\images\\new\\new-8.jpg"
-    },
-    {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\new\\new-9.jpg",
-      "PackagePath": "staticwebassets\\images\\new\\new-9.jpg"
     },
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-10\\43a6cd0a-3cd7-4402-a7dd-83efae74343f.jpg",

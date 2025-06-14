@@ -27,7 +27,7 @@ namespace QLKhachSan.Controllers
             _response = new APIResponse();
             _webHostEnvironment = webHostEnvironment;
         }
-
+         
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<APIResponse>> GetNews()

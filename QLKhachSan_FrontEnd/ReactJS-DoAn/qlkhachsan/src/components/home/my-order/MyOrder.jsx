@@ -30,7 +30,6 @@ const MyOrder = () => {
   };
 
   const fetchBookings = async () => {
-
     setLoading(true);
     try {
       const response = await axios.get("https://localhost:5001/api/Booking", {
@@ -458,7 +457,10 @@ const MyOrder = () => {
                             Đơn đặt #{booking.id}
                           </h3>
                           <p className="text-gray-500">
-                            Ngày tạo: {new Date().toLocaleDateString()}
+                            Ngày tạo:{" "}
+                            {new Date(booking.bookingDate).toLocaleDateString(
+                              "vi-VN"
+                            )}
                           </p>
                         </div>
 

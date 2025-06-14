@@ -61,7 +61,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
       initial={{ width: isExpanded ? 240 : 80 }}
       animate={{ width: isExpanded ? 240 : 80 }}
       transition={{ duration: 0.3 }}
-      className="h-screen bg-slate-900 text-white fixed left-0 top-0 z-50 shadow-lg"
+      className="h-screen bg-slate-900 text-white fixed left-0 top-0 z-50 shadow-lg "
     >
       <div className="flex flex-col h-full">
         {/* Header */}
@@ -193,7 +193,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
         <div className="p-4 border-t border-slate-700 mt-auto">
           <button
             onClick={toggleSidebar}
-            className="p-2 w-full flex justify-center rounded-lg hover:bg-slate-700"
+            className="p-2 w-full flex justify-center rounded-lg hover:bg-slate-700 border-none hover:border-none focus:outline-none focus:ring-0"
           >
             <FiChevronLeft
               className={`w-5 h-5 transition-transform ${

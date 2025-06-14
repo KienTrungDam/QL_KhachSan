@@ -429,14 +429,14 @@ const AdminRoom = () => {
                 <p className="text-sm">Sức chứa: {room.maxOccupancy} người</p>
                 <div className="flex justify-end gap-2 mt-4">
                   <button
-                    className="text-yellow-500 hover:text-yellow-600"
+                    className="text-yellow-500 hover:text-yellow-600 border-none hover:border-none focus:outline-none focus:ring-0"
                     onClick={() => openModal("update", room)}
                     disabled={isEmployee}
                   >
                     <FaEdit />
                   </button>
                   <button
-                    className="text-red-500 hover:text-red-600"
+                    className="text-red-500 hover:text-red-600 border-none hover:border-none focus:outline-none focus:ring-0"
                     onClick={() => openModal("delete", room)}
                     disabled={isEmployee}
                   >
