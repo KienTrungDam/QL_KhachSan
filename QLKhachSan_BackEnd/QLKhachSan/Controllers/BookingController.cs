@@ -7,11 +7,13 @@ using QLKhachSan.Utility;
 using System.Net;
 using AutoMapper;
 using QLKhachSan.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace QLKhachSan.Controllers
 {
     [Route("api/Booking")]
     [ApiController]
+    [Authorize]
     public class BookingController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -165,6 +167,7 @@ namespace QLKhachSan.Controllers
             };
         }
         [HttpPut("UpdateStatus")]
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         public async Task<ActionResult<APIResponse>> BookingUpdateStatus(int bookingId, string nextStatus)
         {
             try

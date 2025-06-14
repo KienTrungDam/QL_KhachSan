@@ -11,7 +11,7 @@ const AdminUserRoles = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
   const [roleFilter, setRoleFilter] = useState("All");
-  const storedToken = localStorage.getItem("adminToken");
+  const storedToken = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchUsers = async () => {

@@ -11,6 +11,8 @@ using QLKhachSan.Repository.IRepository;
 using QLKhachSan.Repository;
 using QLKhachSan.DbInitializer;
 using System.Text.Json.Serialization;
+using QLKhachSan.IRepository.Repository;
+using QLKhachSan.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddIdentity<Person, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
@@ -21,6 +23,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(option => {
 
 // Add services to the container.
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IEmailSender, EmailSender>();
 builder.Services.AddScoped<DbInitializer>();
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 builder.Services.AddCors();

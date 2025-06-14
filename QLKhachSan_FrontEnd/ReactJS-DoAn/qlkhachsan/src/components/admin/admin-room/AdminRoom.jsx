@@ -20,6 +20,8 @@ const AdminRoom = () => {
     mainImage: null,
     images: [],
   });
+  const [deleteError, setDeleteError] = useState("");
+
   const [errors, setErrors] = React.useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
@@ -28,7 +30,9 @@ const AdminRoom = () => {
   const [showForm, setShowForm] = useState(false);
   const [actionType, setActionType] = useState(null);
   const [notifyProps, setNotifyProps] = useState(null);
-  const storedToken = localStorage.getItem("adminToken");
+  const storedToken = localStorage.getItem("token");
+  const role = localStorage.getItem("role"); // Thêm dòng này
+  const isEmployee = role === "Employee";
   const [existingRoomImages, setExistingRoomImages] = useState({
     mainImage: null,
     images: [],
@@ -120,6 +124,7 @@ const AdminRoom = () => {
   const handleClose = () => {
     setShowForm(false);
     setEditRoom(null);
+    setDeleteError(null);
     setNewRoom({
       categoryRoomId: "",
       status: "",
@@ -292,15 +297,21 @@ const AdminRoom = () => {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       );
-
       if (checkRes.data === true) {
-        showNotification(
-          "error",
-          "Không thể xoá phòng",
+        setDeleteError(
           "Phòng này hiện đã có đơn đặt trong thời gian tiếp theo không thể xóa."
         );
         return;
       }
+
+      // if (checkRes.data === true) {
+      //   showNotification(
+      //     "error",
+      //     "Không thể xoá phòng",
+      //     "Phòng này hiện đã có đơn đặt trong thời gian tiếp theo không thể xóa."
+      //   );
+      //   return;
+      // }
 
       // Nếu không có đơn, tiến hành xoá
       await axios.delete(`https://localhost:5001/api/Room/${editRoom.id}`, {
@@ -353,6 +364,7 @@ const AdminRoom = () => {
           <button
             className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
             onClick={() => openModal("add")}
+            disabled={isEmployee}
           >
             <FaPlus className="inline mr-2" /> Thêm phòng
           </button>
@@ -419,12 +431,14 @@ const AdminRoom = () => {
                   <button
                     className="text-yellow-500 hover:text-yellow-600"
                     onClick={() => openModal("update", room)}
+                    disabled={isEmployee}
                   >
                     <FaEdit />
                   </button>
                   <button
                     className="text-red-500 hover:text-red-600"
                     onClick={() => openModal("delete", room)}
+                    disabled={isEmployee}
                   >
                     <FaTrash />
                   </button>
@@ -445,6 +459,7 @@ const AdminRoom = () => {
           categories={categories}
           onDeleteImage={handleDeleteImage}
           errors={errors}
+          deleteError={deleteError}
         />
       </main>
     </div>

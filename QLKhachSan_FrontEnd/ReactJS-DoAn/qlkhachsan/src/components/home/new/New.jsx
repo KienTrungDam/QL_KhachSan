@@ -51,6 +51,9 @@ const News = () => {
     }
   }, [filteredArticles, loading]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   const NewsCard = React.memo(({ article, isFeature }) => (
     <div
       className={`group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] cursor-pointer ${
@@ -168,7 +171,10 @@ const News = () => {
                 {filteredArticles
                   .filter((a) => a.id !== featuredArticle?.id)
                   .map((article) => (
-                    <div key={article.id} onClick={() => setFeaturedArticle(article)}>
+                    <div
+                      key={article.id}
+                      onClick={() => setFeaturedArticle(article)}
+                    >
                       <NewsCard article={article} isFeature={false} />
                     </div>
                   ))}

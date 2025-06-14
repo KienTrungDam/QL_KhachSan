@@ -24,7 +24,7 @@ const UserDropdown = ({ user, onLogout }) => {
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [user, setUser] = useState({ name: "", fullName: "", lastName: ""});
+  const [user, setUser] = useState({ name: "", fullName: "", lastName: "" });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Header = () => {
       return;
     }
 
-    setUser({ name, fullName, lastName});
+    setUser({ name, fullName, lastName });
   }, [navigate]);
 
   const handleLogout = useCallback(() => {
@@ -59,7 +59,7 @@ const Header = () => {
         {/* Tên khách sạn ở giữa, màu vàng */}
         <Link
           to="/admin/dashboard"
-          className="absolute left-1/2 transform -translate-x-1/2 text-xl font-bold text-yellow-400"
+          className="absolute left-1/2 transform -translate-x-1/2 text-xl font-bold text-white hover:text-white"
         >
           Hệ thống quản lý khách sạn
         </Link>

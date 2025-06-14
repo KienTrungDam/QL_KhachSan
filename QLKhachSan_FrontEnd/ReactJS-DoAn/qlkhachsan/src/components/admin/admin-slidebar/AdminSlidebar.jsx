@@ -15,7 +15,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const Sidebar = ({ isExpanded, setIsExpanded }) => {
   const [activeItem, setActiveItem] = useState("");
   const [openSubMenu, setOpenSubMenu] = useState(null);
-
+  const role = localStorage.getItem("role");
   const toggleSidebar = () => {
     setIsExpanded(!isExpanded);
   };
@@ -38,7 +38,9 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
       children: [
         { title: "Khách hàng", to: "/admin/dashboard/customer" },
         { title: "Nhân viên", to: "/admin/dashboard/employee" },
-        { title: "Phân quyền", to: "/admin/dashboard/role" },
+        ...(role === "Admin"
+          ? [{ title: "Phân quyền", to: "/admin/dashboard/role" }]
+          : []),
       ],
     },
     {
@@ -51,7 +53,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
         { title: "Thanh toán", to: "/admin/dashboard/payment" },
       ],
     },
-    { title: "Tin tức", to: "/admin/dashboard/new", icon: FiFileText},
+    { title: "Tin tức", to: "/admin/dashboard/new", icon: FiFileText },
   ];
 
   return (
@@ -71,7 +73,14 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
                 alt="Logo"
                 className="w-8 h-8 rounded object-cover"
               />
-              <span className="font-bold text-lg">Admin Menu</span>
+              <Link
+                to="/admin/dashboard"
+                className="font-bold text-lg text-white hover:text-white"
+              >
+                Admin Menu
+              </Link>
+
+              {/* <span className="font-bold text-lg">Admin Menu</span> */}
             </div>
           ) : (
             <div className="inline-flex border-b border-slate-700 pb-2">
@@ -156,7 +165,9 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
                         ? "bg-emerald-500 text-white cursor-default"
                         : "text-slate-300 hover:bg-slate-700 hover:text-white"
                     }`}
-                    style={activeItem === item.title ? { pointerEvents: "auto" } : {}}
+                    style={
+                      activeItem === item.title ? { pointerEvents: "auto" } : {}
+                    }
                   >
                     <item.icon className="w-5 h-5" />
                     <AnimatePresence>

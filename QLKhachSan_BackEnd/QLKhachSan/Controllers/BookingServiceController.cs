@@ -12,6 +12,7 @@ namespace QLKhachSan.Controllers
 {
     [Route("api/BookingService")]
     [ApiController]
+    [Authorize]
     public class BookingServiceController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;

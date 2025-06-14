@@ -338,7 +338,7 @@ const AdminBookingUpdateStatus = () => {
                 className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-2 rounded-md transition w-48 border-none hover:border-none"
                 onClick={() => updateBookingStatus("Ongoing")}
               >
-                Đang ở
+                Đang diễn ra
               </button>
             </div>
           )}

@@ -6,6 +6,8 @@ import axios from "axios";
 const AuthForms = () => {
   const [activeTab, setActiveTab] = useState("login");
   const location = useLocation();
+  const [forgotEmail, setForgotEmail] = useState("");
+
   const [loginData, setLoginData] = useState({ username: "", password: "" });
   const [signupData, setSignupData] = useState({
     userName: "",
@@ -45,7 +47,7 @@ const AuthForms = () => {
 
       localStorage.setItem("token", response.data.result.token);
       localStorage.setItem("userName", response.data.result.user.userName);
-      localStorage.setItem("userID", response.data.result.user.id);
+      localStorage.setItem("userId", response.data.result.user.id);
       localStorage.setItem("role", response.data.result.user.role);
       localStorage.setItem(
         "firstMidName",
@@ -217,6 +219,15 @@ const AuthForms = () => {
             >
               Login
             </button>
+            <div className="text-right">
+              <button
+                type="button"
+                className="text-sm text-yellow-500 hover:underline"
+                onClick={() => navigate("/forgot-password")}
+              >
+                Quên mật khẩu?
+              </button>
+            </div>
           </form>
         )}
 
@@ -358,6 +369,67 @@ const AuthForms = () => {
             >
               Đăng ký
             </button>
+          </form>
+        )}
+        {activeTab === "forgot" && (
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+              if (!forgotEmail) {
+                return showNotification("error", "Vui lòng nhập email");
+              }
+
+              try {
+                await axios.post(
+                  "https://localhost:5001/api/Auth/forgot-password",
+                  {
+                    email: forgotEmail,
+                  }
+                );
+
+                showNotification(
+                  "success",
+                  "Gửi email thành công",
+                  "Vui lòng kiểm tra email để đặt lại mật khẩu"
+                );
+                setActiveTab("login");
+              } catch (error) {
+                showNotification(
+                  "error",
+                  "Lỗi",
+                  "Không thể gửi yêu cầu. Vui lòng kiểm tra email"
+                );
+              }
+            }}
+            className="space-y-4"
+          >
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Nhập email đã đăng ký
+              </label>
+              <input
+                type="email"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                placeholder="Email của bạn"
+                value={forgotEmail}
+                onChange={(e) => setForgotEmail(e.target.value)}
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-yellow-500 text-white py-2 rounded-md hover:bg-yellow-600 transition-colors"
+            >
+              Gửi yêu cầu
+            </button>
+            <div className="text-center mt-4">
+              <button
+                type="button"
+                onClick={() => setActiveTab("login")}
+                className="text-sm text-gray-500 hover:underline"
+              >
+                Quay lại đăng nhập
+              </button>
+            </div>
           </form>
         )}
 

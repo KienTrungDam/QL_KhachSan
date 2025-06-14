@@ -133,7 +133,8 @@ function Header() {
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
 
-            {userRole === "Admin" && (
+            {(userRole === "Admin" || userRole === "Employee") && (
+
               <Link
                 to="/admin/dashboard/"
                 className="relative px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-full hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"

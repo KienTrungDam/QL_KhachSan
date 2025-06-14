@@ -11,6 +11,7 @@ using System.Net;
 namespace QLKhachSan.Controllers
 {
     [Route("api/BookingRoom")]
+    [Authorize]
     [ApiController]
     public class BookingRoomController : ControllerBase
     {

@@ -22,6 +22,8 @@ import AvailableRooms from "./components/home/Booking/AvailableRooms";
 import Service from "./components/home/service/Service";
 import HomePage from "./components/home/HomePage";
 import News from "./components/home/new/New";
+import ForgotPasswordForm from "./components/home/auth/ForgotPasswordForm";
+import ResetPasswordForm from "./components/home/auth/ResetPasswordForm";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -40,6 +42,8 @@ function App() {
               </>
             }
           />
+          <Route path="/forgot-password" element={<ForgotPasswordForm />} />
+          <Route path="/reset-password" element={<ResetPasswordForm />} />
           <Route
             path="/"
             element={

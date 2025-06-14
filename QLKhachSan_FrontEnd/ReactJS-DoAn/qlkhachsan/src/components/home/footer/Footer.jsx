@@ -57,9 +57,9 @@ const Footer = () => {
                         <ul className="space-y-2">
                             {[
                                 { to: "/", label: "Trang chủ", icon: "fas fa-home" },
-                                { to: "/about", label: "Giới thiệu", icon: "fas fa-info-circle" },
-                                { to: "/menu", label: "Dịch vụ", icon: "fas fa-concierge-bell" },
-                                { to: "/booking", label: "Đặt phòng", icon: "fas fa-bed" },
+                                { to: "/?scrollTo=about", label: "Giới thiệu", icon: "fas fa-info-circle" },
+                                { to: "/?scrollTo=room", label: "Phòng", icon: "fas fa-concierge-bell" },
+                                { to: "/?scrollTo=service", label: "Dịch vụ", icon: "fas fa-concierge-bell" },
                                 { to: "/news", label: "Tin tức & Sự kiện", icon: "fas fa-newspaper" }
                             ].map((link, index) => (
                                 <li key={index} className="group">

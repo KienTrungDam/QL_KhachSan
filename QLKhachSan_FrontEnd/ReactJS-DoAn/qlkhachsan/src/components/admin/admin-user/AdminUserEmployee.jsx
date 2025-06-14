@@ -22,7 +22,7 @@ const AdminUserEmployee = () => {
   const [notifyProps, setNotifyProps] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-  const storedToken = localStorage.getItem("adminToken");
+  const storedToken = localStorage.getItem("token");
   const validateRoom = () => {
     const target = actionType === "add" ? newUser : editUser;
     const newErrors = {};

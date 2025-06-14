@@ -69,6 +69,7 @@ namespace QLKhachSan.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         public async Task<ActionResult<APIResponse>> CreateNew([FromForm] NewCreateDTO newCreateDTO)
         {
             if (newCreateDTO == null)
@@ -113,6 +114,7 @@ namespace QLKhachSan.Controllers
 
         [HttpPut("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<APIResponse>> UpdateNew(int id, [FromForm] NewUpdateDTO newUpdateDTO)
         {
@@ -176,7 +178,7 @@ namespace QLKhachSan.Controllers
 
 
         [HttpDelete("{id:int}")]
-        [Authorize(Roles = SD.Role_Admin)]
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<APIResponse>> DeleteNew(int id)
@@ -190,11 +192,24 @@ namespace QLKhachSan.Controllers
                 return NotFound(_response);
             }
 
+            // Xóa file ảnh nếu tồn tại
+            if (!string.IsNullOrEmpty(existingNew.ImageUrl))
+            {
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                string fullImagePath = Path.Combine(wwwRootPath, existingNew.ImageUrl.Replace("/", Path.DirectorySeparatorChar.ToString()));
+
+                if (System.IO.File.Exists(fullImagePath))
+                {
+                    System.IO.File.Delete(fullImagePath);
+                }
+            }
+
             await _unitOfWork.New.RemoveAsync(existingNew);
             await _unitOfWork.SaveAsync();
 
             _response.StatusCode = HttpStatusCode.NoContent;
             return Ok(_response);
         }
+
     }
 }

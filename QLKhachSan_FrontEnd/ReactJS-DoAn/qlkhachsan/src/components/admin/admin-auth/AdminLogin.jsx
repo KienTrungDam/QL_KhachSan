@@ -20,15 +20,15 @@ const AdminLogin = () => {
             const response = await axios.post('https://localhost:5001/api/Auth/login', { ...loginData, role: 'eb13f950-b452-4b34-b47d-49aff2d16790' });
 
             // Store JWT token and user's name in localStorage
-            localStorage.setItem('adminToken', response.data.result.token);
+            localStorage.setItem('token', response.data.result.token);
             console.log(response.data.result)
-            localStorage.setItem('adminLastName', response.data.result.user.lastName);
-            localStorage.setItem('adminFirstMidNameName', response.data.result.user.firstMidName);
-            localStorage.setItem('adminUserName', response.data.result.user.userName);
-            localStorage.setItem('adminAddress', response.data.result.user.address);
-            localStorage.setItem('adminCCCD', response.data.result.user.cccd);
-            localStorage.setItem('adminUserID', response.data.result.user.id);
-            localStorage.setItem('adminRole', response.data.result.user.role);
+            localStorage.setItem('lastName', response.data.result.user.lastName);
+            localStorage.setItem('firstMidNameName', response.data.result.user.firstMidName);
+            localStorage.setItem('userName', response.data.result.user.userName);
+            localStorage.setItem('address', response.data.result.user.address);
+            localStorage.setItem('cccd', response.data.result.user.cccd);
+            localStorage.setItem('userID', response.data.result.user.id);
+            localStorage.setItem('role', response.data.result.user.role);
             // Redirect to homepage after successful login
             navigate('/admin/dashboard');
         } catch (error) {

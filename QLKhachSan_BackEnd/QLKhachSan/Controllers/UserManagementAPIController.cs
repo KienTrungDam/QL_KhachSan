@@ -13,6 +13,7 @@ namespace QLKhachSan.Controllers
 {
     [Route("api/UserManagement")]
     [ApiController]
+    [Authorize]
     public class UserManagementAPIController : ControllerBase
     {
         protected APIResponse _response;
@@ -37,9 +38,15 @@ namespace QLKhachSan.Controllers
         public async Task<ActionResult<APIResponse>> GetUsers()
         {
             IEnumerable<Person> users = await _userManager.Users.ToListAsync();
-            foreach (var user in users)
+            var user = await _userManager.GetUserAsync(User);
+            bool isStaff = await _userManager.IsInRoleAsync(user, SD.Role_Employee);
+            foreach (var item in users)
             {
-                user.Role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
+                item.Role = (await _userManager.GetRolesAsync(item)).FirstOrDefault();
+            }
+            if (isStaff)
+            {
+                users = users.Where(u => u.Role == SD.Role_Employee || u.Role == SD.Role_Customer);
             }
             _response.Result = _mapper.Map<List<PersonDTO>>(users);
             _response.StatusCode = HttpStatusCode.OK;
@@ -177,7 +184,7 @@ namespace QLKhachSan.Controllers
             }
         }
         [HttpPut("{id}", Name = "UpdateRoleToUser")]
-        //[Authorize(Roles = SD.Role_Admin)]
+        [Authorize(Roles = SD.Role_Admin)]
         public async Task<ActionResult<APIResponse>> UpdateRoleToUser(string id, string role)
         {
             try
@@ -243,6 +250,7 @@ namespace QLKhachSan.Controllers
             return Ok(_response);
         }
         [HttpPut("UpdateUser/{id}", Name = "UpdateUser")]
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         public async Task<ActionResult<APIResponse>> UpdateUser(string id, [FromBody] PersonUpdateDTO personUpdateDTO)
         {
             try

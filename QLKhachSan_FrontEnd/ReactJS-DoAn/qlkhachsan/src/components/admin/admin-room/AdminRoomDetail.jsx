@@ -10,7 +10,7 @@ const AdminRoomDetail = () => {
   const navigate = useNavigate();
   const [room, setRoom] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const storedToken = localStorage.getItem("adminToken");
+  const storedToken = localStorage.getItem("token");
   const [bookedDates, setBookedDates] = useState([]);
   const [currentMonth, setCurrentMonth] = useState(new Date());
 

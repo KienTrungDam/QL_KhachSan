@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using QLKhachSan.Models;
@@ -60,6 +61,7 @@ namespace QLKhachSan.Controllers
         }
 
         [HttpPost("MakePayment/{bookingId:int}")]
+        [Authorize(Roles = SD.Role_Customer)]
         public async Task<ActionResult<APIResponse>> MakePayment(int bookingId)
         {
             var user = await _userManager.GetUserAsync(User);

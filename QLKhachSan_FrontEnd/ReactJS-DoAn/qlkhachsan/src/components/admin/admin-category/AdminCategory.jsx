@@ -15,7 +15,9 @@ const AdminCategory = () => {
   const [errors, setErrors] = React.useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-  const storedToken = localStorage.getItem("adminToken");
+  const storedToken = localStorage.getItem("token");
+  const role = localStorage.getItem("role"); // Thêm dòng này
+  const isEmployee = role === "Employee";
   const validateRoom = () => {
     const target = actionType === "add" ? newCategory : editCategory;
     const newErrors = {};
@@ -229,6 +231,7 @@ const AdminCategory = () => {
               <button
                 className="px-4 py-2 bg-green-500 text-white rounded-lg"
                 onClick={() => openModal("add")}
+                disabled={isEmployee}
               >
                 <FaPlus className="inline mr-2" />Thêm danh mục
               </button>
@@ -294,6 +297,7 @@ const AdminCategory = () => {
                             className="text-yellow-500 hover:text-yellow-700 focus:outline-none border-none"
                             onClick={() => openModal("update", category)}
                             title="Chỉnh sửa"
+                            disabled={isEmployee}
                           >
                             <FaEdit size={20} />
                           </button>
@@ -301,6 +305,7 @@ const AdminCategory = () => {
                             className="text-red-500 hover:text-red-700 focus:outline-none border-none"
                             onClick={() => openModal("delete", category)}
                             title="Xóa"
+                            disabled={isEmployee}
                           >
                             <FaTrash size={20} />
                           </button>

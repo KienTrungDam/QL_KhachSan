@@ -72,6 +72,7 @@ namespace QLKhachSan.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = SD.Role_Admin)]
         public async Task<ActionResult<APIResponse>> CreateRoom([FromForm] RoomCreateDTO roomCreateDTO)
         {
             
@@ -142,6 +143,7 @@ namespace QLKhachSan.Controllers
             return CreatedAtRoute("GetRoom", new { id = room.Id }, _response);
         }
         [HttpPut("{id:int}", Name = "UpdateRoom")]
+        [Authorize(Roles = SD.Role_Admin)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -246,6 +248,7 @@ namespace QLKhachSan.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = SD.Role_Admin)]
         public async Task<ActionResult<APIResponse>> DeleteRoom(int id)
         {
             if (id == 0)
@@ -302,7 +305,7 @@ namespace QLKhachSan.Controllers
 
             // Lấy tất cả phòng phù hợp với số người
             var allRooms = await _unitOfWork.Room.GetAllAsync(
-                r => r.MaxOccupancy >= people,
+                r => r.MaxOccupancy >= people && r.Status != "Đang sửa" && r.Status != "Đang dọn dẹp",
                 includeProperties: "CategoryRoom,RoomImages"
             );
 
@@ -311,7 +314,10 @@ namespace QLKhachSan.Controllers
                 b => b.BookingStatus != SD.Status_Booking_Cancelled && b.BookingStatus != SD.Status_Booking_Completed && b.BookingRoomId != null,
                 includeProperties: "BookingRoom.BookingRoomDetails"
             );
-
+            //foreach (var booking in bookings)
+            //{
+            //        booking.BookingRoom.BookingRoomDetails = await _unitOfWork.BookingRoomDetail.GetAllAsync(d => d.BookingRoomId == booking.BookingRoom.Id, includeProperties: "Room");
+            //}
             // Lấy tất cả các BookingRoomDetail bị giao thời gian với yêu cầu
             var overlappingDetails = bookings
                 .SelectMany(b => b.BookingRoom.BookingRoomDetails)
@@ -391,7 +397,7 @@ namespace QLKhachSan.Controllers
             _response.StatusCode = HttpStatusCode.OK;
             return Ok(_response);
         }
-        [HttpGet("CheckRoomNumberExists/{roomId}")]
+        [HttpGet("CheckRoomNumberExists/{roomNumber}")]
         public async Task<IActionResult> CheckRoomNumberExists(string roomNumber)
         {
             var exists = await _unitOfWork.Room.GetAsync(r => r.RoomNumber == roomNumber);
@@ -413,7 +419,7 @@ namespace QLKhachSan.Controllers
 
             // Kiểm tra có đơn nào chứa phòng này và ngày nhận phòng còn ở tương lai không
             var hasBooking = bookings.Any(booking =>
-                booking.BookingRoom.BookingRoomDetails.Any(detail => detail.CheckInDate > DateTime.Now) &&
+                booking.BookingRoom.BookingRoomDetails.Any(detail => detail.CheckOutDate >= DateTime.Now) &&
                 booking.BookingRoom?.BookingRoomDetails.Any(detail => detail.RoomId == roomId) == true
             );
 

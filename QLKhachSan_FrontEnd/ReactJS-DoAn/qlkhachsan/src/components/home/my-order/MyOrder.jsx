@@ -30,6 +30,7 @@ const MyOrder = () => {
   };
 
   const fetchBookings = async () => {
+
     setLoading(true);
     try {
       const response = await axios.get("https://localhost:5001/api/Booking", {

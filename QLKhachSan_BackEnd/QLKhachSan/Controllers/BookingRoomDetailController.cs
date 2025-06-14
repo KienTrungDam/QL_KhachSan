@@ -5,11 +5,13 @@ using QLKhachSan.Models.DTO;
 using QLKhachSan.Models;
 using QLKhachSan.Repository.IRepository;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 namespace QLKhachSan.Controllers
 {
     [Route("api/BookingRoomDetail")]
     [ApiController]
+    [Authorize]
     public class BookingRoomDetailController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;

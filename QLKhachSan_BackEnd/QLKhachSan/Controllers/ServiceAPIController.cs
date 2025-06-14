@@ -60,7 +60,7 @@ namespace QLKhachSan.Controllers
             return Ok(_response);
         }
         [HttpPost]
-        //[Authorize(Roles = SD.Role_Admin)]
+        [Authorize(Roles = SD.Role_Admin)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -89,7 +89,7 @@ namespace QLKhachSan.Controllers
             return CreatedAtRoute("GetService", new { id = service.Id }, _response);
         }
         [HttpPut("{id:int}", Name = "UpdateService")]
-        //[Authorize(Roles = SD.Role_Admin)]
+        [Authorize(Roles = SD.Role_Admin)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -108,7 +108,7 @@ namespace QLKhachSan.Controllers
             return Ok(_response);
         }
         [HttpDelete("{id:int}", Name = "DeleteService")]
-        //[Authorize(Roles = SD.Role_Admin)]
+        [Authorize(Roles = SD.Role_Admin)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

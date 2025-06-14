@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using QLKhachSan.Models;
@@ -10,6 +11,7 @@ namespace QLKhachSan.Controllers
 {
     [Route("api/BookingServiceDetail")]
     [ApiController]
+    [Authorize]
     public class BookingServiceDetailController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;

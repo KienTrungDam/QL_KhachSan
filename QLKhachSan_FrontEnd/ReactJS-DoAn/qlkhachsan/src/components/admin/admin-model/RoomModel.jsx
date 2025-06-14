@@ -12,6 +12,7 @@ const RoomModal = ({
   categories,
   onDeleteImage,
   errors,
+  deleteError,
 }) => {
   const getTitle = () => {
     switch (actionType) {
@@ -495,7 +496,11 @@ const RoomModal = ({
               value={editRoom.priceWeek}
               readOnly
             />
-
+            {deleteError && (
+              <div className="mt-2 text-sm text-red-600 bg-red-100 p-2 rounded">
+                {deleteError}
+              </div>
+            )}
             <div className="flex justify-center mt-4">
               <button
                 className="px-4 py-2 bg-red-500 text-white rounded mr-2"

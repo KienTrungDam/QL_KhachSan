@@ -1478,7 +1478,7 @@
   {
     "ContainingType": "QLKhachSan.Controllers.RoomAPIController",
     "Method": "CheckRoomNumberExists",
-    "RelativePath": "api/Room/CheckRoomNumberExists/{roomId}",
+    "RelativePath": "api/Room/CheckRoomNumberExists/{roomNumber}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1486,11 +1486,6 @@
       {
         "Name": "roomNumber",
         "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "roomId",
-        "Type": "",
         "IsRequired": true
       }
     ],

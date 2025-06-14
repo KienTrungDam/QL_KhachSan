@@ -19,16 +19,19 @@ const AdminService = () => {
   const [notifyProps, setNotifyProps] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-  const storedToken = localStorage.getItem("adminToken");
-  
+  const storedToken = localStorage.getItem("token");
+  const role = localStorage.getItem("role"); // Thêm dòng này
+  const isEmployee = role === "Employee"; // hoặc "employee", tuỳ theo bạn lưu
+
   const validateRoom = () => {
     const target = actionType === "add" ? newService : editService;
     const newErrors = {};
 
     if (!target.name) newErrors.name = "Tên dịch vụ không được để trống";
-    if (!target.description) newErrors.description = "Mô tả không được để trống";
+    if (!target.description)
+      newErrors.description = "Mô tả không được để trống";
     if (!target.price) newErrors.price = "Giá dịch vụ là bắt buộc";
-      
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -41,8 +44,7 @@ const AdminService = () => {
       setEditService({ ...editService, [name]: value });
     }
   };
-  
-  
+
   const fetchServices = async () => {
     try {
       const response = await axios.get("https://localhost:5001/api/Service", {
@@ -178,7 +180,6 @@ const AdminService = () => {
     });
     setActionType(null);
     setErrors({});
-
   };
   const goToPage = (page) => {
     if (page >= 1 && page <= totalPages) {
@@ -231,6 +232,7 @@ const AdminService = () => {
               <button
                 className="px-4 py-2 bg-green-500 text-white rounded-lg"
                 onClick={() => openModal("add")}
+                disabled={isEmployee}
               >
                 <FaPlus className="inline mr-2" /> Thêm dịch vụ
               </button>
@@ -296,6 +298,7 @@ const AdminService = () => {
                             className="text-yellow-500 hover:text-yellow-700 focus:outline-none focus:ring-0 border-none"
                             onClick={() => openModal("update", service)}
                             title="Chỉnh sửa"
+                            disabled={isEmployee}
                           >
                             <FaEdit size={20} />
                           </button>
@@ -303,6 +306,7 @@ const AdminService = () => {
                             className="text-red-500 hover:text-red-700 focus:outline-none focus:ring-0 border-none"
                             onClick={() => openModal("delete", service)}
                             title="Xóa"
+                            disabled={isEmployee}
                           >
                             <FaTrash size={20} />
                           </button>

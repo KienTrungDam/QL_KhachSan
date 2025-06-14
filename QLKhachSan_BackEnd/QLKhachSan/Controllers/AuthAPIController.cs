@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.IdentityModel.Tokens;
 using QLKhachSan.Data;
+using QLKhachSan.IRepository;
 using QLKhachSan.Models;
 using QLKhachSan.Models.DTO;
 using QLKhachSan.Repository.IRepository;
@@ -22,11 +23,13 @@ namespace QLKhachSan.Controllers
         private readonly APIResponse _response;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IEmailSender _emailSender;
         private readonly UserManager<Person> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AuthAPIController(IMapper mapper, IUnitOfWork unitOfWork, UserManager<Person> userManager, RoleManager<IdentityRole> roleManager)
+        public AuthAPIController(IMapper mapper, IUnitOfWork unitOfWork, UserManager<Person> userManager, RoleManager<IdentityRole> roleManager, IEmailSender emailSender)
         {
+            _emailSender = emailSender;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
                 _response = new();
@@ -108,17 +111,35 @@ namespace QLKhachSan.Controllers
 
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user == null)
-                return Ok(new { message = "Nếu email tồn tại, hệ thống sẽ gửi mã khôi phục." }); // bảo mật
+            {
+                // Tránh lộ thông tin người dùng
+                return Ok(new { message = "Nếu email tồn tại, hệ thống sẽ gửi mã khôi phục." });
+            }
 
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             var encodedToken = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
-            var resetUrl = $"https://localhost:5173/reset-password?email={model.Email}&token={encodedToken}";
+            var resetUrl = $"http://localhost:5173/reset-password?email={model.Email}&token={encodedToken}";
 
-            // TODO: Gửi email ở đây (tạm log ra console)
-            Console.WriteLine($"Gửi đường dẫn đặt lại mật khẩu: {resetUrl}");
+            var subject = "Yêu cầu khôi phục mật khẩu";
+            var body = $@"
+        <p>Xin chào {user.UserName},</p>
+        <p>Bạn vừa yêu cầu đặt lại mật khẩu. Vui lòng nhấn vào liên kết dưới đây để thực hiện:</p>
+        <p><a href='{resetUrl}'>Đặt lại mật khẩu</a></p>
+        <p>Nếu bạn không yêu cầu, hãy bỏ qua email này.</p>";
 
-            return Ok(new { message = "Hướng dẫn khôi phục đã được gửi qua email." });
+            try
+            {
+                await _emailSender.SendEmailAsync(model.Email, subject, body);
+            }
+            catch (Exception ex)
+            {
+                // Log lỗi gửi mail (tùy bạn dùng logger nào)
+                Console.WriteLine($"Gửi email thất bại: {ex.Message}");
+            }
+
+            return Ok(new { message = "Nếu email tồn tại, hướng dẫn khôi phục đã được gửi." });
         }
+
         [HttpPost("reset-password")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDTO model)
         {

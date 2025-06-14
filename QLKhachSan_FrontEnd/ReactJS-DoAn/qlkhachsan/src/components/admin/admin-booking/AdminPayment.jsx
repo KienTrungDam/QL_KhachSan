@@ -10,7 +10,7 @@ const AdminPayment = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-  const storedToken = localStorage.getItem("adminToken");
+  const storedToken = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchPayments = async () => {
