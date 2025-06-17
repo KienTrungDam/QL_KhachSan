@@ -253,12 +253,16 @@
       "PackagePath": "staticwebassets\\images\\rooms\\room-23\\e7395302-76c9-478b-bf1a-4d3fb964d190.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-26\\84dd0ae8-af80-4e00-8b47-8bddde6365c2.jpeg",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-26\\84dd0ae8-af80-4e00-8b47-8bddde6365c2.jpeg"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-26\\15a4a1ca-a334-45f0-a6f1-fbb167c24e5a.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-26\\15a4a1ca-a334-45f0-a6f1-fbb167c24e5a.jpg"
     },
     {
-      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-26\\b2face70-92c6-4d8c-8a90-7697590d16e2.png",
-      "PackagePath": "staticwebassets\\images\\rooms\\room-26\\b2face70-92c6-4d8c-8a90-7697590d16e2.png"
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-26\\a844e3d1-25dc-4e8b-9753-8298d1806e16.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-26\\a844e3d1-25dc-4e8b-9753-8298d1806e16.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-26\\ffc04e07-7b15-4645-be33-25090f2e37dd.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-26\\ffc04e07-7b15-4645-be33-25090f2e37dd.jpg"
     },
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-27\\2b3fabf7-3138-4701-8304-89b2e2fb22e3.webp",
@@ -287,6 +291,166 @@
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-29\\f9ecf05a-4a92-499a-9d75-93e4df35c7de.webp",
       "PackagePath": "staticwebassets\\images\\rooms\\room-29\\f9ecf05a-4a92-499a-9d75-93e4df35c7de.webp"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-30\\200ed219-c185-489a-bb0e-91c70d61f5d0.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-30\\200ed219-c185-489a-bb0e-91c70d61f5d0.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-30\\257930ee-54f5-436e-a459-7c8f50c9b772.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-30\\257930ee-54f5-436e-a459-7c8f50c9b772.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-30\\3891649e-c886-48fc-ab2d-4faedb0c19f4.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-30\\3891649e-c886-48fc-ab2d-4faedb0c19f4.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-30\\41efb289-ae3e-4204-ad78-9cfa870bad5a.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-30\\41efb289-ae3e-4204-ad78-9cfa870bad5a.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-30\\6cf337c6-d317-4d7f-9f30-5593004c0684.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-30\\6cf337c6-d317-4d7f-9f30-5593004c0684.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-30\\74c6d3db-127d-4ad9-b95b-9ad55a50295c.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-30\\74c6d3db-127d-4ad9-b95b-9ad55a50295c.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-30\\d903816f-6d93-4665-96c0-69de1aa91e12.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-30\\d903816f-6d93-4665-96c0-69de1aa91e12.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-30\\dd274ea0-cc02-4c8e-a02d-74f59465973e.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-30\\dd274ea0-cc02-4c8e-a02d-74f59465973e.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-30\\de1865bf-1b30-4bd5-98cb-15bfc4c3c3bb.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-30\\de1865bf-1b30-4bd5-98cb-15bfc4c3c3bb.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-31\\0a642154-bff8-4dbb-8974-7e728b2b9914.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-31\\0a642154-bff8-4dbb-8974-7e728b2b9914.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-31\\1202483e-be3e-4d73-88d8-453fb78d4297.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-31\\1202483e-be3e-4d73-88d8-453fb78d4297.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-31\\124ecf01-0728-4e33-9416-009b86c5379b.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-31\\124ecf01-0728-4e33-9416-009b86c5379b.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-31\\4c6edadd-72cf-442f-98f1-c5648291003c.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-31\\4c6edadd-72cf-442f-98f1-c5648291003c.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-31\\614c6909-ebae-4cf3-820d-8f9e4324af6e.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-31\\614c6909-ebae-4cf3-820d-8f9e4324af6e.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-31\\7880506d-1348-48a8-bd01-1fb7a7871675.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-31\\7880506d-1348-48a8-bd01-1fb7a7871675.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-31\\7ea402d3-94b5-4333-b456-8d9c9c4f3f3d.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-31\\7ea402d3-94b5-4333-b456-8d9c9c4f3f3d.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-31\\c8f683dc-678b-4210-8d27-da82e47ef33c.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-31\\c8f683dc-678b-4210-8d27-da82e47ef33c.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-31\\e2375691-b808-405b-ac1d-7a90cfef97e9.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-31\\e2375691-b808-405b-ac1d-7a90cfef97e9.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-31\\ed56d4d6-4e4c-4d80-9d91-58f606f9b0e0.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-31\\ed56d4d6-4e4c-4d80-9d91-58f606f9b0e0.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-32\\23aad616-6629-4e0a-a4ad-95f5d1429a79.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-32\\23aad616-6629-4e0a-a4ad-95f5d1429a79.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-32\\845c69d4-58f8-452d-8d54-3d99a349eb5d.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-32\\845c69d4-58f8-452d-8d54-3d99a349eb5d.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-32\\b468dff1-1e9e-4373-aa49-efc1cbeac737.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-32\\b468dff1-1e9e-4373-aa49-efc1cbeac737.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-32\\b62fe668-bef1-4cd1-ae6f-033c79799929.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-32\\b62fe668-bef1-4cd1-ae6f-033c79799929.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-33\\08ccd829-1d5e-40d5-8422-1e8d440c9cdb.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-33\\08ccd829-1d5e-40d5-8422-1e8d440c9cdb.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-33\\3d8079dd-8b5c-4d54-9e91-baaf183b82a8.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-33\\3d8079dd-8b5c-4d54-9e91-baaf183b82a8.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-33\\5880fc81-d29e-4340-99ca-4f7b56bb98a9.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-33\\5880fc81-d29e-4340-99ca-4f7b56bb98a9.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-33\\96eaa971-c4f2-43cb-9870-dd73039ab3e9.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-33\\96eaa971-c4f2-43cb-9870-dd73039ab3e9.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-33\\c8141c82-698f-434b-9975-1a12510a9016.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-33\\c8141c82-698f-434b-9975-1a12510a9016.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-34\\4bea436b-f790-4012-b0b1-5c8952ddc189.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-34\\4bea436b-f790-4012-b0b1-5c8952ddc189.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-34\\594cdb8f-f4e6-4b9d-b813-73050a39f1e0.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-34\\594cdb8f-f4e6-4b9d-b813-73050a39f1e0.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-34\\74de5cf0-4cfa-468c-95b1-3aeebe3f29f1.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-34\\74de5cf0-4cfa-468c-95b1-3aeebe3f29f1.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-34\\892866ca-8a68-43e1-8677-97beb017ce6b.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-34\\892866ca-8a68-43e1-8677-97beb017ce6b.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-34\\c794dc50-7d5d-45d3-98cb-9b1009e96457.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-34\\c794dc50-7d5d-45d3-98cb-9b1009e96457.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-34\\e9b8bea6-a0b0-47fd-a912-82655c200a55.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-34\\e9b8bea6-a0b0-47fd-a912-82655c200a55.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-35\\252abe5a-1fd6-47b0-94de-84f955d96128.png",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-35\\252abe5a-1fd6-47b0-94de-84f955d96128.png"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-35\\4134c758-2a4c-4d54-9f64-73c372656ec0.png",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-35\\4134c758-2a4c-4d54-9f64-73c372656ec0.png"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-35\\bcf5301a-fdc9-4b00-b0b1-652a6370945b.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-35\\bcf5301a-fdc9-4b00-b0b1-652a6370945b.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-35\\ce314ab5-18f6-46a7-8c23-aac98f3b22cf.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-35\\ce314ab5-18f6-46a7-8c23-aac98f3b22cf.jpg"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-35\\e23dbbfe-960e-49bb-93d4-0d7a5b00af59.png",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-35\\e23dbbfe-960e-49bb-93d4-0d7a5b00af59.png"
+    },
+    {
+      "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-35\\fc2e7804-2eab-408f-978d-c1a159079b75.jpg",
+      "PackagePath": "staticwebassets\\images\\rooms\\room-35\\fc2e7804-2eab-408f-978d-c1a159079b75.jpg"
     },
     {
       "Id": "C:\\QLKhachSan\\QLKhachSan_BackEnd\\QLKhachSan\\wwwroot\\images\\rooms\\room-5\\2f4b1f08-f595-411d-b1d7-1be7c92dbfbc.jpg",

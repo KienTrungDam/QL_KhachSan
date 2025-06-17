@@ -21,23 +21,23 @@ const AdminBookingUpdateStatus = () => {
     setNotifyProps(newNotifyProps);
     setTimeout(() => setNotifyProps(null), 3000);
   };
+  const fetchBooking = async () => {
+    try {
+      const res = await axios.get(
+        `https://localhost:5001/api/Booking/${bookingId}`,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      );
+      setBooking(res.data.result);
+    } catch (error) {
+      console.error("Lỗi tải chi tiết booking:", error);
+      setError("Không tải được chi tiết đơn đặt phòng.");
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    const fetchBooking = async () => {
-      try {
-        const res = await axios.get(
-          `https://localhost:5001/api/Booking/${bookingId}`,
-          {
-            headers: { Authorization: `Bearer ${storedToken}` },
-          }
-        );
-        setBooking(res.data.result);
-      } catch (error) {
-        console.error("Lỗi tải chi tiết booking:", error);
-        setError("Không tải được chi tiết đơn đặt phòng.");
-      } finally {
-        setLoading(false);
-      }
-    };
     fetchBooking();
   }, [bookingId, storedToken]);
   const geStatus = (status) => {
@@ -57,64 +57,67 @@ const AdminBookingUpdateStatus = () => {
     }
   };
   const updateBookingStatus = async (newStatus) => {
-    try {
-      const response = await axios.put(
-        `https://localhost:5001/api/Booking/UpdateStatus?bookingId=${booking.id}&nextStatus=${newStatus}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${storedToken}`,
-          },
-        }
-      );
-
-      if (response.data.isSuccess) {
-        setBooking(response.data.result);
-        showNotification(
-          "success",
-          `Cập nhật trạng thái sang "${newStatus}" thành công.`
-        );
-
-        // Nếu là huỷ thì gọi Refund
-        if (newStatus === "Cancelled") {
-          try {
-            const refundResponse = await axios.post(
-              `https://localhost:5001/api/Payment/RefundPayment/${bookingId}`,
-              {},
-              {
-                headers: {
-                  Authorization: `Bearer ${storedToken}`,
-                },
-              }
-            );
-            showNotification(
-              "success",
-              "Hủy đơn thành công",
-              "Đã hoàn tiền cho khách."
-            );
-          } catch (error) {
-            console.error("Lỗi khi hủy đơn:", error);
-            showNotification(
-              "error",
-              "Lỗi khi hủy đơn",
-              "Có lỗi xảy ra khi hoàn tiền."
-            );
-          }
-        }
-      } else {
-        const errorMsg =
-          response.data.errorMessages?.[0] || "Lỗi không xác định";
-        showNotification("error", "Cập nhật thất bại", errorMsg);
+  try {
+    const response = await axios.put(
+      `https://localhost:5001/api/Booking/UpdateStatus?bookingId=${booking.id}&nextStatus=${newStatus}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${storedToken}`,
+        },
       }
-    } catch (error) {
-      console.error("Lỗi cập nhật trạng thái:", error);
+    );
+
+    if (response.data.isSuccess) {
       showNotification(
-        "error",
-        "Lỗi hệ thống",
-        "Không thể cập nhật trạng thái."
+        "success",
+        `Cập nhật trạng thái sang "${newStatus}" thành công.`
       );
+
+      // Gọi lại dữ liệu chi tiết booking để cập nhật đầy đủ thông tin
+      await fetchBooking();
+
+      // Nếu trạng thái là "Cancelled", tiến hành hoàn tiền
+      if (newStatus === "Cancelled") {
+        try {
+          const refundResponse = await axios.post(
+            `https://localhost:5001/api/Payment/RefundPayment/${bookingId}`,
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${storedToken}`,
+              },
+            }
+          );
+          showNotification(
+            "success",
+            "Hủy đơn thành công",
+            "Đã hoàn tiền cho khách."
+          );
+        } catch (error) {
+          console.error("Lỗi khi hủy đơn:", error);
+          showNotification(
+            "error",
+            "Lỗi khi hủy đơn",
+            "Có lỗi xảy ra khi hoàn tiền."
+          );
+        }
+      }
+    } else {
+      const errorMsg =
+        response.data.errorMessages?.[0] || "Lỗi không xác định";
+      showNotification("error", "Cập nhật thất bại", errorMsg);
     }
-  };
+  } catch (error) {
+    console.error("Lỗi cập nhật trạng thái:", error);
+    showNotification(
+      "error",
+      "Lỗi hệ thống",
+      "Không thể cập nhật trạng thái."
+    );
+  }
+};
+
 
   if (loading) return <div>Đang tải chi tiết đơn đặt ...</div>;
   if (error) return <div className="text-red-600">{error}</div>;

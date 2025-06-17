@@ -250,7 +250,7 @@ namespace QLKhachSan.Controllers
             return Ok(_response);
         }
         [HttpPut("UpdateUser/{id}", Name = "UpdateUser")]
-        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee + "," + SD.Role_Customer)]
         public async Task<ActionResult<APIResponse>> UpdateUser(string id, [FromBody] PersonUpdateDTO personUpdateDTO)
         {
             try

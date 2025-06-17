@@ -134,7 +134,6 @@ function Header() {
             </button>
 
             {(userRole === "Admin" || userRole === "Employee") && (
-
               <Link
                 to="/admin/dashboard/"
                 className="relative px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-full hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
@@ -152,7 +151,9 @@ function Header() {
                   <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center text-white font-bold text-sm">
                     {lastName.charAt(0).toUpperCase()}
                   </div>
-                  <span className="hidden sm:block">{firstMidName} {lastName}</span>
+                  <span className="hidden sm:block">
+                    {firstMidName} {lastName}
+                  </span>
                   <svg
                     className={`w-4 h-4 transition-transform duration-300 ${
                       dropdownOpen ? "rotate-180" : ""
@@ -184,11 +185,20 @@ function Header() {
                       } pointer-events-${dropdownOpen ? "auto" : "none"}`}
                     >
                       {" "}
-                      <div className="px-4 py-3 border-b border-gray-100">
-                        <p className="text-sm font-medium text-gray-900">
-                          Tài khoản
-                        </p>
-                        <p className="text-xs text-gray-500">{userName}</p>
+                      <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
+                        <div>
+                          <p className="text-sm font-medium text-gray-900">
+                            Tài khoản
+                          </p>
+                          <p className="text-xs text-gray-500">{userName}</p>
+                        </div>
+                        <button
+                          onClick={() => navigate("/edit-profile")}
+                          className="text-xs hover:border-none focus:outline-none focus:ring-0"
+                          title="Chỉnh sửa thông tin tài khoản"
+                        >
+                          ✏️
+                        </button>
                       </div>
                       <Link
                         to="/my-order"

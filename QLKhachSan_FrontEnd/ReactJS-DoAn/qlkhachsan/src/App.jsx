@@ -24,6 +24,7 @@ import HomePage from "./components/home/HomePage";
 import News from "./components/home/new/New";
 import ForgotPasswordForm from "./components/home/auth/ForgotPasswordForm";
 import ResetPasswordForm from "./components/home/auth/ResetPasswordForm";
+import EditProfile from "./components/home/auth/EditProfile";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -42,6 +43,7 @@ function App() {
               </>
             }
           />
+          <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/forgot-password" element={<ForgotPasswordForm />} />
           <Route path="/reset-password" element={<ResetPasswordForm />} />
           <Route

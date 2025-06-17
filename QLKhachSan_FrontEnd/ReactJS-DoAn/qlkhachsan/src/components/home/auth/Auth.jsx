@@ -49,6 +49,7 @@ const AuthForms = () => {
       localStorage.setItem("userName", response.data.result.user.userName);
       localStorage.setItem("userId", response.data.result.user.id);
       localStorage.setItem("role", response.data.result.user.role);
+      localStorage.setItem("email", response.data.result.user.email);
       localStorage.setItem(
         "firstMidName",
         response.data.result.user.firstMidName
@@ -59,10 +60,12 @@ const AuthForms = () => {
 
       navigate("/");
     } catch (error) {
+      console.error("Đăng nhập lỗi:", error.response?.data || error.message);
       showNotification(
         "error",
         "Đăng nhập thất bại",
-        "Tên đăng nhập hoặc mật khẩu không đúng"
+        error.response?.data?.message ||
+          "Tên đăng nhập hoặc mật khẩu không đúng"
       );
     }
   };
@@ -217,7 +220,7 @@ const AuthForms = () => {
               type="submit"
               className="w-full bg-yellow-500 text-white py-2 rounded-md hover:bg-yellow-600 transition-colors"
             >
-              Login
+              Đăng nhập
             </button>
             <div className="text-right">
               <button

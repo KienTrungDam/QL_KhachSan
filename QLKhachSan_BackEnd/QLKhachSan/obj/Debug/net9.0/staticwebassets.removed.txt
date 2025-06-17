@@ -1,10 +1,2 @@
-C:\QLKhachSan\QLKhachSan_BackEnd\QLKhachSan\wwwroot\images\new\new-10.jpg
-C:\QLKhachSan\QLKhachSan_BackEnd\QLKhachSan\wwwroot\images\new\new-20.jpg
-C:\QLKhachSan\QLKhachSan_BackEnd\QLKhachSan\wwwroot\images\new\new-22.jpg
-C:\QLKhachSan\QLKhachSan_BackEnd\QLKhachSan\wwwroot\images\new\new-23.png
-C:\QLKhachSan\QLKhachSan_BackEnd\QLKhachSan\wwwroot\images\new\new-24.png
-C:\QLKhachSan\QLKhachSan_BackEnd\QLKhachSan\wwwroot\images\new\new-28.webp
-C:\QLKhachSan\QLKhachSan_BackEnd\QLKhachSan\wwwroot\images\new\new-6.jpg
-C:\QLKhachSan\QLKhachSan_BackEnd\QLKhachSan\wwwroot\images\new\new-7.jpg
-C:\QLKhachSan\QLKhachSan_BackEnd\QLKhachSan\wwwroot\images\new\new-8.jpg
-C:\QLKhachSan\QLKhachSan_BackEnd\QLKhachSan\wwwroot\images\new\new-9.jpg
+C:\QLKhachSan\QLKhachSan_BackEnd\QLKhachSan\wwwroot\images\rooms\room-26\84dd0ae8-af80-4e00-8b47-8bddde6365c2.jpeg
+C:\QLKhachSan\QLKhachSan_BackEnd\QLKhachSan\wwwroot\images\rooms\room-26\b2face70-92c6-4d8c-8a90-7697590d16e2.png

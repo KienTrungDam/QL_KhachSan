@@ -42,7 +42,14 @@ namespace QLKhachSan.Controllers
         public async Task<ActionResult> Login([FromBody] LoginRequestDTO loginRequestDTO)
         {
             LoginResponseDTO loginResponseDTO = await _unitOfWork.User.LoginAsync(loginRequestDTO);
-            
+            if (loginResponseDTO == null || loginResponseDTO.user == null)
+            {
+                return BadRequest(new
+                {
+                    isSuccess = false,
+                    message = "Sai tài khoản hoặc mật khẩu"
+                });
+            }
             var user = _mapper.Map<Person>(loginResponseDTO.user);
             var role = await _userManager.GetRolesAsync(user);
 

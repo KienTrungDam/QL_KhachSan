@@ -28,7 +28,7 @@ builder.Services.AddScoped<DbInitializer>();
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 builder.Services.AddCors();
 
-// Thêm ph?n này ?? x? lý JSON tránh vòng l?p
+// Thï¿½m ph?n nï¿½y ?? x? lï¿½ JSON trï¿½nh vï¿½ng l?p
 builder.Services.AddControllers()
     .AddJsonOptions(x =>
         x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
@@ -86,7 +86,6 @@ builder.Services.AddAuthentication(x =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
